@@ -12,8 +12,9 @@ consumer.subscriptions.create("OpenAiChannel", {
   received(data) {
     console.log('Received data:', data);
     const elementToUpdate = document.getElementById("element-to-update");
-    if (elementToUpdate) {
-      elementToUpdate.insertAdjacentHTML('beforeend', data);
+    if (elementToUpdate && data != null) {
+      const content = elementToUpdate.textContent + data;
+      elementToUpdate.textContent = content;
     }
   }
 });
