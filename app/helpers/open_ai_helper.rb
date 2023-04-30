@@ -1,0 +1,2 @@
+module OpenAiHelper
+end
