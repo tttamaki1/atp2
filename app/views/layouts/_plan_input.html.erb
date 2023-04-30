@@ -1,6 +1,6 @@
 <div class="plan-input">
     <h2>旅のプランを入力</h2>
-    <%= form_with url:  open_ai_stream_openai_api_path, local: true, class: 'plan-input-form' do |form| %>
+    <%= form_with model: @plan, url:  open_ai_create_path, class: 'plan-input-form', remote: true do |form| %>
       <div class="form-group">
         <%= form.label :destination, '目的地' %>
         <%= form.text_field :destination, class: 'form-control' %>
@@ -18,24 +18,25 @@
       </div>
       <div class="form-group">
         <%= form.label :accommodation, '宿泊タイプ' %>
-        <%= form.select :accommodation, ['ホテル', '民宿', 'ホステル', '温泉旅館', 'ビジネスホテル', 'カプセルホテル'], {}, class: 'form-control' %>
+        <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, { class: "form-control", id: "accommodation" }) %>
       </div>
       <div class="form-group">
         <%= form.label :activity, 'アクティビティ' %>
-        <%= form.select :activity, ['観光', 'アウトドア', '文化', 'リラクゼーション'], {}, class: 'form-control' %>
+        <%= form.collection_select(:activity_id, Activity.all, :id, :name, { class: "form-control", id: "activity" }) %>
+    
       </div>
       <div class="form-group">
         <%= form.label :transportation, '移動手段' %>
-        <%= form.select :transportation, ['電車', 'バス', 'タクシー' ,'自転車', '徒歩', 'レンタカー', 'シェアサイクル', 'マイカー'], {}, class: 'form-control' %>
+        <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, { class: "form-control", id: "transportation" }) %>
       </div>
       <div class="form-group">
-        <%= form.label :activity, '食事' %>
-        <%= form.select :activity, [  '高級レストラン','ファーストフード','名物料理','海鮮料理', '軽食', 'カフェ', '伝統料理', 'ハラル','その他'], {}, class: 'form-control' %>
+        <%= form.label :food, '食事' %>
+        <%= form.collection_select(:food_id, Food.all, :id, :name, { class: "select-box", id: "food" }) %>
       </div> 
       <div class="form-group">
         <%= form.label :place_to_visit, '訪問地' %>
         <%= form.text_field :place_to_visit, class: 'form-control' %>
       </div>   
-      <%= form.submit 'プランを作成', class: 'submit-button', remote: true %>
+      <%= form.submit 'プランを作成', class: 'submit-button' %>
     <% end %>
   </div>

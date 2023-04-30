@@ -5,31 +5,36 @@
   require "async/http"
   
   class OpenAiController < ApplicationController
+    include ActionView::Helpers::SanitizeHelper
 
     def index
+      @plan = Plan.new
     end
   
     #def stream_openai_api
     def create
-        @plan = Plan.new()
+        @plan = Plan.new(plan_params)
         @plan.destination = params[:destination]
+        puts  @plan.destination
+        @plan.budget = params[:budget]
         @plan.duration = params[:duration]
         @plan.activity = params[:activity]
         @plan.transportation = params[:transportation]
-        @plan.activity = params[:place_to_visit]
-    
+        @plan.accommodation = params[:accommodation]
+        @plan.place_to_visit = params[:place_to_visit]
+  
         prompt = "
     
         Create create a time table and a specific and travel plan in Japanese for the following information:\n
-        Location: Korea\n
-        Duration: 1 nights 2 days\n
-        Budget: 60,000 yen\n
-        Accommodation: Hotel\n
-        Activity: food tour\n
-        transportation: Taxi\n
+        Location: #{@plan.destination}\n
+        Duration: #{@plan.duration} days\n
+        Budget: #{@plan.budget} yen\n
+        Accommodation: #{@plan.accommodation}\n
+        Activity: #{@plan.activity}\n
+        transportation: #{@plan.transportation}\n
         When: April\n 
         Where you live: Chiba\n
-        Place to visit: \n
+        Place to visit: #{@plan.place_to_visit}\n
         Please start from the airport for overseas travel, and from the nearest station to the destination for domestic travel.
         If planning on overseas travel, get to the airport 2 to 3 hours before the departure time\n
         Specifiy what to do in the each destination so that we can imagin it but, exclude what to do at the hotel, the airport and returning the car \n
@@ -47,26 +52,35 @@
         Specify the time\n
         Then, please break down the plan into a daily itinerary,\n
          specifically, please format the response with the format like\n
-         日程：
-         day1:
-         12:00 - 那覇空港に到着、レンタカーを借りる
-         13:00 - ホテルへ向かいチェックイン
-         14:00 - レンタカーで国際通りを散策、お土産屋さんを見る
-         18:00 - 地元のレストラン「かりゆしそば」で沖縄そばを堪能
-         20:00 - 那覇市内の居酒屋「うりずん」で沖縄料理を楽しむ（ゴーヤチャンプルーやラフテーなど）
-        "    
+         日程：\n
+         day1:\n
+         12:00 - 那覇空港に到着、レンタカーを借りる\n
+         13:00 - ホテルへ向かいチェックイン\n
+         14:00 - レンタカーで国際通りを散策、お土産屋さんを見る\n
+         18:00 - 地元のレストラン「かりゆしそば」で沖縄そばを堪能\n
+         20:00 - 那覇市内の居酒屋「うりずん」で沖縄料理を楽しむ（ゴーヤチャンプルーやラフテーなど）\n
+        "   
+        
+        puts @plan
+        puts @plan.destination
         Async do |task|
         client = OpenAI::Client.new(access_token: "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")
         client.chat(
             parameters: {
             model: "gpt-3.5-turbo", # Required.
-            messages: [{ role: "user", content: "Who is Elon Musk"}], # Required.
+            messages: [{ role: "user", content: prompt}], # Required.
             temperature: 0.7,
+            # format: "html",
             stream: proc do |chunk, _bytesize|
                 task.async do
-                ActionCable.server.broadcast('open_ai_channel', chunk.dig("choices", 0, "delta", "content"))
+                text = chunk.dig("choices", 0, "delta", "content") 
+                text_with_newlines = text.gsub(/([^\n])(\n)([^\n])/,'\1<br>\3') # 改行を挿入
+                html_text = sanitize(text_with_newlines, tags: %w(br p h1 h2)) # brタグを追加
+                ActionCable.server.broadcast('open_ai_channel', html_text)
                 end
             end
+
+            
         })
       end
     end
@@ -77,7 +91,7 @@
 
     private
     def plan_params
-      params.require(:plan).permit(:destination, :duration, :budget, :activity, :transportation, :place_to_visit)
+      params.require(:plan).permit(:destination, :duration, :budget_option, :budget, :activity_id, :transportation_id,:accommodation_id, :food_id, :place_to_visit)
     end
 
   end
