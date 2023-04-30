@@ -1,0 +1,61 @@
+// Define your variables
+$background-color: #2a9d8f;
+$font-color: #fff;
+$logo-size: 24px;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: $background-color; 
+  color: $font-color; 
+}
+
+.header__logo {
+  font-size: $logo-size; 
+  font-weight: bold;
+}
+
+.header__nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.header__nav li {
+  margin-left: 15px;
+}
+
+.header a {
+  color: $font-color;
+  text-decoration: none;
+}
+
+// Search form styles
+.search-form {
+  display: flex;
+  align-items: center;
+
+  .search-input {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
+
+  .search-button {
+    margin-left: 8px;
+    padding: 4px 8px;
+    border: none;
+    background-color: #1f776d;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #164d43;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+/* Variables */
+:root {
+  --primary-color: #2a9d8f;
+  --secondary-color: #e9c46a;
+  --background-color: #f4f4f4;
+  --font-color: #333;
+  --logo-size: 30px;
+  --nav-background-color: #f4f4f4;
+  --nav-font-color: #333;
+  --nav-hover-color: #2a9d8f;
+}
+
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+/* Category nav */
+.category-nav {
+  background-color: var(--nav-background-color);
+  padding: 10px 0;
+}
+
+.category-nav ul {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+}
+
+.category-nav li {
+  margin: 0 15px;
+}
+
+.category-nav a {
+  color: var(--nav-font-color);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 15px;
+}
+
+.category-nav a:hover {
+  color: var(--nav-hover-color);
+}
+
+/* Features */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+}
+
+.feature {
+  text-align: center;
+  width: 30%;
+}
+
+.feature h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.container_index {
+  display: flex;
+}
+
+.generated_plan {
+  width: 1000px;
+  flex-shrink: 0;
+  padding: 40px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer__links ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer__links li {
+  margin-left: 15px;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn--cta {
+  background-color: var(--secondary-color);
+  color: #fff;
+}

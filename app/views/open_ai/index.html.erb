@@ -1,4 +1,55 @@
+<header class="header">
+    <div class="header__logo">
+    <%= link_to "AI Travel Planner", root_path %>
+    </div>
+    <%= form_with(url: search_plans_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+    <nav class="header__nav">
+        <ul>
+            <li><%= link_to "ログイン", "#" %></li>
+            <li><%= link_to "新規登録", "#" %></li>
+        </ul
+    </nav>
+</header>
+<nav class="category-nav">
+    <ul>
+      <li><a href="#">国内旅行</a></li>
+      <li><a href="#">海外旅行</a></li>
+      <li><a href="#">バックパッカー</a></li>
+      <li><a href="#">ロードトリップ</a></li>
+    </ul>
+  </nav>
+<main class="container_index">
+    <%= render 'layouts/plan_input' %>
+    <%= render 'layouts/generated_plan' %>
+</main> 
 
-<div id="element-to-update"></div>
-<!-- <%= javascript_pack_tag 'open_ai_stream' %> -->
-<%= link_to "Stream OpenAI API", open_ai_stream_openai_api_path, remote: true %>
+<section class="features">
+    <div class="feature">
+    <h2>プランの作成・共有</h2>
+    <p>AIがあなたの旅行プランを作成し、共有できます。</p>
+    </div>
+    <div class="feature">
+    <h2>カスタマイズ</h2>
+    <p>自由にプランをカスタマイズして、あなただけの旅を楽しめます。</p>
+    </div>
+    <div class="feature">
+    <h2>レビュー・評価</h2>
+    <p>他のユーザーのプランや評価を参考に、最適な旅行プランを見つけましょう。</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer__links">
+    <ul>
+        <li><%= link_to "利用規約", "#" %></li>
+        <li><%= link_to "プライバシーポリシー", "#" %></li>
+        <li><%= link_to "お問い合わせ", "#" %></li>
+    </ul>
+    </div>
+    <div class="footer__copyright">
+    &copy; AI Travel Planner. All rights reserved.
+    </div>
+</footer> 
