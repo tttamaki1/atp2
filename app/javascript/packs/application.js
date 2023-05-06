@@ -11,6 +11,7 @@ require("../script")
 require("../format_text")
 require("../scroll")
 require("../button_appear")
+require("../change_default_text")
 require("@fortawesome/fontawesome-free/css/all.css")
 require('jquery')
 

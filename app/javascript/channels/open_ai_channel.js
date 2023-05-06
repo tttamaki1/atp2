@@ -19,3 +19,7 @@ consumer.subscriptions.create("OpenAiChannel", {
   }
 
 });
+
+window.addEventListener("beforeunload", () => {
+  openAiChannel.unsubscribe();
+});
