@@ -10,6 +10,7 @@ require("channels")
 require("../script")
 require("../format_text")
 require("../scroll")
+require("../button_appear")
 require("@fortawesome/fontawesome-free/css/all.css")
 require('jquery')
 

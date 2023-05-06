@@ -7,7 +7,7 @@
     border-radius: 4px;
     box-shadow: 5px -1px 25px  rgba(0, 0, 0, 0.5);
     display: inline-block;
-    width: 25%;
+
   
     h2, h3 {
       font-size: 24px;
@@ -53,6 +53,8 @@
 
   
     .submit-button {
+      width: 200px;
+      margin: 0 auto;
       padding: 10px 20px;
       background-color: #2a9d8f;
       color: #fff;
@@ -61,6 +63,8 @@
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.2s;
+      display: block; 
+      margin: 0 auto;
   
       &:hover {
         background-color: #1f776d;
@@ -94,16 +98,31 @@ display: none;
 
 #day-slider {
   margin-right: 8px;
+  width: 180px;
 }
 
 #day-slider-value {
   display: inline-block;
   width: 1em; /* 2桁分の幅を確保 */
   text-align: right;
-  margin: 10px;
+  margin: 25px;
   font-size: 20px;
 }
 
 #budget-input {
   display: none;
+  padding-top: 10px;
+}
+
+#budget-slider {
+  margin-right: 8px;
+  width: 180px;
+}
+
+#budget-slider-value {
+  display: inline-block;
+  width: 3em;
+  text-align: right;
+  margin: 10px;
+  font-size: 20px;
 }

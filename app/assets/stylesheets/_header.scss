@@ -60,6 +60,9 @@
 .header__nav li {
   margin-left: 15px;
 }
+.header__nav li {
+  margin: 0 20px;
+}
 
 .header__nav a:hover {
   color: var(--font-color);

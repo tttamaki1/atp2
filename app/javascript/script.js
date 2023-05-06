@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   budgetSlider.min = 0;
-  budgetSlider.max = 500000;
+  budgetSlider.max = 200000;
   
   budgetSlider.addEventListener("input", function() {
     var value = budgetSlider.value;
