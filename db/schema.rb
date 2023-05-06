@@ -12,18 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2023_04_30_093348) do
 
-  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "content", null: false
+  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.text "content"
     t.string "destination", null: false
     t.integer "duration", null: false
-    t.integer "budget", null: false
-    t.boolean "budget_option", null: false
-    t.string "place_to_visit", null: false
-    t.integer "accommodation_id", null: false
-    t.integer "activity_id", null: false
-    t.integer "transportation_id", null: false
-    t.integer "food_id", null: false
+    t.integer "budget"
+    t.boolean "budget_option"
+    t.string "place_to_visit"
+    t.integer "accommodation_id"
+    t.integer "activity_id"
+    t.integer "transportation_id"
+    t.integer "food_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

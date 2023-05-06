@@ -1,20 +1,55 @@
 // Define your variables
-$background-color: #2a9d8f;
-$font-color: #fff;
-$logo-size: 24px;
 
 .header {
+  position: fixed;
+  width: 100%;
+}
+
+.header_top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background-color: $background-color; 
-  color: $font-color; 
+  background-color: var(--background-color);
+  color: var(--font-color);
+  width: 100%;
+
 }
 
 .header__logo {
-  font-size: $logo-size; 
+  font-size: 24px; 
   font-weight: bold;
+}
+
+.header__search, .header_nav {
+  display: flex;
+  align-items: right;
+}
+
+.search-input {
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+  border-color: #2a9d8f;
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+}
+
+.search-input-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .header__nav ul {
@@ -26,9 +61,41 @@ $logo-size: 24px;
   margin-left: 15px;
 }
 
+.header__nav a:hover {
+  color: var(--font-color);
+}
+
 .header a {
-  color: $font-color;
+  color: var(--font-color);
   text-decoration: none;
+}
+
+/* Category nav */
+.category-nav {
+  width: 100%;
+  background-color: var(--nav-background-color);
+}
+
+.category-nav ul {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 10px;
+}
+
+.category-nav li {
+  margin: 0 15px;
+}
+
+.category-nav a {
+  color: var(--font-color);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 15px;
+}
+
+.category-nav a:hover {
+  color: var(--hover-color);
 }
 
 // Search form styles

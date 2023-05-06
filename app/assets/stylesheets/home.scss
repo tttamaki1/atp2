@@ -3,11 +3,11 @@
   --primary-color: #2a9d8f;
   --secondary-color: #e9c46a;
   --background-color: #f4f4f4;
-  --font-color: #333;
+  --font-color: #1a6159;;
   --logo-size: 30px;
   --nav-background-color: #f4f4f4;
   --nav-font-color: #333;
-  --nav-hover-color: #2a9d8f;
+  --hover-color: #2a9d8f;
 }
 
 /* General styles */
@@ -17,38 +17,19 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--font-color);
+  // background-image: asset-url("QWc9.gif");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
 }
 
-/* Category nav */
-.category-nav {
-  background-color: var(--nav-background-color);
-  padding: 10px 0;
-}
 
-.category-nav ul {
-  display: flex;
-  justify-content: flex-start;
-  list-style: none;
-}
 
-.category-nav li {
-  margin: 0 15px;
-}
-
-.category-nav a {
-  color: var(--nav-font-color);
-  text-decoration: none;
-  transition: color 0.2s;
-  font-size: 15px;
-}
-
-.category-nav a:hover {
-  color: var(--nav-hover-color);
-}
 
 /* Features */
 .features {
@@ -113,4 +94,8 @@ body {
 .btn--cta {
   background-color: var(--secondary-color);
   color: #fff;
+}
+
+.container_index {
+  padding: 100px 0 0 0;
 }

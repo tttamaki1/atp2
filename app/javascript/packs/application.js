@@ -7,6 +7,13 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("../script")
+require("../format_text")
+require("@fortawesome/fontawesome-free/css/all.css")
+
+
+//= require jquery
+//= require jquery-ui
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

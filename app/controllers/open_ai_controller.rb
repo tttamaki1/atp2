@@ -5,6 +5,7 @@
   require "async/http"
   
   class OpenAiController < ApplicationController
+  
     include ActionView::Helpers::SanitizeHelper
 
     def index
@@ -13,27 +14,53 @@
   
     #def stream_openai_api
     def create
-        @plan = Plan.new(plan_params)
-        @plan.destination = params[:destination]
-        @plan.budget = params[:budget]
-        @plan.duration = params[:duration]
-        @plan.activity_id = params[:activity]
-        @plan.transportation_id = params[:transportation]
-        @plan.accommodation_id = params[:accommodation]
-        @plan.place_to_visit = params[:place_to_visit]
-        puts @plan.destination
-        prompt = "
-        以下の情報に基づいて、旅のスケジュールと具体的な旅行プランを日本語で作成してください。
 
-        場所: 北海道#{@plan.destination}
-        期間:  3#{@plan.duration} 日間
-        予算:  30000#{@plan.budget} 円
-        宿泊: #{@plan.accommodation_id}
-        アクティビティ: #{@plan.activity_id}
-        交通手段: #{@plan.transportation_id}
-        出発時期: 4月
-        出発地: 千葉県の自宅
-        訪問先: #{@plan.place_to_visit}
+        @plan = Plan.new(plan_params)
+        @plan.destination = plan_params[:destination]
+        @plan.budget = plan_params[:budget]
+        @plan.budget_option = plan_params[:budget_option]
+        @plan.duration = plan_params[:duration]
+        @plan.activity_id = plan_params[:activity]
+        @plan.transportation_id = plan_params[:transportation]
+        @plan.accommodation_id = plan_params[:accommodation]
+        @plan.place_to_visit = plan_params[:place_to_visit]
+        @plan.save
+
+        budget_prompt = ""
+        if @plan.budget_option == 1
+          budget_prompt = "予算: #{@plan.budget} 円"
+        else
+          budget_prompt = "予算: 設定なし"
+        end
+        if @plan.activity_id == 1
+          activity_prompt = "アクティビティ: #{@plan.activity.name}"
+        else
+          activity_prompt = "アクティビティ:  設定なし"
+        end
+        if @plan.transportation_id == 1
+          transportation_prompt = "交通: #{@plan.transportation.name}"
+        else
+          transportation_prompt = "交通:  設定なし"
+        end
+        if @plan.accommodation_id == 1
+          accommodation_prompt = "宿泊タイプ: #{@plan.accommodation.name}"
+        else
+          accommodation_prompt = "宿泊タイプ:  設定なし"
+        end        
+
+        prompt = "
+        <以下の情報に基づいて、旅のスケジュールと具体的な旅行プランを日本語で作成してください。>
+
+        #情報
+        -場所: #{@plan.destination}
+        -期間: #{@plan.duration} 日間
+        -#{budget_prompt}
+        -#{activity_prompt}
+        -#{transportation_prompt}
+        -#{accommodation_prompt}
+        -出発時期: 4月
+        -出発地: 千葉県の自宅
+        -訪問先: #{@plan.place_to_visit}
         
         訪問する場所は、互いに離れすぎていないようにしてください。
         国内旅行の場合は、自宅からスタートしてください。
@@ -61,7 +88,11 @@
         
         車を借りた場合、昼間に飲酒する計画を含めないでください。
         
-        返答には、以下の旅程のみを含めてください。時間を指定し、計画を日別に分解して、以下のような形式で返信してください
+        <返答には、以下の旅程のみを含めてください。
+        設定なしは表示しないでください。
+        時間を指定し、計画を日別に分解して、
+        以下のような形式で返信してください>
+
          場所：
          期間：
          予算：

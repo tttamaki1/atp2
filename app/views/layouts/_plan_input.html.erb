@@ -6,32 +6,36 @@
         <%= form.text_field :destination, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= form.label :duration, '滞在期間' %>
-        <input type="range" min="1" max="14" value="1" oninput="displayValue(this.value)">
-        <p>Value: <span id="slider-value">1</span></p>
+        <%= form.label :duration, '日数' %>
+        <div class="slider-wrapper">
+          <%= form.range_field :duration, id: "day-slider", min: 1, max: 14, value: 1, oninput: "displayValue(this.value)" %>
+          <span id="day-slider-value">1</span> 日間
+        </div>
       </div>
       <div class="form-group">
-        <%= form.label :budget_option, '予算設定' %>
-        <%= form.check_box :budget_option, class: 'budget-option' %>
-        <%= form.label :budget, '予算', class: 'budget-label' %>
-        <%= form.text_field :budget, class: 'form-control budget-input', disabled: (form.object&.budget_option == false) %>
+        <%= form.check_box :budget_option, class: 'budget-option', id: 'budget-option' %>
+          <span>予算</span>
+        <div id="budget-input">
+          <%= form.range_field :budget, id: "budget-slider", min: 0, max: 500000, step: 5000, value: 50000, oninput: "displayBudgetValue(this.value)" %>
+          <span id="budget-slider-value">50,000</span> 円
+        </div>
       </div>
       <div class="form-group">
         <%= form.label :accommodation, '宿泊タイプ' %>
-        <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, { class: "form-control", id: "accommodation" }) %>
+        <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>
       </div>
       <div class="form-group">
         <%= form.label :activity, 'アクティビティ' %>
-        <%= form.collection_select(:activity_id, Activity.all, :id, :name, { class: "form-control", id: "activity" }) %>
+        <%= form.collection_select(:activity_id, Activity.all, :id, :name, {}, { class: "select-control", id: "activity" }) %>
     
       </div>
       <div class="form-group">
         <%= form.label :transportation, '移動手段' %>
-        <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, { class: "form-control", id: "transportation" }) %>
+        <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
       </div>
       <div class="form-group">
         <%= form.label :food, '食事' %>
-        <%= form.collection_select(:food_id, Food.all, :id, :name, { class: "select-box", id: "food" }) %>
+        <%= form.collection_select(:food_id, Food.all, :id, :name, {}, { class: "select-control", id: "food" }) %>
       </div> 
       <div class="form-group">
         <%= form.label :place_to_visit, '訪問地' %>

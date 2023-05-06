@@ -1,11 +1,11 @@
 .plan-input {
     flex-shrink: 0;
     width: 400px;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
     padding: 30px;
     background-color: #eee7e7;
     border-radius: 4px;
-    box-shadow: 5px -1px 25px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 5px -1px 25px  rgba(0, 0, 0, 0.5);
     display: inline-block;
     width: 25%;
   
@@ -23,10 +23,34 @@
       width: 100%;
       padding: 8px 12px;
       font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4;
+      border: 2px solid #ccc;
+      border-radius: 4px;
       outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
+
+    .form-control:focus {
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+    }
+
+    .select-control {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      appearance: none;
+      background-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .select-control:focus {
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+    }
+
   
     .submit-button {
       padding: 10px 20px;
@@ -60,4 +84,26 @@ opacity: 1;
 background-color: #ddd;
 pointer-events: none;
 opacity: 0.5;
+display: none;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#day-slider {
+  margin-right: 8px;
+}
+
+#day-slider-value {
+  display: inline-block;
+  width: 1em; /* 2桁分の幅を確保 */
+  text-align: right;
+  margin: 10px;
+  font-size: 20px;
+}
+
+#budget-input {
+  display: none;
 }
