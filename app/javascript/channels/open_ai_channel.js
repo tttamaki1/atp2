@@ -17,4 +17,5 @@ consumer.subscriptions.create("OpenAiChannel", {
       elementToUpdate.innerHTML  = content;
     }
   }
+
 });
