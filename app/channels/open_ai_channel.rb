@@ -1,9 +1,19 @@
 class OpenAiChannel < ApplicationCable::Channel
+  @@streaming_thread = nil
+
   def subscribed
     stream_from "open_ai_channel"
+    
+    # ここにストリーミングを行うコードを追加
+    @@streaming_thread = Thread.new do
+      # ストリーミング処理
+    end
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    # ストリーミング停止の処理を追加
+    if @@streaming_thread
+      @@streaming_thread.terminate
+    end
   end
 end
