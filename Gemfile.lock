@@ -108,6 +108,7 @@ GEM
     fiber-local (1.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -269,6 +270,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  gmaps4rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
   mysql2 (>= 0.5.3)

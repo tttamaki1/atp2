@@ -1,2 +1,14 @@
-.right_side_copntainer {
-}
+.right_side_container {
+    width: 40%;
+    position: relative;
+    z-index: 0;
+  }
+  
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }

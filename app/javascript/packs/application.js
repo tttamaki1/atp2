@@ -14,6 +14,7 @@ require("../button_appear")
 require("../change_default_text")
 require("@fortawesome/fontawesome-free/css/all.css")
 require('jquery')
+require('google_maps')
 
 //= require popper
 //= require bootstrap-sprockets

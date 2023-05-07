@@ -35,6 +35,8 @@ gem 'async'
 
 gem 'async-http'
 
+gem 'gmaps4rails'
+
 # gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
