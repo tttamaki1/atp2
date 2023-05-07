@@ -20,6 +20,11 @@ consumer.subscriptions.create("OpenAiChannel", {
 
 });
 
+document.addEventListener('turbolinks:before-visit', () => {
+  openAiChannel.unsubscribe();
+});
+
 window.addEventListener("beforeunload", () => {
+  console.log("Unsubscribing from OpenAiChannel");
   openAiChannel.unsubscribe();
 });
