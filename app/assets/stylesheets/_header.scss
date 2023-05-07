@@ -1,0 +1,135 @@
+// Define your variables
+
+.header {
+  position: fixed;
+  width: 100%;
+  border-bottom: var(--border-style);
+}
+
+.header_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  width: 100%;
+  height: 60px;
+
+}
+
+.header__logo {
+  font-size: 24px; 
+  font-weight: bold;
+}
+
+.header__search, .header_nav {
+  display: flex;
+  align-items: right;
+}
+
+.search-input {
+  width: 400px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #c6ddda;
+ }
+
+.search-input:focus {
+  border-color: #2a9d8f;
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+}
+
+.search-input-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.header__nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.header__nav li {
+  margin-left: 15px;
+}
+.header__nav li {
+  margin: 0 20px;
+}
+
+.header__nav a:hover {
+  color: var(--font-color);
+}
+
+.header a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+/* Category nav */
+.category-nav {
+  width: 100%;
+  background-color: var(--nav-background-color);
+}
+
+.category-nav ul {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 10px;
+}
+
+.category-nav li {
+  margin: 0 15px;
+}
+
+.category-nav a {
+  color: var(--font-color);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 15px;
+}
+
+.category-nav a:hover {
+  color: var(--hover-color);
+}
+
+// Search form styles
+.search-form {
+  display: flex;
+  align-items: center;
+
+  .search-input {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
+
+  .search-button {
+    margin-left: 8px;
+    padding: 4px 8px;
+    border: none;
+    background-color: #1f776d;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #164d43;
+    }
+  }
+}

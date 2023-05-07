@@ -1,0 +1,145 @@
+.plan-input {
+    flex-shrink: 0;
+    width: 400px;
+    padding: 30px;
+    background-color: #eee7e7;
+    border: var(--border-style);
+    display: inline-block;
+
+  
+    h2, h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  
+    .form-group {
+      margin-bottom: 20px;
+    }
+  
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      
+    }
+
+    .form-control:focus {
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+    }
+
+     #destination-input {
+      background-color: #c6ddda;
+     }
+
+     #place_to_visit-input {
+      background-color: #ffffff;
+     }
+
+    .select-control {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 16px;
+      color: var(--font-color);
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      appearance: none;
+      background-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .select-control:hover {
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+    }
+
+    .form-control:hover {
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+    }
+
+  
+    .submit-button {
+      width: 200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #2a9d8f;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: block; 
+      margin: 0 auto;
+  
+      &:hover {
+        background-color: #1f776d;
+      }
+    }
+  }
+
+#hover-template-1,
+#hover-template-2 {
+  display: none;
+}
+  
+// JavaScriptで使用するためのCSSクラス
+.budget-option:checked ~ .budget-label ~ .budget-input {
+background-color: #fff;
+pointer-events: auto;
+opacity: 1;
+}
+
+.budget-input {
+background-color: #ddd;
+pointer-events: none;
+opacity: 0.5;
+display: none;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#day-slider {
+  margin-right: 8px;
+  width: 180px;
+}
+
+#day-slider-value {
+  display: inline-block;
+  width: 1em; /* 2桁分の幅を確保 */
+  text-align: right;
+  margin: 25px;
+  font-size: 20px;
+}
+
+#budget-input {
+  display: none;
+  padding-top: 10px;
+}
+
+#budget-slider {
+  margin-right: 8px;
+  width: 180px;
+}
+
+#budget-slider-value {
+  display: inline-block;
+  width: 3em;
+  text-align: right;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.font-light {
+  font-weight: lighter;
+}
