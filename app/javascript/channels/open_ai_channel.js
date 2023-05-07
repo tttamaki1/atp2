@@ -10,7 +10,7 @@ consumer.subscriptions.create("OpenAiChannel", {
   },
 
   received(data) {
-    console.log('Received data:', data);
+    // console.log('Received data:', data);
     const elementToUpdate = document.getElementById("element-to-update");
     if (elementToUpdate && data != null) {
       const content = elementToUpdate.innerHTML  + data.replace(/ /g, '<br>');
