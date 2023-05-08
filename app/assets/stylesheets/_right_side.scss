@@ -3,12 +3,17 @@
     position: relative;
     z-index: 0;
   }
+
+.map_container {
+}  
   
-  #map {
+#map {
+    height: 500px; /* 地図の高さを指定 */
+    width: 500px; /* 地図の幅を指定 */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: -1;
-  }
+}

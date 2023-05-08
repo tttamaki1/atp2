@@ -13,7 +13,7 @@ require("./geocode")
 require('./google_maps')
 require("./script")
 require("./format_text")
-require("./button_appear")
+require("./button_fade")
 require("./change_default_text")
 require("./scroll")
 
