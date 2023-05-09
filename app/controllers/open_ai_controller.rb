@@ -16,58 +16,54 @@
     def create
       @plan = Plan.new(plan_params)
       if @plan.save
-        open_api_request
+        open_api_request(@plan)
       else
         render :index
       end    
     end
 
-    def open_api_request
-      @plan.destination = plan_params[:destination]
-      @plan.budget = plan_params[:budget]
-      @plan.budget_option = plan_params[:budget_option]
-      @plan.duration = plan_params[:duration]
-      @plan.activity_id = plan_params[:activity]
-      @plan.transportation_id = plan_params[:transportation]
-      @plan.accommodation_id = plan_params[:accommodation]
-      @plan.food_id = plan_params[:food]
-      @plan.place_to_visit = plan_params[:place_to_visit]
-      @plan.save
-      
+    def open_api_request(plan)
 
-      destination_prompt = "場所:#{@plan.destination}"
-      duration_prompt = "#{@plan.duration}日間"
+      destination_prompt = "#{plan.destination}"
+      duration_prompt = "#{plan.duration}日間"
     
-      if @plan.budget_option != 1
+      if plan.budget_option != 1
         budget_prompt = ""
       else
-        budget_prompt = "予算: #{@plan.budget} 円"
+        budget_prompt = "予算: #{plan.budget} 円"
       end
 
 
-      if @plan.activity_id == nil
+      if plan.activity_id == nil
         activity_prompt = ""
       else
-        activity_prompt = "・#{@plan.activity.name}のおすすめスポットを20個
+        activity_prompt = "・#{destination_prompt}の、#{plan.activity.name}のおすすめスポットを20個
         英語名で返してください。形式 1."
       end
-      if @plan.food_id == nil
+
+      if plan.food_id == nil
         food_prompt = ""
       else
-        food_prompt = "・おすすめレストランと#{@plan.food.name}を20個
+        food_prompt = "・#{destination_prompt}のおすすめレストランと#{plan.food.name}を20個
         英語名で返してください。形式 1."
       end
 
+      if plan.travel_style_id == nil
+        travel_style_prompt = ""
+      else
+        travel_style_prompt = "旅行のスタイルは#{plan.travel_style.name}、"
+      end
 
-      if @plan.transportation_id == nil
+
+      if plan.transportation_id == nil
         transportation_prompt = ""
       else
-        transportation_prompt = "交通: #{@plan.transportation.name}"
+        transportation_prompt = "交通: #{plan.transportation.name}"
       end
-      if @plan.accommodation_id == nil
+      if plan.accommodation_id == nil
         accommodation_prompt = ""
       else
-        accommodation_prompt = "宿泊タイプ: #{@plan.accommodation.name}"
+        accommodation_prompt = "宿泊タイプ: #{plan.accommodation.name}"
       end        
 
       prompt = "  
@@ -104,12 +100,12 @@
       
       puts prompt
       prompt ="#{output_text}
-      の情報から#{duration_prompt}の旅行プランを立ててください。
+      の情報から、#{destination_prompt}#{travel_style_prompt}#{duration_prompt}旅行プランを立ててください。
       時刻と、訪れる場所ですることを具体的に日本語で詳しく書いてください。
 
-      例)#{duration_prompt}観光＆グルメ旅行
+      例)#{destination_prompt}#{travel_style_prompt}#{duration_prompt}旅行プランテーマ
       例)1日目
-      例)11:00 ドバイモールへ。お土産やショッピングを楽しんだ後、SocialHouseでランチを食べる。
+      例)11:00 ドバイモール(dubai mall)へ。お土産やショッピングを楽しんだ後、SocialHouseでランチを食べる。
       "
 
       Async do |task|
@@ -142,12 +138,12 @@
     end
   
     def search
-        @plans = Plan.search(params[:keyword])
+        plans = Plan.search(params[:keyword])
     end    
 
     private
     def plan_params
-      params.require(:plan).permit(:destination, :duration, :budget_option, :budget, :activity_id, :transportation_id,:accommodation_id, :food_id, :place_to_visit)
+      params.require(:plan).permit(:destination, :duration, :budget_option, :budget, :activity_id, :transportation_id,:accommodation_id, :food_id,:travel_style_id, :place_to_visit)
     end
 
   end

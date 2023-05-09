@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2023_04_30_093348) do
     t.integer "activity_id"
     t.integer "transportation_id"
     t.integer "food_id"
+    t.integer "travel_style_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

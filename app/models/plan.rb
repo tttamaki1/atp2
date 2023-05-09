@@ -4,6 +4,7 @@ class Plan < ApplicationRecord
     belongs_to :transportation
     belongs_to :accommodation
     belongs_to :food
+    belongs_to :travel_style
 
     validates :destination, :duration, presence: true
 end
