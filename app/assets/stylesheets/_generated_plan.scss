@@ -2,5 +2,15 @@
     padding: 30px;
     width: 50%;
     border-right: var(--border-style);
-
+    font-size: 16px;
 }
+
+#loading {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+  }
+  
