@@ -22,10 +22,11 @@ consumer.subscriptions.create("SecondChannel", {
           keyword = keyword.replace('&amp;', '&');
           console.log(keyword);
 
-          geocodeTextAndMarking(keyword) 
+          // geocodeTextAndMarking(keyword) 
 
           this.chunk = "";
-          
+        } else if (data === "<br><br>") {
+          this.chunk = "";        
         } else {
           // データが<br>でない場合、chunkに追加
           this.chunk += data;

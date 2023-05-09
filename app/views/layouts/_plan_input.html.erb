@@ -21,22 +21,25 @@
         </div>
       </div>
       <div class="form-group">
-        <%= form.label :accommodation, '宿泊タイプ' %>
-<%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>        
-      </div>
-      <div class="form-group">
         <%= form.label :activity, 'アクティビティ' %>
         <%= form.collection_select(:activity_id, Activity.all, :id, :name, {}, { class: "select-control", id: "activity" }) %>
-    
-      </div>
-      <div class="form-group">
-        <%= form.label :transportation, '移動手段' %>
-        <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
       </div>
       <div class="form-group">
         <%= form.label :food, '食事' %>
         <%= form.collection_select(:food_id, Food.all, :id, :name, {}, { class: "select-control", id: "food" }) %>
       </div> 
+      <div class="form-group">
+        <%= form.label :travel_style, 'スタイル' %>
+        <%= form.collection_select(:travel_style_id, TravelStyle.all, :id, :name, {}, { class: "select-control", id: "travel_style" }) %>
+      </div>
+      <div class="form-group">
+        <%= form.label :accommodation, '宿泊タイプ' %>
+        <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>        
+      </div>
+      <div class="form-group">
+        <%= form.label :transportation, '移動手段' %>
+        <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
+      </div>
       <div class="form-group">
         <%= form.label :place_to_visit, '訪問地' %>
         <%= form.text_field :place_to_visit, class: 'form-control', id: 'place_to_visit-input' %>

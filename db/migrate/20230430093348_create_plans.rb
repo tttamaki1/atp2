@@ -10,7 +10,8 @@ class CreatePlans < ActiveRecord::Migration[6.0]
       t.integer    :accommodation_id   
       t.integer    :activity_id         
       t.integer    :transportation_id  
-      t.integer    :food_id            
+      t.integer    :food_id   
+      t.integer    :travel_style_id          
       t.timestamps
     end
   end
