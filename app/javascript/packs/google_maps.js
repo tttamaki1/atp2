@@ -8,10 +8,10 @@ let service;
 let infowindow;
 
 function initializeMap(destination_input_text) {
-  geocodeText(destination_input_text);
+  firstRenderMap(destination_input_text);
 }
 
-function geocodeText(text) {
+function firstRenderMap(text) {
   const geocoder = new google.maps.Geocoder();
   geocoder.geocode({ address: text }, (results, status) => {
     if (status === "OK") {
@@ -30,11 +30,31 @@ function geocodeText(text) {
   });
 }
 
+export function geocodeTextAndMarking(text) {
+  const request = {
+    query: text,
+    fields: ["name", "geometry"],
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+
+      map.setCenter(results[0].geometry.location);
+    }
+  });
+}
+
+
+
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
 
   const marker = new google.maps.Marker({
-    map,
+    map: map, 
     position: place.geometry.location,
   });
 

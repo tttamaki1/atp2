@@ -1,5 +1,5 @@
 import consumer from "./consumer";
-import { searchMap } from "../packs/google_maps";
+import { geocodeTextAndMarking } from '../packs/google_maps';
 
 consumer.subscriptions.create("SecondChannel", {
   chunk: '', // ここで this.chunk を初期化
@@ -19,13 +19,12 @@ consumer.subscriptions.create("SecondChannel", {
           // 文字列が<br>の場合、それまでの文字列をkeywordに入れる
           let keyword = this.chunk;
           keyword = keyword.replace(/^\d+\.\s*/, '');
+          keyword = keyword.replace('&amp;', '&');
           console.log(keyword);
 
-          // Call searchMap() with the extracted keyword
-          // await searchMap(keyword);
-          this.chunk = "";
+          geocodeTextAndMarking(keyword) 
 
-          // Reset the chunk for the next set of data
+          this.chunk = "";
           
         } else {
           // データが<br>でない場合、chunkに追加

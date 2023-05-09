@@ -30,39 +30,52 @@
       @plan.activity_id = plan_params[:activity]
       @plan.transportation_id = plan_params[:transportation]
       @plan.accommodation_id = plan_params[:accommodation]
+      @plan.food_id = plan_params[:food]
       @plan.place_to_visit = plan_params[:place_to_visit]
       @plan.save
+      
 
       destination_prompt = "場所:#{@plan.destination}"
-      duration_prompt = "日数:#{@plan.duration}日間"
+      duration_prompt = "#{@plan.duration}日間"
     
-      if @plan.budget_option == 1
-        budget_prompt = "予算: #{@plan.budget} 円"
-      else
+      if @plan.budget_option != 1
         budget_prompt = ""
-      end
-      if @plan.activity_id == 1
-        activity_prompt = "アクティビティ: #{@plan.activity.name}"
       else
+        budget_prompt = "予算: #{@plan.budget} 円"
+      end
+
+
+      if @plan.activity_id == nil
         activity_prompt = ""
-      end
-      if @plan.transportation_id == 1
-        transportation_prompt = "交通: #{@plan.transportation.name}"
       else
+        activity_prompt = "・#{@plan.activity.name}のおすすめスポットを20個
+        英語名で返してください。形式 1."
+      end
+      if @plan.food_id == nil
+        food_prompt = ""
+      else
+        food_prompt = "・おすすめレストランと#{@plan.food.name}を20個
+        英語名で返してください。形式 1."
+      end
+
+
+      if @plan.transportation_id == nil
         transportation_prompt = ""
-      end
-      if @plan.accommodation_id == 1
-        accommodation_prompt = "宿泊タイプ: #{@plan.accommodation.name}"
       else
+        transportation_prompt = "交通: #{@plan.transportation.name}"
+      end
+      if @plan.accommodation_id == nil
         accommodation_prompt = ""
+      else
+        accommodation_prompt = "宿泊タイプ: #{@plan.accommodation.name}"
       end        
 
       prompt = "  
        Step by stepで
        ・#{destination_prompt}のおすすめ観光スポットを20個
        英語名で返してください。形式 1.
-       ・以上のスポット周辺でおすすめレストランを20個
-       英語名で返してください。形式 1.
+       #{activity_prompt}
+       #{food_prompt}
       "   
       
       output_text = ""
@@ -89,12 +102,12 @@
         )
       end
       
-
+      puts prompt
       prompt ="#{output_text}
       の情報から#{duration_prompt}の旅行プランを立ててください。
       時刻と、訪れる場所ですることを具体的に日本語で詳しく書いてください。
 
-      例)ドバイ2日間観光＆グルメ旅行
+      例)#{duration_prompt}観光＆グルメ旅行
       例)1日目
       例)11:00 ドバイモールへ。お土産やショッピングを楽しんだ後、SocialHouseでランチを食べる。
       "

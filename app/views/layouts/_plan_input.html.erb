@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
         <%= form.label :accommodation, '宿泊タイプ' %>
-        <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>
+<%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>        
       </div>
       <div class="form-group">
         <%= form.label :activity, 'アクティビティ' %>
