@@ -1,6 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.public_file_server.headers = {
+    'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+    'Expires' => 'Thu, 01 Jan 1970 00:00:00 GMT',
+    'Pragma' => 'no-cache'
+  }
   
   # Code is not reloaded between requests.
   config.cache_classes = true

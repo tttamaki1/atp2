@@ -30,94 +30,88 @@
       @plan.activity_id = plan_params[:activity]
       @plan.transportation_id = plan_params[:transportation]
       @plan.accommodation_id = plan_params[:accommodation]
+      @plan.food_id = plan_params[:food]
       @plan.place_to_visit = plan_params[:place_to_visit]
       @plan.save
-
-
+      
 
       destination_prompt = "場所:#{@plan.destination}"
-      duration_prompt = "日数:#{@plan.duration}日間"
+      duration_prompt = "#{@plan.duration}日間"
     
-      if @plan.budget_option == 1
-        budget_prompt = "予算: #{@plan.budget} 円"
-      else
+      if @plan.budget_option != 1
         budget_prompt = ""
-      end
-      if @plan.activity_id == 1
-        activity_prompt = "アクティビティ: #{@plan.activity.name}"
       else
+        budget_prompt = "予算: #{@plan.budget} 円"
+      end
+
+
+      if @plan.activity_id == nil
         activity_prompt = ""
-      end
-      if @plan.transportation_id == 1
-        transportation_prompt = "交通: #{@plan.transportation.name}"
       else
+        activity_prompt = "・#{@plan.activity.name}のおすすめスポットを20個
+        英語名で返してください。形式 1."
+      end
+      if @plan.food_id == nil
+        food_prompt = ""
+      else
+        food_prompt = "・おすすめレストランと#{@plan.food.name}を20個
+        英語名で返してください。形式 1."
+      end
+
+
+      if @plan.transportation_id == nil
         transportation_prompt = ""
-      end
-      if @plan.accommodation_id == 1
-        accommodation_prompt = "宿泊タイプ: #{@plan.accommodation.name}"
       else
+        transportation_prompt = "交通: #{@plan.transportation.name}"
+      end
+      if @plan.accommodation_id == nil
         accommodation_prompt = ""
+      else
+        accommodation_prompt = "宿泊タイプ: #{@plan.accommodation.name}"
       end        
 
-      prompt = "
-      <以下の情報に基づいて、旅のスケジュールと具体的な旅行プランを日本語で作成してください。>
-
-      <出力には、以下の旅程のみを含めてください。
-      「設定なし」のカテゴリーは表示しないでください！！
-      時間を必ず表示してください。
-      以下のような形式で出力してください>
-      出力形式で全角スペースを含む場合はそのまま、全角スペースを含む文章で出力してください。
-      
-      #出力形式ー開始
-
-       30字以上で、このプラン特有の旅行のテーマをここに表示(プランという文字列は含めない、スペースは含めない)
-
-       #{destination_prompt}
-       #{duration_prompt}
-       #{budget_prompt}
+      prompt = "  
+       Step by stepで
+       ・#{destination_prompt}のおすすめ観光スポットを20個
+       英語名で返してください。形式 1.
        #{activity_prompt}
-       #{transportation_prompt}
-       #{accommodation_prompt}
-       時期　
-       訪問先　
-
-       x日目
-
-       13:00ホテルへ向かいチェックイン
-       14:00レンタカーで国際通りを散策、お土産屋さんを見る
-       18:00地元のレストラン「かりゆしそば」で沖縄そばを堪能
-       20:00那覇市内の居酒屋「うりずん」で沖縄料理を楽しむ（ゴーヤチャンプルーやラフテーなど）
-
-       #出力形式ー終了
-      
-      ※重要な命令、合理的なルートで、訪れる順番を決めて計画を作成してください。
-      ※重要な命令、場所で指定したエリアを出る計画は含めないでください。
-      ※重要な命令、場所で指定したエリア内の目的地だけを計画に含めてください。
-      ※重要な命令、徒歩の場合は、車で移動する計画は含めないでください。
-      ※重要な命令、「ホテルに戻る」は計画に含めないでください。
-      
-      各訪問地ですることについて、イメージできるように具体的に表示してください。ただし、ホテル、空港、車の返却は除外してください。
-      
-      周辺のおすすめのローカルフードをたくさん選択し、そのうちいくつかを選んで計画に含めてください。
-      
-      ※重要な命令、アクティビティはシーズンかどうかを考慮して、適したアクティビティが見つからない場合は計画に含めないでください。
-      
-      おすすめの料理については、「おすすめは〜です」という形式で記載してください。
-      
-      日程の最終日に目的地にあるお土産屋を含めてください。
-      
-      各計画における交通手段、乗車場所、降車場所を記載してください。
-      
-      「思い出を胸に帰る」といった表現は含めないでください。
-      
-      
-
-      計画の最初の日に車を借りる必要がない場合は、まだ車を借りないプランを作成してください。
-      
-      車を借りた場合、昼間に飲酒する計画を含めないで計画と作成してください。
-      
+       #{food_prompt}
       "   
       
+      output_text = ""
+      Async do |task|
+        
+        client = OpenAI::Client.new(access_token: "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")
+        client.chat(
+          parameters: {
+            model: "gpt-3.5-turbo", # Required.
+            messages: [{ role: "user", content: prompt}], # Required.
+            temperature: 0.8,
+            max_tokens: 2048,
+            stream: proc do |chunk, _bytesize|
+              task.async do
+                text = chunk.dig("choices", 0, "delta", "content") 
+                if text != nil
+                  text = sanitize(text.gsub(/\n/, '<br>'), tags: %w(br p h1 h2))
+                  output_text += text
+                  ActionCable.server.broadcast('second_channel', text)
+                end
+              end
+            end 
+          }
+        )
+      end
+      
+      puts prompt
+      prompt ="#{output_text}
+      の情報から#{duration_prompt}の旅行プランを立ててください。
+      時刻と、訪れる場所ですることを具体的に日本語で詳しく書いてください。
+
+      例)#{duration_prompt}観光＆グルメ旅行
+      例)1日目
+      例)11:00 ドバイモールへ。お土産やショッピングを楽しんだ後、SocialHouseでランチを食べる。
+      "
+
       Async do |task|
         client = OpenAI::Client.new(access_token: "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")
         client.chat(

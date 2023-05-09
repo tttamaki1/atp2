@@ -3,18 +3,22 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require('jquery')
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("../script")
-require("../format_text")
-require("../scroll")
-require("../button_appear")
-require("../change_default_text")
 require("@fortawesome/fontawesome-free/css/all.css")
-require('jquery')
+require("./geocode")
+require('./google_maps')
+require("./script")
+require("./format_text")
+require("./button_fade")
+require("./change_default_text")
+require("./scroll")
 
+
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
