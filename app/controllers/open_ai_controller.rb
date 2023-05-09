@@ -26,6 +26,9 @@
 
       destination_prompt = "#{plan.destination}"
       duration_prompt = "#{plan.duration}日間"
+
+      recommendation = plan.duration * 3
+      recommendation = 20 if recommendation >= 20
     
       if plan.budget_option != 1
         budget_prompt = ""
@@ -37,21 +40,21 @@
       if plan.activity_id == nil
         activity_prompt = ""
       else
-        activity_prompt = "・#{destination_prompt}の、#{plan.activity.name}のおすすめスポットを20個
+        activity_prompt = "・#{destination_prompt}の、#{plan.activity.name}のおすすめスポットを#{recommendation}個
         英語名で返してください。形式 1."
       end
 
       if plan.food_id == nil
         food_prompt = ""
       else
-        food_prompt = "・#{destination_prompt}のおすすめレストランと#{plan.food.name}を20個
+        food_prompt = "・#{destination_prompt}のおすすめレストランと#{plan.food.name}を#{recommendation}個
         英語名で返してください。形式 1."
       end
 
       if plan.travel_style_id == nil
         travel_style_prompt = ""
       else
-        travel_style_prompt = "旅行のスタイルは#{plan.travel_style.name}、"
+        travel_style_prompt = "#{plan.travel_style.name}、"
       end
 
 
@@ -68,7 +71,7 @@
 
       prompt = "  
        Step by stepで
-       ・#{destination_prompt}のおすすめ観光スポットを20個
+       ・#{destination_prompt}のおすすめ観光スポットを#{recommendation}個
        英語名で返してください。形式 1.
        #{activity_prompt}
        #{food_prompt}
@@ -103,7 +106,7 @@
       の情報から、#{destination_prompt}#{travel_style_prompt}#{duration_prompt}旅行プランを立ててください。
       時刻と、訪れる場所ですることを具体的に日本語で詳しく書いてください。
 
-      例)#{destination_prompt}#{travel_style_prompt}#{duration_prompt}旅行プランテーマ
+      例)テーマ#{destination_prompt}
       例)1日目
       例)11:00 ドバイモール(dubai mall)へ。お土産やショッピングを楽しんだ後、SocialHouseでランチを食べる。
       "
