@@ -1,6 +1,6 @@
 class Transportation < ActiveHash::Base
   self.data = [
-    { id: 1, name: '選択してください（任意）' },
+    { id: 1, name: '選択してください（未選択可）' },
     { id: 2, name: '電車' },
     { id: 3, name: 'タクシー' },
     { id: 4, name: 'レンタカー' },
