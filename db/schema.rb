@@ -10,22 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_30_093348) do
-
-  create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.text "content"
-    t.string "destination", null: false
-    t.integer "duration", null: false
-    t.integer "budget"
-    t.boolean "budget_option"
-    t.string "place_to_visit"
-    t.integer "accommodation_id"
-    t.integer "activity_id"
-    t.integer "transportation_id"
-    t.integer "food_id"
-    t.integer "travel_style_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_230_430_093_348) do
+  create_table 'plans', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb3', force: :cascade do |t|
+    t.text 'content'
+    t.string 'destination', null: false
+    t.integer 'duration', null: false
+    t.integer 'budget'
+    t.boolean 'budget_option'
+    t.string 'place_to_visit'
+    t.integer 'accommodation_id'
+    t.integer 'activity_id'
+    t.integer 'transportation_id'
+    t.integer 'food_id'
+    t.integer 'travel_style_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
-
 end
