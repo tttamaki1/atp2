@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.15.4/css/all.css" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'google_maps' %>
+    <%= javascript_pack_tag 'dark_mode' %>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&libraries=places&v=weekly"
       defer
