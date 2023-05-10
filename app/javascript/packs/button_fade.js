@@ -15,8 +15,6 @@ $(function() {
           const loadingElements = document.getElementsByClassName("loading");
           const loadingElement = loadingElements[0]; // 最初の要素を選択
           loadingElement.classList.remove("hidden");
-          
-
 
           var destination_input_text = document.getElementById("destination-input").value;
           // console.log(destination_input_text)
