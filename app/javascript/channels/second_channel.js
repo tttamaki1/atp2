@@ -15,7 +15,7 @@ consumer.subscriptions.create("SecondChannel", {
   async received(data) {
     await new Promise(async resolve => {
       if (data != null) {
-        if (data === "<br>") {
+        if (data.includes("<br>")) {
           // 文字列が<br>の場合、それまでの文字列をkeywordに入れる
           let keyword = this.chunk;
           keyword = keyword.replace(/^\d+\.\s*/, '');
@@ -24,9 +24,7 @@ consumer.subscriptions.create("SecondChannel", {
 
           // geocodeTextAndMarking(keyword) 
 
-          this.chunk = "";
-        } else if (data === "<br><br>") {
-          this.chunk = "";        
+          this.chunk = "";       
         } else {
           // データが<br>でない場合、chunkに追加
           this.chunk += data;

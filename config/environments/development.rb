@@ -11,11 +11,10 @@ Rails.application.configure do
 
   config.log_level = :debug
 
-
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  config.action_cable.log_tags = [ -> request { request.uuid }]
+  config.action_cable.log_tags = [->(request) { request.uuid }]
   config.action_cable.logger = ActiveSupport::Logger.new(STDOUT)
 
   # Enable/disable caching. By default caching is disabled.
