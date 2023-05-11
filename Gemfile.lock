@@ -266,7 +266,7 @@ GEM
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
     unicode-display_width (2.4.2)
-    unicorn (5.4.1)
+    unicorn (6.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     web-console (4.2.0)
@@ -303,7 +303,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails (~> 4.5)
   listen (~> 3.2)
-  mysql2 (>= 0.5.3)
+  mysql2 (>= 0.5.5)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.6, >= 6.0.6.1)
@@ -316,13 +316,13 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  unicorn (= 5.4.1)
+  unicorn (= 6.1.0)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 3.0.6p216
 
 BUNDLED WITH
    2.4.12

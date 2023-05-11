@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.0.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.6', '>= 6.0.6.1'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.5.3'
+gem 'mysql2', '>= 0.5.5'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -68,7 +68,7 @@ group :test do
 end
 
 group :production do
-  gem 'unicorn', '5.4.1'
+  gem 'unicorn', '6.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
