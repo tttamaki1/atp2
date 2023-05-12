@@ -1,5 +1,5 @@
 import consumer from "./consumer";
-import { geocodeTextAndMarking } from '../packs/google_maps';
+import { marking } from '../packs/google_maps';
 
 consumer.subscriptions.create("SecondChannel", {
   chunk: '', // ここで this.chunk を初期化
@@ -22,7 +22,7 @@ consumer.subscriptions.create("SecondChannel", {
           keyword = keyword.replace('&amp;', '&');
           console.log(keyword);
 
-          // geocodeTextAndMarking(keyword) 
+          marking(keyword) //キーワードの取り出しをopen_ai_channelへ移行する
 
           this.chunk = "";       
         } else {

@@ -7,16 +7,21 @@
 
 .map_container {
   padding: 20px; /* 余白のサイズを指定 */
-  width: 100%;
+  width: 520px;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
 }  
   
 #map {
-    height: 500px; /* 地図の高さを指定 */
-    width: 100%; /* 地図の幅を指定 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: 480px; /* 地図の高さを指定 */
+  width: calc(100% - 40px); /* 幅を親要素から余白を差し引いた値に指定 */
+  z-index: -1;
+  border-radius: 10px;
 }

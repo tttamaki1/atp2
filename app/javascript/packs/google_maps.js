@@ -1,80 +1,148 @@
 global.$ = global.jQuery = require('jquery');
 
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 let map;
-let service;
-let infowindow;
 
-function initializeMap(destination_input_text) {
-  firstRenderMap(destination_input_text);
+export function marking(keyword) {
+  geocodeAddress(keyword)
+    .then(function(result) {
+      var latitude = result.latitude;
+      var longitude = result.longitude;
+      console.log("緯度：" + latitude);
+      console.log("経度：" + longitude);
+      geocodeRenderMap(latitude, longitude);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 }
 
-function firstRenderMap(text) {
-  const geocoder = new google.maps.Geocoder();
-  geocoder.geocode({ address: text }, (results, status) => {
-    if (status === "OK") {
-      const location = results[0].geometry.location;
-      const place = { address: results[0].formatted_address, location, name: text };
-      createMarker(place);
-      const sydney = new google.maps.LatLng(place.location);
-      infowindow = new google.maps.InfoWindow();
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: sydney,
-        zoom: 15,
-      });
-    } else {
-      console.log(`Geocode 失敗: ${status}`);
-    }
-  });
-}
-
-export function geocodeTextAndMarking(text) {
-  const request = {
-    query: text,
-    fields: ["name", "geometry"],
-  };
-
-  service = new google.maps.places.PlacesService(map);
-  service.findPlaceFromQuery(request, (results, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-      for (let i = 0; i < results.length; i++) {
-        createMarker(results[i]);
+function geocodeAddress(keyword) {
+  return new Promise(function(resolve, reject) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: keyword }, function(results, status) {
+      if (status === "OK") {
+        var location = results[0].geometry.location;
+        var latitude = location.lat();
+        var longitude = location.lng();
+        resolve({ latitude: latitude, longitude: longitude });
+      } else {
+        reject("Geocode 失敗: " + status);
       }
+    });
+  });
+}
 
-      map.setCenter(results[0].geometry.location);
+function geocodeRenderMap(latitude, longitude) {
+  const geocoder = new google.maps.Geocoder();
+  const location = new google.maps.LatLng(latitude, longitude);
+
+  function renderMap(latitude, longitude) {
+    if (map == null) {
+      // マップが既に表示されていない場合は
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: location,
+        zoom: 15,
+        mapTypeControl: false
+      });
     }
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      title: `緯度: ${latitude}, 経度: ${longitude}`,
+    });
+
+    //  マーカーの位置情報を格納する配列
+    // const markerPositions = [];
+
+    // // マーカーが追加されるたびに位置情報を配列に追加
+    // markerPositions.push(location);
+
+    // // マップの表示領域を設定
+    // const bounds = new google.maps.LatLngBounds();
+    // for (const position of markerPositions) {
+    //   bounds.extend(position);
+    // }
+    // map.fitBounds(bounds);
+
+    marker.addListener("click", function() {
+      // 情報ウィンドウを作成
+      const infowindow = new google.maps.InfoWindow();
+
+      // Place IDを取得する関数を呼び出す
+      getPlaceIdFromLatLng(latitude, longitude)
+        .then(function(placeId) {
+          // Place Detailsサービスのリクエストを作成
+          const request = {
+            placeId: placeId,
+            fields: ["name", "formatted_address", "formatted_phone_number", "reviews", "rating", "opening_hours", "website", "photos"],
+          };
+
+          // Place Detailsサービスを実行
+          const service = new google.maps.places.PlacesService(map);
+          service.getDetails(request, function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              // マーカーがマウスオン時に情報ウィンドウを表示
+              marker.addListener("mouseover", function() {
+                infowindow.setContent(getInfoWindowContent(place));
+                infowindow.open(map, marker);
+              });
+              
+              marker.addListener("mouseout", function() {
+                infowindow.close();
+              });
+            } else {
+              console.log("Place Details 失敗: " + status);
+            }
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    });
+  }
+
+  renderMap(latitude, longitude);
+
+}
+
+function getPlaceIdFromLatLng(latitude, longitude) {
+  return new Promise(function(resolve, reject) {
+    const latLng = new google.maps.LatLng(latitude, longitude);
+    const request = {
+      location: latLng,
+      radius: 100, // 検索半径の指定 (メートル単位)
+      type: 'point_of_interest', // 検索する場所のタイプ (任意のタイプに変更可能)
+      fields: ['place_id'],
+    };
+
+    const service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, function(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+        const placeId = results[0].place_id;
+        resolve(placeId);
+      } else {
+        reject("Place Search 失敗: " + status);
+      }
+    });
   });
 }
 
-
-
-function createMarker(place) {
-  if (!place.geometry || !place.geometry.location) return;
-
-  const marker = new google.maps.Marker({
-    map: map, 
-    position: place.geometry.location,
-  });
-
-  const contentString = `
-  <div>
-    <h3>${place.name}</h3>
-  </div>
-  `;
-
-  const infowindow = new google.maps.InfoWindow({
-    content: contentString,
-  });
-
-  google.maps.event.addListener(marker, "mouseover", () => {
-    infowindow.open(map, marker);
-  });
-
-  google.maps.event.addListener(marker, "mouseout", () => {
-    infowindow.close(map, marker);
-  });
+function getInfoWindowContent(place) {
+  // 情報ウィンドウのコンテンツを組み立てる
+  let content = `<h3 style="color: black;">${place.name}</h3>`;
+  if (place.formatted_address) {
+    content += `<p style="color: black;">住所: ${place.formatted_address}</p>`;
+  }
+  // if (place.formatted_phone_number) {
+  //   content += `<p style="color: black;">電話番号: ${place.formatted_phone_number}</p>`;
+  // }
+  if (place.rating) {
+    content += `<p style="color: black;">評価: ${place.rating}</p>`;
+  }
+  if (place.opening_hours) {
+    const hours = place.opening_hours.weekday_text.join("<br>");
+    content += `<p style="color: black;">営業時間:<br>${hours}</p>`;
+  }
+  return content;
 }
 
-window.initializeMap = initializeMap;
