@@ -3,14 +3,25 @@
     width: 50%;
     border-right: var(--border-style);
     font-size: 16px;
-}
-
-#loading {
     display: flex;
-    justify-content: center;
-}
-
-.hidden {
-    display: none;
+    flex-direction: column;
+    
   }
   
+  .loading_container {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loading {
+  }
+  
+  #element-to-update {
+  }
+  
+ .hidden {
+    display: none;
+  }
