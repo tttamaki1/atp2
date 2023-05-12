@@ -64,6 +64,5 @@ production:
   database: atp2_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /tmp/mysql.sock
-  #socket: /var/run/mysql/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
 
