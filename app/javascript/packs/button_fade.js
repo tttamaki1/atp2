@@ -12,7 +12,7 @@ $(function() {
         document.getElementsByClassName("submit-button")[0].addEventListener("click", function() {
 
           //loading.gifを表示する
-          const loadingElements = document.getElementsByClassName("loading");
+          const loadingElements = document.getElementsByClassName("loading_container");
           const loadingElement = loadingElements[0]; // 最初の要素を選択
           loadingElement.classList.remove("hidden");
 

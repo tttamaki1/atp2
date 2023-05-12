@@ -4,7 +4,8 @@
   --secondary-color: #e9c46a;
   --background-color: #f4f4f4;
   --font-color: #000000;;
-  --background-color-dark-mode: rgba(52,53,65);
+  --background-color-dark-mode: rgb(37, 38, 46);
+  --background-border_style-dark-mode: 1px solid #1e3b1f;
   --font-color-dark-mode: #f4f4f4;;
   --input-background-color-dark-mode: rgba(34, 34, 36, 0.9);
   --logo-size: 30px;
@@ -105,6 +106,7 @@ body.dark-mode {
 
 body.dark-mode .plan-input {
   background-color: var(--input-background-color-dark-mode);
+  border: 1px solid var(--background-border_style-dark-mode);
 }
 
 body.dark-mode .select-control {
@@ -154,7 +156,7 @@ body.dark-mode .budget-option:checked ~ .budget-label ~ .budget-input {
 
 //dark-mode header
 body.dark-mode .header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--background-border_style-dark-mode);
 }
 
 body.dark-mode .header_top {
@@ -169,7 +171,7 @@ body.dark-mode .category-nav a {
 }
 
 body.dark-mode .category-nav {
-  background-color: rgba(52, 53, 65, 0.9);
+  background-color: var(--input-background-color-dark-mode);
 }
 
 body.dark-mode .category-nav a:hover {
@@ -186,11 +188,16 @@ body.dark-mode .search-input:focus {
   box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.25);
 }
 
+body.dark-mode .generated_plan_container {
+  border-right: var(--background-border_style-dark-mode);
+}
+
+
 body.dark-mode .footer {
   background-color: var(--background-color-dark-mode);
   padding: 20px 0;
   text-align: center;
-  border-top: var(--border-style);
+  border-top: var(---background-border_style-dark-mode);
 }
 
 body.dark-mode .footer a {
