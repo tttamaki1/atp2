@@ -23,7 +23,7 @@ class OpenAiController < ApplicationController
     destination_prompt = "#{plan.destination}"
     duration_prompt = "#{plan.duration}日間"
 
-    recommendation = plan.duration * 3
+    recommendation = plan.duration * 4
     recommendation = 20 if recommendation >= 20
 
     budget_prompt = if plan.budget_option != 1
@@ -87,6 +87,7 @@ class OpenAiController < ApplicationController
                 text = sanitize(text.gsub(/\n/, '<br>'), tags: %w[br p h1 h2])
                 output_text += text
                 ActionCable.server.broadcast('second_channel', text)
+                
               end
             end
           end

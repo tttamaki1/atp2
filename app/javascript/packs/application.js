@@ -10,12 +10,14 @@ require("@rails/activestorage").start()
 require("channels")
 require("@fortawesome/fontawesome-free/css/all.css")
 require("./geocode")
+require("./render_map")
 require('./google_maps')
 require("./script")
 require("./format_text")
 require("./button_fade")
 require("./change_default_text")
 require("./scroll")
+require("./map")
 
 
 //= require jquery_ujs
