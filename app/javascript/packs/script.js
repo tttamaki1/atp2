@@ -47,12 +47,46 @@ document.addEventListener("DOMContentLoaded", function () {
       step = 10000;
     }
     budgetSlider.step = step;
+
   });
+
+  
+  var signupButton = document.querySelector('.signup');
+  var signupForm = document.querySelector('.signup-form');
+  var loginButton = document.querySelector('.login');
+  var loginForm = document.querySelector('.login-form');
+  var documentBody = document.body;
+  
+  signupButton.addEventListener('mouseover', function() {
+    signupForm.classList.remove('display');
+    loginForm.classList.add('display');
+    signupForm.classList.add('text-color');
+  });
+  loginButton.addEventListener('mouseover', function() {
+    loginForm.classList.remove('display');
+    signupForm.classList.add('display');
+    loginForm.classList.add('text-color');
+  });
+
+
+  documentBody.addEventListener('click', function(event) {
+    // クリックボタン、フォーム以外の領域をクリックした時にフォームを非表示にする
+    if (event.target !== signupButton && !signupForm.contains(event.target) ){
+      signupForm.classList.add('display');
+      signupForm.classList.remove('text-color');
+    }
+    if (event.target !== loginButton && !loginForm.contains(event.target) ){
+      loginForm.classList.add('display');
+      loginForm.classList.remove('text-color');
+    }
+  });
+  
 
 });
 
 function displayBudgetValue(value) {
   const sliderValue = document.getElementById("budget-slider-value");
   sliderValue.textContent = new Intl.NumberFormat('ja-JP').format(value);
+
 }
 

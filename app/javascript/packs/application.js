@@ -20,6 +20,9 @@ require("./scroll")
 require("./map")
 
 
+  
+
+
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets

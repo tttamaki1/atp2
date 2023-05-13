@@ -18,10 +18,22 @@
                 <li><button id="test">Test</button></li>
                 <li><button id="test_2">Test2</button></li>
                 <li><button id="dark-mode-toggle">Dark</button></li>
-                <li><%= link_to "ログイン", "#" %></li>
-                <li><%= link_to "新規登録", "#" %></li>
-            </ul
+                <% if user_signed_in? %>
+                <%= "#{current_user.nickname}" %>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><div class="signup">新規登録</div></li>
+                  <li><div class="login">ログイン</div></li>
+                <% end %>
+            </ul>
         </nav>
+    </div>
+    <div class="login-form display">
+        <%= render 'devise/sessions/new' %>
+    </div>
+
+    <div class="signup-form display">
+        <%= render 'devise/registrations/new' %>
     </div>
     <div class="header_bottom">
         <nav class="category-nav">

@@ -1,0 +1,26 @@
+<%#= render "shared/second-header"%>
+<%= form_with model: @user, url: user_session_path, class: 'registration-main', remote: true do |f| %>
+
+<div class='form-wrap'>
+
+    <%= render 'devise/shared/error_messages', model: f.object %>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">メールアドレス *</label>
+    </div>
+    <%= f.email_field :email, class:"auth-form-control", id:"email", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">パスワード *</label>
+    </div>
+    <%= f.password_field :password, class:"auth-form-control", id:"password" %>
+    <!-- <p class='info-text'>※6文字以上 英字と数字の両方を含む</p> -->
+  </div>
+
+  <%= f.submit "ログイン" ,class:"auth-btn" %>
+
+</div>
+<% end %>
+
