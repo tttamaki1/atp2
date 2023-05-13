@@ -17,7 +17,7 @@
                 <li><button id="test_map">Map</button></li>
                 <li><button id="test">Test</button></li>
                 <li><button id="test_2">Test2</button></li>
-                <li><button id="dark-mode-toggle">Dark</button></li>
+                <li><div id="dark-mode-toggle"><i class="mode-icon"></i></div></li>
                 <% if user_signed_in? %>
                 <%= "#{current_user.nickname}" %>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

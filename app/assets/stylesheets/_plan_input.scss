@@ -1,3 +1,4 @@
+
 .plan-input {
     flex-shrink: 0;
     width: 400px;
@@ -25,21 +26,12 @@
       border-radius: 4px;
       outline: none;
       transition: border-color 0.3s, box-shadow 0.3s;
-      
     }
 
     .form-control:focus {
       border-color: #2a9d8f;
       box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
     }
-
-     #destination-input {
-      background-color: #c6ddda;
-     }
-
-     #place_to_visit-input {
-      background-color: #ffffff;
-     }
 
     .select-control {
       width: 100%;
@@ -64,7 +56,6 @@
       box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
     }
 
-  
     .submit-button {
       width: 200px;
       margin: 0 auto;
@@ -142,5 +133,6 @@ display: none;
 .font-light {
   font-weight: lighter;
 }
+
 
 
