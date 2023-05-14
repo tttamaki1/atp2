@@ -1,10 +1,14 @@
 <div class="plan-input">
     <h2>旅のプランを入力</h2>
     <%= form_with model: @plan, url:  open_ai_create_path, class: 'plan-input-form', remote: true do |form| %>
-      <div class="form-group">
+    <div class="form-group">
         <%= form.label :destination, '目的地' %>
-        <%= form.text_field :destination, class: 'form-control', id: 'destination-input' %>
+        <%= form.text_field :destination, class: 'form-control', id: 'destination-input'%>
       </div>
+      <div class="form-group">
+        <%= form.label :place_to_visit, '行きたい場所' %>
+        <%= form.text_field :place_to_visit, class: 'form-control' %>
+      </div> 
       <div class="form-group">
         <!-- <%= form.label :duration, '日数' %> -->
         <div class="slider-wrapper">
@@ -57,10 +61,6 @@
         <%= form.label :transportation, '移動手段' %>
         <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
       </div>
-      <div class="form-group">
-        <%= form.label :place_to_visit, '訪問地' %>
-        <%= form.text_field :place_to_visit, class: 'form-control', id: 'place_to_visit-input' %>
-      </div>   
       <%= form.submit 'プランを作成', class: 'submit-button hidden' %>
     <% end %>
   </div>

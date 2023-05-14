@@ -39,6 +39,8 @@ function resetIsFirstTime() {
   isFirstTime = true;
 }
 
+// ここに保存ボタンを表示するコードを書く
+
 
 function startTimeout() {
   stopTimeout(); // タイムアウト処理が開始されていた場合は停止する
@@ -62,12 +64,17 @@ setInterval(() => {
 }, TIMEOUT_DURATION);
 
 document.addEventListener('turbolinks:before-visit', () => {
-  openAiChannel.unsubscribe();
-  secondChannel.unsubscribe();
+  unsubscribeChannels();
 });
 
 window.addEventListener("beforeunload", () => {
   console.log("Unsubscribing from OpenAiChannel");
-  openAiChannel.unsubscribe();
-  secondChannel.unsubscribe();
+  unsubscribeChannels();
 });
+
+function unsubscribeChannels() {
+  if (openAiChannel) {
+    openAiChannel.unsubscribe();
+    openAiChannel = null; // 購読インスタンスをクリア
+  }
+}

@@ -1,3 +1,10 @@
+:root {
+    --background-color-dark-mode: rgb(37, 38, 46);
+    --background-border_style-dark-mode: 1px solid #1e3b1f;
+    --font-color-dark-mode: #f4f4f4;;
+    --input-background-color-dark-mode: rgba(34, 34, 36, 0.9);
+}
+
 body.dark-mode {
     background-color: var(--background-color-dark-mode);
     color: var(--font-color-dark-mode);
@@ -10,11 +17,13 @@ body.dark-mode {
   
   body.dark-mode .select-control {
     background-color: rgba(87, 81, 81, 0.5);
-    color: var(--font-color-dark-mode);
+    color: white;
   }
   
   body.dark-mode .form-control {
     border-color: rgba(87, 81, 81, 0.5);
+    background-color: rgba(87, 81, 81, 0.5);
+    color: white;
   
   }
   
@@ -25,6 +34,17 @@ body.dark-mode {
     box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.25);
     background-color: rgba(60, 60, 60, 0.9);
   }
+
+  body.dark-mode .form-control:focus {
+    background-color: rgba(87, 81, 81, 0.5);
+    caret-color: white;
+  }
+
+  body.dark-mode .form-control:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   
   body.dark-mode .submit-button {
     background-color: rgba(68, 136, 68, 0.7);
@@ -34,22 +54,9 @@ body.dark-mode {
     background-color: #a79151;
   }
   
-  body.dark-mode #destination-input {
-    background-color: rgba(87, 81, 81, 0.5);
-    color: var(--font-color-dark-mode);
-  }
-  
-  body.dark-mode #place_to_visit-input {
-    background-color: rgba(87, 81, 81, 0.5);
-    color: var(--font-color-dark-mode);
-  }
   
   body.dark-mode .budget-input {
     background-color: rgba(221, 221, 221, 0.7);
-  }
-  
-  body.dark-mode .budget-option:checked ~ .budget-label ~ .budget-input {
-    background-color: rgba(255, 255, 255, 0.7);
   }
   
   //dark-mode header
@@ -79,6 +86,8 @@ body.dark-mode {
   body.dark-mode .search-input {
     background-color: rgba(87, 81, 81, 0.5);
     border-color: rgba(255, 255, 255, 0.2);
+    caret-color: white;
+    color: white;
   }
   
   body.dark-mode .search-input:focus {
@@ -105,24 +114,44 @@ body.dark-mode {
   
   
   #dark-mode-toggle {
-    width: 50px;
     margin: 0 auto;
     padding: 3px;
-    background-color: #2a9d8f;
+    color: black;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+  }
+  
+  body.dark-mode #dark-mode-toggle {
+    margin: 0 auto;
+    padding: 3px;
     color: #fff;
     font-size: 16px;
     border: none;
     border-radius: 12px;
   }
+
+  body.dark-mode .signup-form {
+    background-color: #9ec0bc;
+  }
   
-  body.dark-mode #dark-mode-toggle {
-    width: 50px;
-    margin: 0 auto;
-    padding: 3px;
-    background-color: #2a9d8f;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 12px;
+  body.dark-mode .login-form {
+    background-color: #9ec0bc;;
+  }
+
+  body.dark-mode .auth-form-control {
+
+  }
+
+  body.dark-mode .auth-form-control:focus {
+    // background-color: rgba(87, 81, 81, 0.5);
+    // caret-color: white;
+  }
+
+  body.dark-mode .auth-form-control:-webkit-autofill {
+    // -webkit-text-fill-color: black !important;
+    // transition: background-color 5000s ease-in-out 0s;
   }
   
