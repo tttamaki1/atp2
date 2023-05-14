@@ -2,7 +2,7 @@ class Food < ActiveHash::Base
   self.data = [
     { id: 1, name: '選択してください（未選択可）' },
     { id: 2, name: 'レストラン' },
-    { id: 3, name: '海鮮' },
+    { id: 3, name: 'シーフード' },
     { id: 4, name: '肉料理' },
     { id: 5, name: '麺類' },
     { id: 6, name: 'カフェ' },

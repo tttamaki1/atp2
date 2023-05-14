@@ -17,7 +17,10 @@
                 <li><button id="test_map">Map</button></li>
                 <li><button id="test">Test</button></li>
                 <li><button id="test_2">Test2</button></li>
-                <li><div id="dark-mode-toggle"><i class="mode-icon"></i></div></li>
+                <!-- <i class="fa-regular fa-moon hidden"></i>
+                <i class="fa-regular fa-sun hidden"></i> -->
+                <div id="dark-mode-toggle">
+                </div>
                 <% if user_signed_in? %>
                 <%= "#{current_user.nickname}" %>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
@@ -40,8 +43,6 @@
             <ul>
             <li><a href="#">国内旅行</a></li>
             <li><a href="#">海外旅行</a></li>
-            <li><a href="#">バックパッカー</a></li>
-            <li><a href="#">ロードトリップ</a></li>
             </ul>
         </nav>
     </div>

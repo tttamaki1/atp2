@@ -114,24 +114,44 @@ body.dark-mode {
   
   
   #dark-mode-toggle {
-    width: 50px;
     margin: 0 auto;
     padding: 3px;
-    background-color: #2a9d8f;
+    color: black;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+  }
+  
+  body.dark-mode #dark-mode-toggle {
+    margin: 0 auto;
+    padding: 3px;
     color: #fff;
     font-size: 16px;
     border: none;
     border-radius: 12px;
   }
+
+  body.dark-mode .signup-form {
+    background-color: #9ec0bc;
+  }
   
-  body.dark-mode #dark-mode-toggle {
-    width: 50px;
-    margin: 0 auto;
-    padding: 3px;
-    background-color: #2a9d8f;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 12px;
+  body.dark-mode .login-form {
+    background-color: #9ec0bc;;
+  }
+
+  body.dark-mode .auth-form-control {
+
+  }
+
+  body.dark-mode .auth-form-control:focus {
+    // background-color: rgba(87, 81, 81, 0.5);
+    // caret-color: white;
+  }
+
+  body.dark-mode .auth-form-control:-webkit-autofill {
+    // -webkit-text-fill-color: black !important;
+    // transition: background-color 5000s ease-in-out 0s;
   }
   
