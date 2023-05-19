@@ -20,10 +20,11 @@ class OpenAiController < ApplicationController
   end
 
   def open_api_request(plan)
+
     destination_prompt = "#{plan.destination}"
     duration_prompt = "#{plan.duration}日間"
 
-    recommendation = plan.duration * 4
+    recommendation = plan.duration * 3
     recommendation = 20 if recommendation >= 20
 
     budget_prompt = if plan.budget_option != 1
@@ -33,42 +34,42 @@ class OpenAiController < ApplicationController
                     end
 
     activity_prompt = if plan.activity_id != 1
-                        ''
+                         "・#{destination_prompt}の、#{plan.activity.name}のおすすめスポットを#{recommendation}個
+                          英語名で返してください。形式 1."
                       else
-                        "・#{destination_prompt}の、#{plan.activity.name}のおすすめスポットを#{recommendation}個
-        英語名で返してください。形式 1."
+                          ''
                       end
 
     food_prompt = if plan.food_id != 1
-                    ''
+                       "・#{destination_prompt}のおすすめレストランと#{plan.food.name}のお店を#{recommendation}個
+                       英語名で返してください。形式 1."
                   else
-                    "・#{destination_prompt}のおすすめレストランと#{plan.food.name}を#{recommendation}個
-        英語名で返してください。形式 1."
+                      ''
                   end
 
     travel_style_prompt = if plan.travel_style_id != 1
-                            ''
+                            "旅のスタイルは#{plan.travel_style.name}です。"
                           else
-                            "#{plan.travel_style.name}、"
+                            ''
                           end
 
     transportation_prompt = if plan.transportation_id != 1
-                              ''
-                            else
                               "交通: #{plan.transportation.name}"
+                            else
+                              ''
                             end
     accommodation_prompt = if plan.accommodation_id != 1
-                             ''
+                              "宿泊タイプ: #{plan.accommodation.name}"
                            else
-                             "宿泊タイプ: #{plan.accommodation.name}"
+                              ''
                            end
-
     prompt = "
        Step by stepで
        ・#{destination_prompt}のおすすめ観光スポットを#{recommendation}個
        英語名で返してください。形式 1.
        #{activity_prompt}
        #{food_prompt}
+       #{travel_style_prompt}
       "
 
     output_text = ''

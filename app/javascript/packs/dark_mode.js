@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (document.body.classList.contains("dark-mode")) {
       darkModeButton.textContent = "ライトモード";
-      moonIcon.classList.add("hidden");
-      sunIcon.classList.remove("hidden");
+      // moonIcon.classList.add("hidden");
+      // sunIcon.classList.remove("hidden");
       localStorage.setItem("darkMode", "enabled");
     } else {
       darkModeButton.textContent = "ダークモード";
-      moonIcon.classList.remove("hidden");
-      sunIcon.classList.add("hidden");
+      // moonIcon.classList.remove("hidden");
+      // sunIcon.classList.add("hidden");
       localStorage.setItem("darkMode", "disabled");
     }
   };
