@@ -2,6 +2,7 @@ global.$ = global.jQuery = require('jquery');
 
 let map;
 
+
 export function marking(keyword) {
   geocodeAddress(keyword)
     .then(function(result) {
