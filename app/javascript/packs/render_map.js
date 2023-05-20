@@ -1,5 +1,5 @@
 
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("turbolinks:load", function() {
     var test2Element = document.getElementById("test_2");
     test2Element.addEventListener("click", geocodeRenderMap);
   

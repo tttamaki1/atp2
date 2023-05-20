@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("turbolinks:load", function () {
   const slider = document.getElementById("day-slider");
   const sliderValue = document.getElementById("day-slider-value");
   const budgetCheckbox = document.getElementById("budget-option");

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", () => {
   const toggleDarkMode = () => {
     const darkModeButton = document.getElementById("dark-mode-toggle");
     const moonIcon = darkModeButton.querySelector(".fa-moon");
