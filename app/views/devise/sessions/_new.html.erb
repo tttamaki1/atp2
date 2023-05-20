@@ -1,26 +1,42 @@
-<%#= render "shared/second-header"%>
-<%= form_with model: @user, url: user_session_path, class: 'registration-main', remote: true do |f| %>
 
-<div class='form-wrap'>
+  <%= form_with model: resource, as: resource_name, url: session_path(resource_name), class: 'registration-main', local: true do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-    <%= render 'devise/shared/error_messages', model: f.object %>
+    <div class='form-wrap'>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス *</label>
+      <% if flash[:error].present? %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+      <% end %>
+
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">Eメール *</label>
+        </div>
+        <% if flash[:error].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+        <%= f.email_field :email, class:"auth-form-control", id:"email", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">パスワード *</label>
+        </div>
+        <%= f.password_field :password, class:"auth-form-control", id:"password" %>
+        <!-- <p class='info-text'>※6文字以上 英字と数字の両方を含む</p> -->
+      </div>
+
+      <%= f.submit "ログイン" ,class:"auth-btn" %>
+      <!-- エラーメッセージの表示 -->
+      <% if resource.errors.any? %>
+        <div id="error-messages">
+          <%= render 'shared/error_messages', resource: resource %>
+        </div>
+      <% end %>
+
     </div>
-    <%= f.email_field :email, class:"auth-form-control", id:"email", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード *</label>
-    </div>
-    <%= f.password_field :password, class:"auth-form-control", id:"password" %>
-    <!-- <p class='info-text'>※6文字以上 英字と数字の両方を含む</p> -->
-  </div>
-
-  <%= f.submit "ログイン" ,class:"auth-btn" %>
-
-</div>
 <% end %>
-
+</main>

@@ -1,0 +1,32 @@
+<main class="container_auth">
+  <div class="auth-form">
+    <ul class="form-title-link">
+      <li><h2>ログイン</h2></li>
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+    </ul>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "パスワード  6文字以上" %>
+        <%= f.password_field :password, class: 'form-control', autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field remember-me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "ログインを維持する"  %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</main>

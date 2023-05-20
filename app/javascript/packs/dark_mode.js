@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
       darkModeButton.textContent = "ライトモード";
       // moonIcon.classList.add("hidden");
       // sunIcon.classList.remove("hidden");
-      localStorage.setItem("darkMode", "enabled");
+      sessionStorage.setItem("darkMode", "enabled");
     } else {
       darkModeButton.textContent = "ダークモード";
       // moonIcon.classList.remove("hidden");
       // sunIcon.classList.add("hidden");
-      localStorage.setItem("darkMode", "disabled");
+      sessionStorage.setItem("darkMode", "disabled");
     }
   };
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   darkModeButton.addEventListener("click", toggleDarkMode);
 
   // ダークモード設定の読み込み
-  const darkModeSetting = localStorage.getItem("darkMode");
+  const darkModeSetting = sessionStorage.getItem("darkMode");
   if (darkModeSetting === "enabled") {
     document.body.classList.add("dark-mode");
     darkModeButton.textContent = "ライトモード";

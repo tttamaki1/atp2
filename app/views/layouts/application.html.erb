@@ -22,12 +22,69 @@
         <div class="header__logo">
         <%= link_to "AI Travel Planner", root_path %>
         </div>
+        <div class="header__search">
+            <%= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
+            <div class="search-input-container">
+                <%= form.text_field :keyword, placeholder: "", class: "search-input" %>
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+            <% end %>
+        </div>
+        <nav class="header__nav">
+            
+            <ul>
+                <!-- <li><button id="test_map">Map</button></li>
+                <li><button id="test">Test</button></li>
+                <li><button id="test_2">Test2</button></li> -->
+                <!-- <i class="fa-regular fa-moon hidden"></i>
+                <i class="fa-regular fa-sun hidden"></i> -->
+                <div id="dark-mode-toggle">
+                </div>
+                <% if user_signed_in? %>
+                <%#= "#{current_user.nickname}" %>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to "新規登録", new_user_registration_path %></li>
+                  <li><%= link_to "ログイン", new_user_session_path %></li>
+                <% end %>
+            </ul>
+        </nav>
+    </div>
+    <div class="login-form display">
+        <%= render 'devise/sessions/new' %>
     </div>
 
+    <div class="signup-form display">
+        <%= render 'devise/registrations/new' %>
+    </div>
+    <div class="header_bottom">
+        <nav class="category-nav">
+            <ul>
+            <li><a href="#">国内旅行</a></li>
+            <li><a href="#">海外旅行</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <body>
-  <%= yield %>
+  <div>
+    <%= yield %>
+  </div>
+  <footer class="footer">
+    <div class="footer__links">
+    <ul>
+        <li><%= link_to "利用規約", "#" %></li>
+        <li><%= link_to "プライバシーポリシー", "#" %></li>
+    </ul>
+    </div>
+    <div class="footer__copyright">
+    &copy; AI Travel Planner. All rights reserved. Powered by chatGPT.
+    </div>
+</footer> 
 </body>
+
+
+
 
 </html>

@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  documentBody.addEventListener('click', function(event) {
-    // クリックボタン、フォーム以外の領域をクリックした時にフォームを非表示にする
+  documentBody.addEventListener('dblclick', function(event) {
+    // クリックボタン、フォーム以外の領域をダブルクリックした時にフォームを非表示にする
     if (event.target !== signupButton && !signupForm.contains(event.target) ){
       signupForm.classList.add('display');
       signupForm.classList.remove('text-color');
