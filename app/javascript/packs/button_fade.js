@@ -1,4 +1,5 @@
-$(function() {
+
+document.addEventListener("turbolinks:load", () => {$(function() {
     var $textInput = $('#destination-input');
     var $submitButton = $('.submit-button');
   
@@ -28,4 +29,5 @@ $(function() {
         $submitButton.fadeOut(); // ボタンをフェードアウトして非表示にする
       }
     });
+});
 });

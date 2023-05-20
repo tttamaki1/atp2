@@ -1,6 +1,6 @@
 class TravelStyle < ActiveHash::Base
   self.data = [
-    { id: 1, name: '選択してください（未選択可）' },
+    { id: 1, name: '---' },
     { id: 2, name: 'アクティブ' },
     { id: 3, name: 'リラックス' },
     { id: 4, name: 'ロマンチック' },
