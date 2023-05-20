@@ -28,6 +28,9 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--font-color);
+  position: relative;
+  display: block;
+
 }
 
 /* Features */
@@ -48,7 +51,20 @@ body {
 }
 
 .container_index {
+  width: 100%;
   display: flex;
+  position: absolute;
+  top: 100px;
+}
+
+.container_auth {
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+}
+
+.auth-form {
+
 }
 
 .generated_plan {
@@ -125,10 +141,12 @@ body {
 
 /* Footer */
 .footer {
+  clear: both;
   background-color: var(--primary-color);
   color: #fff;
   padding: 20px 0;
   text-align: center;
+clear: both;
 }
 
 .footer__links ul {
@@ -161,13 +179,19 @@ body {
   color: #fff;
 }
 
-.container_index {
-  padding: 100px 0 0 0;
+//オートコンプリートで背景色がデフォルトで白になることを回避するため
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 999px #fff inset;
 }
-
+//オートコンプリートで背景色がデフォルトで白になることを回避するため
+body.dark-mode input:-webkit-autofill {
+  box-shadow: 0 0 0px 999px rgba(87, 81, 81, 0.5) inset;
+}
 
 
 .display {
   display: none;
 }
+
+
 

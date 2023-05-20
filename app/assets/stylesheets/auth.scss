@@ -1,0 +1,97 @@
+// Place all the styles related to the registrations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container_auth {
+  height: 800px;
+}
+
+.auth-form {
+  width: 250px;
+}
+
+.field {
+    margin-bottom: 20px;
+    
+  }
+  
+  .field label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="password"] {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .field input[type="text"]:focus,
+  .field input[type="email"]:focus,
+  .field input[type="password"]:focus {
+    border-color: #2a9d8f;
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+  }
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+    
+  }
+
+  .field input[type="checkbox"] {
+    margin-right: 10px;
+    margin-bottom: 7px;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .actions input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #2a9d8f;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .actions input[type="submit"]:hover {
+    background-color: #1f776d;
+  }
+
+  .form-title-link {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .form-title-link li {
+    margin: 0 10px 15px 10px;
+  }
+
+  .form-title-link li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+  }
+
+  .form-title-link li a:hover {
+    color: var(--hover-color);
+  }
+
+  .error-message {
+    color: rgb(118, 158, 7);
+    font-size: 13px;
+  }

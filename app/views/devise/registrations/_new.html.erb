@@ -1,32 +1,35 @@
-<%#= render "shared/second-header"%>
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', remote: true do |f| %>
+<main class="container_auth">
+  <div class="auth-form">
+    <ul class="form-title-link">
+      <li><h2>新規登録</h2></li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+    </ul>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'new_user_registration' }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :nickname, "ユーザー名" %>
+        <%= f.text_field :nickname, class: 'form-control' %>
+      </div>
 
-<div class='form-wrap'>
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email", id: 'user_email_registration' %>
+      </div>
 
-    <%= render 'devise/shared/error_messages', model: f.object %>
+      <div class="field">
+        <%= f.label :password, "パスワード　6文字以上" %>
+        <%= f.password_field :password, class: 'form-control', autocomplete: "new-password", id: 'user_password_registration' %>
+      </div>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">ユーザー名</label>
-    </div>
-    <%= f.text_field :nickname, class:"auth-form-control", id:"nickname" %>
+      <div class="field">
+        <%= f.label :password_confirmation, "パスワード　確認用" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+
   </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス *</label>
-    </div>
-    <%= f.email_field :email, class:"auth-form-control", id:"email", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">パスワード *</label>
-    </div>
-    <%= f.password_field :password, class:"auth-form-control", id:"password" %>
-    <!-- <p class='info-text'>※6文字以上 英字と数字の両方を含む</p> -->
-  </div>
-
-  <%= f.submit "新規登録" ,class:"auth-btn" %>
-
-</div>
-<% end %>
-
+</main>
