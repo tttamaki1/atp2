@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.15.4/css/all.css" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'google_maps' %>
-    <%= javascript_pack_tag 'dark_mode' %>
+    <%= javascript_pack_tag 'dark_mode', 'data-turbolinks-track': 'reload' %>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&libraries=places&v=weekly"
       defer
@@ -38,8 +38,7 @@
                 <li><button id="test_2">Test2</button></li> -->
                 <!-- <i class="fa-regular fa-moon hidden"></i>
                 <i class="fa-regular fa-sun hidden"></i> -->
-                <div id="dark-mode-toggle">
-                </div>
+                <div id="dark-mode-toggle"></div>
                 <% if user_signed_in? %>
                 <%#= "#{current_user.nickname}" %>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

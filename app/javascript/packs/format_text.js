@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbolinks:load", function() {
   const submitButtons = document.querySelectorAll(".submit-button");
   const elementToUpdate = document.getElementById("element-to-update");
   const loadingElements = document.getElementsByClassName("loading");
