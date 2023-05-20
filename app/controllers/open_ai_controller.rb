@@ -79,7 +79,7 @@ class OpenAiController < ApplicationController
         parameters: {
           model: 'gpt-3.5-turbo', # Required.
           messages: [{ role: 'user', content: prompt }], # Required.
-          temperature: 0.6,
+          temperature: 0.1,
           max_tokens: 2048,
           stream: proc do |chunk, _bytesize|
             task.async do
