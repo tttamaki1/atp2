@@ -50,37 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-  
-  var signupButton = document.querySelector('.signup');
-  var signupForm = document.querySelector('.signup-form');
-  var loginButton = document.querySelector('.login');
-  var loginForm = document.querySelector('.login-form');
-  var documentBody = document.body;
-  
-  signupButton.addEventListener('mouseover', function() {
-    signupForm.classList.remove('display');
-    loginForm.classList.add('display');
-    signupForm.classList.add('text-color');
-  });
-  loginButton.addEventListener('mouseover', function() {
-    loginForm.classList.remove('display');
-    signupForm.classList.add('display');
-    loginForm.classList.add('text-color');
-  });
 
-
-  documentBody.addEventListener('dblclick', function(event) {
-    // クリックボタン、フォーム以外の領域をダブルクリックした時にフォームを非表示にする
-    if (event.target !== signupButton && !signupForm.contains(event.target) ){
-      signupForm.classList.add('display');
-      signupForm.classList.remove('text-color');
-    }
-    if (event.target !== loginButton && !loginForm.contains(event.target) ){
-      loginForm.classList.add('display');
-      loginForm.classList.remove('text-color');
-    }
-  });
-  
 
 });
 

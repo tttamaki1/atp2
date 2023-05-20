@@ -5,8 +5,15 @@
       <li><%= link_to "新規登録", new_user_registration_path %></li>
     </ul>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+      <% if flash[:alert]&.include?("メールアドレス") %>
+      <div class="alert alert-danger">
+        <div class="error-message">メールアドレスとパスワードを正しく入力してください</div>
+      </div>
+      <% end %>
       <div class="field">
         <%= f.label :email, "メールアドレス" %>
+
         <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
       </div>
 
