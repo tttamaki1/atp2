@@ -126,7 +126,7 @@ class OpenAiController < ApplicationController
                     task.async do
                       text = chunk.dig('choices', 0, 'delta', 'content')
                       unless text.nil?
-                        max_day = 14
+                        max_day = 7
                         (1..max_day).each do |i|
                           if text.include?("#{i}日目")
                             html_text.gsub!(/#{i}日目\s*/,
