@@ -78,6 +78,7 @@ function geocodeRenderMap(latitude, longitude) {
           };
 
           // Place Detailsサービスを実行
+          console.log(request);
           const service = new google.maps.places.PlacesService(map);
           service.getDetails(request, function(place, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
