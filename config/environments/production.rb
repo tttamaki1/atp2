@@ -7,6 +7,11 @@ Rails.application.configure do
     'Pragma' => 'no-cache'
   }
 
+  # config/environments/production.rb
+  config.action_cable.allowed_request_origins = [ 'http://35.77.166.31:3000' ]
+  config.action_cable.url = "ws://35.77.166.31:3000/cable"
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
