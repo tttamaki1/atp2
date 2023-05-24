@@ -8,6 +8,7 @@ Rails.application.configure do
   }
 
   # config/environments/production.rb
+  ActionCable.server.config.disable_request_forgery_protection = true
   config.action_cable.allowed_request_origins = [ 'http://ai-travel-planner.click' ]
   config.action_cable.url = "ws://ai-travel-planner.click/cable"
 
