@@ -8,8 +8,8 @@ Rails.application.configure do
   }
 
   # config/environments/production.rb
-  config.action_cable.allowed_request_origins = [ 'http://35.77.166.31:3000' ]
-  config.action_cable.url = "ws://35.77.166.31:3000/cable"
+  config.action_cable.allowed_request_origins = [ 'http://ai-travel-planner.click/' ]
+  config.action_cable.url = "ws://ai-travel-planner.click//cable"
 
 
   # Code is not reloaded between requests.
