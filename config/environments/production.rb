@@ -8,8 +8,15 @@ Rails.application.configure do
   }
 
   # config/environments/production.rb
-  config.action_cable.allowed_request_origins = [ 'http://ai-travel-planner.click/' ]
-  config.action_cable.url = "ws://ai-travel-planner.click//cable"
+  config.action_cable.allowed_request_origins = [ 'http://ai-travel-planner.click' ]
+  config.action_cable.url = "ws://ai-travel-planner.click/cable"
+
+  config.cache_store = :redis_cache_store, {
+    host: ENV['REDIS_HOST'],
+    port: ENV['REDIS_PORT'],
+    namespace: 'cache',
+    expires_in: 1.day
+  }
 
 
   # Code is not reloaded between requests.
