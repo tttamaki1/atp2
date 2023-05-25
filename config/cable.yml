@@ -8,7 +8,7 @@ test:
 production:
   adapter: redis
   port: 6379
-  url: redis://<%= ENV['REDIS_HOST'] %>
+  url: redis://<%= ENV['REDIS_HOST'] %>:<%= ENV['REDIS_PORT'] %>
   log_tags: [ActionCable]
   # connection_identifiers: [ActionCable::Connection::IdentifierCookie] # Cookieによる識別子の使用
   # connection_throttle: 0 # クライアントごとの接続の制限を無効化（開発環境以外では推奨）
