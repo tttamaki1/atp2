@@ -21,6 +21,8 @@ class OpenAiController < ApplicationController
 
   def open_api_request(plan)
 
+    tab_session_id = $tab_session_id
+
     destination_prompt = "#{plan.destination}"
     duration_prompt = "#{plan.duration}日間"
 
@@ -87,7 +89,7 @@ class OpenAiController < ApplicationController
               unless text.nil?
                 text = sanitize(text.gsub(/\n/, '<br>'), tags: %w[br p h1 h2])
                 output_text += text
-                ActionCable.server.broadcast('second_channel', text)
+                ActionCable.server.broadcast("second_channel:#{tab_session_id}", text)
                 
               end
             end
@@ -134,7 +136,7 @@ class OpenAiController < ApplicationController
                           end
                         end
                         html_text = sanitize("<pre>" + text.gsub(/\n/, '<br>'), tags: %w[br p h1 h2 h3])
-                        ActionCable.server.broadcast('open_ai_channel', html_text)
+                        ActionCable.server.broadcast("open_ai_channel:#{tab_session_id}", html_text)
                       end
                     end
                   end

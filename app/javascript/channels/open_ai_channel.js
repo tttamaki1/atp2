@@ -4,8 +4,9 @@ let isFirstTime = true;
 let lastReceivedAt = null;
 let timeout = null;
 const TIMEOUT_DURATION = 5000; // タイムアウトまでの時間（ミリ秒）
-
-consumer.subscriptions.create("OpenAiChannel", {
+consumer.subscriptions.create(
+  { channel: 'OpenAiChannel', tab_session_id: sessionStorage.getItem('tabSessionId') },
+  {
   connected() {
     console.log("Connected to OpenAiChannel");
     lastReceivedAt = Date.now(); // 接続時刻を初期化

@@ -2,7 +2,8 @@ class OpenAiChannel < ApplicationCable::Channel
   @@streaming_thread = nil
 
   def subscribed
-    stream_from 'open_ai_channel'
+    stream_from "open_ai_channel:#{params[:tab_session_id]}"
+    # stream_from 'open_ai_channel'
 
     # ここにストリーミングを行うコードを追加
     @@streaming_thread = Thread.new do
