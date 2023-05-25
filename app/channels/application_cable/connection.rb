@@ -1,9 +1,19 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :tab_session_id
-
     def connect
-      self.tab_session_id = request.params[:tab_session_id] || reject_unauthorized_connection
+      verify_user
+    end
+
+    protected
+
+    def verify_user
+
+      tab_session_id = request.params[:tab_session_id]
+      valid_user = tab_session_id.present?
+      
+      unless valid_user
+        reject_unauthorized_connection
+      end
     end
   end
 end
