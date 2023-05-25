@@ -1,6 +1,7 @@
 import consumer from "./consumer"
 import { marking } from '../packs/google_maps';
-
+console.log('tabSessionId')
+console.log(sessionStorage.getItem('tabSessionId'))
 consumer.subscriptions.create(
   {
     channel: 'SecondChannel',

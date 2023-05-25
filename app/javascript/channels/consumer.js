@@ -10,6 +10,4 @@ if (!tabSessionId) {
   tabSessionId = uuidv4();
   sessionStorage.setItem('tabSessionId', tabSessionId);
 }
-console.log('tabSessionId')
-console.log(sessionStorage.getItem('tabSessionId'))
 export default createConsumer(`/cable?tab_session_id=${tabSessionId}`);
