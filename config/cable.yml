@@ -9,4 +9,5 @@ production:
   adapter: redis
   port: 6379
   url: redis://<%= ENV['REDIS_HOST'] %>
+  log_tags: [ActionCable]
   # channel_prefix: my_app_production
