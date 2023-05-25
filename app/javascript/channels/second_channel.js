@@ -1,7 +1,12 @@
-import consumer from "./consumer";
+import consumer from "./consumer"
 import { marking } from '../packs/google_maps';
 
-consumer.subscriptions.create("SecondChannel", {
+consumer.subscriptions.create(
+  {
+    channel: 'SecondChannel',
+    tab_session_id: sessionStorage.getItem('tabSessionId')
+  },
+  {
   chunk: '', // ここで this.chunk を初期化
   
   connected() {
