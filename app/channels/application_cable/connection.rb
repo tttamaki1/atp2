@@ -1,13 +1,15 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
+    identified_by :tab_session_id
+
     def connect
-      verify_user
+      self.tab_session_id = verify_user
     end
 
     protected
 
     def verify_user
-      tab_session_id = request.params[:tab_session_id]
+      request.params[:tab_session_id]
     end
   end
 end
