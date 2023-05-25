@@ -7,6 +7,8 @@ Rails.application.configure do
     'Pragma' => 'no-cache'
   }
 
+  # config/environments/production.rb
+  config.action_cable.allowed_request_origins = ['http://ai-travel-planner.click', 'https://ai-travel-planner.click']
 
 
 
