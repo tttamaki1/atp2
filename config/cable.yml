@@ -9,5 +9,4 @@ production:
   adapter: redis
   port: 6379
   url: redis://clustercfg.atp2.0sxhbm.apne1.cache.amazonaws.com:6379
-  channel_prefix: atp2_production
   log_tags: [ActionCable]
