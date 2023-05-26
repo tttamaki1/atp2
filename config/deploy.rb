@@ -5,7 +5,7 @@ lock "~> 3.17.3"
 set :application, "atp2"
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url, "git@example.com:tttamaki1/atp2.git"
+set :repo_url, "git@github.com:tttamaki1/atp2.git"
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
@@ -30,7 +30,7 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
-
+end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
