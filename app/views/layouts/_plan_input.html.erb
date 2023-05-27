@@ -1,5 +1,5 @@
 <div class="plan-input">
-    <h2>旅のプランを入力</h2>
+    <h2 class="cursor-pointer">旅のプランを入力</h2>
     <%= form_with model: @plan, url:  open_ai_create_path, class: 'plan-input-form', remote: true do |form| %>
     <div class="form-group">
         <%= form.label :destination, '目的地' %>
@@ -18,7 +18,7 @@
       </div>
       <div class="form-group">
         <%= form.check_box :budget_option, class: 'budget-option', id: 'budget-option' %>
-          <span>予算</span>
+          <span class="cursor-pointer">予算</span>
         <div id="budget-input">
           <%= form.range_field :budget, id: "budget-slider", min: 0, max: 100000, step: 5000, value: 10000, oninput: "displayBudgetValue(this.value)" %>
           <span id="budget-slider-value">10,000</span> 円
