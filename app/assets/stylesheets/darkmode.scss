@@ -75,6 +75,10 @@ body.dark-mode {
   body.dark-mode .category-nav a {
     color: var(--font-color-dark-mode);
   }
+
+  body.dark-mode .header__nav a:hover {
+    color: var(--hover-color);
+  }
   
   body.dark-mode .category-nav {
     background-color: var(--input-background-color-dark-mode);
@@ -113,18 +117,7 @@ body.dark-mode {
     text-decoration: none;
   }
   
-  
-  #dark-mode-toggle {
-    margin: 0 auto;
-    padding: 3px;
-    color: black;
-    font-size: 16px;
-    border: none;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-  }
-  
+
   body.dark-mode #dark-mode-toggle {
     margin: 0 auto;
     padding: 3px;
@@ -132,6 +125,11 @@ body.dark-mode {
     font-size: 16px;
     border: none;
     border-radius: 12px;
+    cursor: pointer;
+  }
+
+  body.dark-mode #dark-mode-toggle:hover {
+    color: var(--hover-color);
   }
 
   body.dark-mode .signup-form {

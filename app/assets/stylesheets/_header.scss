@@ -1,7 +1,5 @@
 // Define your variables
 
-
-
 .header {
   position: fixed;
   width: 100%;
@@ -18,7 +16,6 @@
   color: var(--font-color);
   width: 100%;
   height: var(--headertop-height);
-
 }
 
 .header__logo {
@@ -85,12 +82,28 @@
 }
 
 .header__nav a:hover {
-  color: var(--font-color);
+  color: var(--hover-color);
 }
 
 .header a {
   color: var(--font-color);
   text-decoration: none;
+}
+
+#dark-mode-toggle {
+  margin: 0 auto;
+  padding: 3px;
+  color: black;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+#dark-mode-toggle:hover {
+  color: var(--hover-color);
 }
 
 .signup {
