@@ -7,7 +7,7 @@
   --background-color-dark-mode: rgb(37, 38, 46);
   --background-border_style-dark-mode: 1px solid #1e3b1f;
   --font-color-dark-mode: #f4f4f4;;
-  --input-background-color-dark-mode: rgba(34, 34, 36, 0.9);
+  --input-background-color-dark-mode: rgba(34, 34, 36);
   --logo-size: 30px;
   --nav-background-color: #f4f4f4;
   --nav-font-color: #333;
@@ -46,10 +46,6 @@ body {
   padding-top: 200px;
 }
 
-.auth-form {
-
-}
-
 .generated_plan {
   width: 1000px;
   flex-shrink: 0;
@@ -75,10 +71,6 @@ body {
   right: 0;
   background-color: #9ec0bc;
   border-radius: 8px;
-}
-
-.auth-form-control {
-
 }
 
 .form-group {

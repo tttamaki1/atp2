@@ -16,6 +16,7 @@ require("./script")
 require("./format_text")
 require("./button_fade")
 require("./scroll")
+require("./inspiration")
 // require("./map")
 
 
