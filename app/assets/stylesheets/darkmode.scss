@@ -77,7 +77,7 @@ body.dark-mode {
   }
 
   body.dark-mode .header__nav a:hover {
-    color: var(--hover-color);
+    color: var(--hover-color-dark-mode);
   }
   
   body.dark-mode .category-nav {
@@ -85,7 +85,7 @@ body.dark-mode {
   }
   
   body.dark-mode .category-nav a:hover {
-    color: var(--secondary-color);
+    color: var(--hover-color-dark-mode);
   }
   
   body.dark-mode .search-input {
@@ -129,7 +129,7 @@ body.dark-mode {
   }
 
   body.dark-mode #dark-mode-toggle:hover {
-    color: var(--hover-color);
+    color: var(--hover-color-dark-mode);
   }
 
   body.dark-mode .signup-form {
