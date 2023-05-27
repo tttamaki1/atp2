@@ -33,7 +33,6 @@
           </div>
         <% end %>  
         <nav class="header__nav">
-            
             <ul>
                 <!-- <li><button id="test_map">Map</button></li>
                 <li><button id="test">Test</button></li>
@@ -42,7 +41,7 @@
                 <i class="fa-regular fa-sun hidden"></i> -->
                 <div id="dark-mode-toggle"></div>
                 <% if user_signed_in? %>
-                <%#= "#{current_user.nickname}" %>
+                  <%#= "#{current_user.nickname}" %>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <% else %>
                   <li><%= link_to "新規登録", new_user_registration_path %></li>

@@ -81,7 +81,7 @@ body.dark-mode {
   }
   
   body.dark-mode .category-nav {
-    background-color: var(--input-background-color-dark-mode);
+    background-color: var(--secondary-background-color-dark-mode);
     opacity: 1;
   }
   
@@ -107,10 +107,10 @@ body.dark-mode {
   
   
   body.dark-mode .footer {
-    background-color: var(--background-color-dark-mode);
+    background-color: var(--secondary-background-color-dark-mode);
     padding: 20px 0;
     text-align: center;
-    border-top: var(---background-border_style-dark-mode);
+    opacity: 1;
   }
   
   body.dark-mode .footer a {
@@ -151,4 +151,9 @@ body.dark-mode {
 
   body.dark-mode .prompt-form-area {
     background-color: var(--background-color-dark-mode);
+  }
+
+  body.dark-mode .password-reset a {
+    text-decoration: none;
+    color: white;
   }
