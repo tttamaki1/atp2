@@ -22,7 +22,7 @@ body.dark-mode {
   
   body.dark-mode .form-control {
     border-color: rgba(87, 81, 81, 0.5);
-    background-color: rgba(87, 81, 81, 0.5);
+    background-color: rgb(77, 64, 64);
     color: white;
   
   }
@@ -32,7 +32,7 @@ body.dark-mode {
   body.dark-mode .form-control:hover {
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 3px rgba(233, 196, 106, 0.25);
-    background-color: rgba(60, 60, 60, 0.9);
+    background-color: rgba(60, 60, 60, 1);
   }
 
   body.dark-mode .form-control:focus {
@@ -81,7 +81,8 @@ body.dark-mode {
   }
   
   body.dark-mode .category-nav {
-    background-color: var(--input-background-color-dark-mode);
+    background-color: var(--secondary-background-color-dark-mode);
+    opacity: 1;
   }
   
   body.dark-mode .category-nav a:hover {
@@ -106,10 +107,10 @@ body.dark-mode {
   
   
   body.dark-mode .footer {
-    background-color: var(--background-color-dark-mode);
+    background-color: var(--secondary-background-color-dark-mode);
     padding: 20px 0;
     text-align: center;
-    border-top: var(---background-border_style-dark-mode);
+    opacity: 1;
   }
   
   body.dark-mode .footer a {
@@ -146,4 +147,22 @@ body.dark-mode {
 
     body.dark-mode .form-title-link li a:hover {
     color: var(--hover-color);
+  }
+
+  body.dark-mode .prompt-area {
+    background-color: var(--background-color-dark-mode);
+  }
+
+  body.dark-mode .prompt-box {
+    background-color: var(--background-color-dark-mode);
+    color: var(--font-color-dark-mode);
+}
+
+  body.dark-mode .prompt-box:hover {
+    box-shadow: 0 0 17px rgba(69, 255, 233, 0.5);
+  }
+
+  body.dark-mode .password-reset a {
+    text-decoration: none;
+    color: white;
   }

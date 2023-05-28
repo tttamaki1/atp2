@@ -12,8 +12,8 @@
       <div class="form-group">
         <!-- <%= form.label :duration, '日数' %> -->
         <div class="slider-wrapper">
-          <%= form.range_field :duration, id: "day-slider", min: 1, max: 14, value: 2 %>
-          <span id="day-slider-value">2</span> 日間
+          <%= form.range_field :duration, id: "day-slider", min: 1, max: 7, value: 1 %>
+          <span id="day-slider-value">1</span> 日間
         </div>
       </div>
       <div class="form-group">
@@ -24,7 +24,7 @@
           <span id="budget-slider-value">10,000</span> 円
         </div>
       </div>
-<!--    
+   
       <div class="category-selector custom-category-selector">
         <%= form.label :activity_id, "選択してください" %>
         <div class="select-wrapper hidden">
@@ -37,7 +37,7 @@
             </div>
           <% end %>
         </div>
-      </div> -->
+      </div>
       
         
 
@@ -56,11 +56,11 @@
       <div class="form-group">
         <%= form.label :accommodation, '宿泊タイプ' %>
         <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>        
-      </div>
+      </div> 
       <div class="form-group">
         <%= form.label :transportation, '移動手段' %>
         <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
-      </div>
+      </div> 
       <%= form.submit 'プランを作成', class: 'submit-button hidden' %>
     <% end %>
   </div>

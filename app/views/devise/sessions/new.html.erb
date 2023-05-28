@@ -33,7 +33,10 @@
         <%= f.submit "Log in" %>
       </div>
 
-      <%= render "devise/shared/links" %>
+      <div class="password-reset">
+        <%= link_to "パスワードを忘れた場合", "#" %>
+      </div>
+      <%#= render "devise/shared/links" %>
 
     <% end %>
 

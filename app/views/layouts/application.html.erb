@@ -20,18 +20,19 @@
   <header class="header">
     <div class="header_top">
         <div class="header__logo">
-        <%= link_to "AI Travel Planner", root_path %>
+        <%= link_to "AI Travel Planner", top_path %>
         </div>
-        <div class="header__search">
-            <%= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
-            <div class="search-input-container">
-                <%= form.text_field :keyword, placeholder: "", class: "search-input" %>
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            </div>
-            <% end %>
-        </div>
+        <% if show_search_button? %>
+          <div class="header__search">
+              <%= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
+              <div class="search-input-container">
+                  <%= form.text_field :keyword, placeholder: "  検索", class: "search-input" %>
+                  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              </div>
+              <% end %>
+          </div>
+        <% end %>  
         <nav class="header__nav">
-            
             <ul>
                 <!-- <li><button id="test_map">Map</button></li>
                 <li><button id="test">Test</button></li>
@@ -40,7 +41,7 @@
                 <i class="fa-regular fa-sun hidden"></i> -->
                 <div id="dark-mode-toggle"></div>
                 <% if user_signed_in? %>
-                <%#= "#{current_user.nickname}" %>
+                  <%#= "#{current_user.nickname}" %>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <% else %>
                   <li><%= link_to "新規登録", new_user_registration_path %></li>
@@ -59,9 +60,8 @@
     <div class="header_bottom">
         <nav class="category-nav">
             <ul>
-            <li><a href="#">国内旅行</a></li>
-            <li><a href="#">海外旅行</a></li>
-            <li><a href="#">インスピレーションガイド</a></li>
+            <li><%= link_to "プラン作成", root_path %></li>
+            <li><%= link_to "インスピレーションガイド", inspiration_guide_path %></li>
             </ul>
         </nav>
     </div>

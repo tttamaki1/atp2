@@ -73,9 +73,9 @@ window.addEventListener("beforeunload", () => {
   unsubscribeChannels();
 });
 
-function unsubscribeChannels() {
-  if (openAiChannel) {
-    openAiChannel.unsubscribe();
-    openAiChannel = null; // 購読インスタンスをクリア
-  }
-}
+// function unsubscribeChannels() {
+//   if (openAiChannel) {
+//     openAiChannel.unsubscribe();
+//     openAiChannel = null; // 購読インスタンスをクリア
+//   }
+// }

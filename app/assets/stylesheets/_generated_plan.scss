@@ -1,6 +1,7 @@
 .generated_plan_container {
     padding: 30px;
     width: 50%;
+    min-width: 500px;
     border-right: var(--border-style);
     font-size: 16px;
     display: flex;
@@ -14,12 +15,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .loading {
-  }
-  
-  #element-to-update {
   }
 
   .cursor-pointer {
