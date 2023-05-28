@@ -1,14 +1,14 @@
 <main class="container_auth">
   <div class="auth-form">
     <ul class="form-title-link">
-      <li><h2>ログイン</h2></li>
-      <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <li><h2><%= t(:login) %></h2></li>
+      <li><%= link_to t(:signup), new_user_registration_path %></li>
     </ul>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
       <% if flash[:alert]&.include?("メールアドレス") %>
       <div class="alert alert-danger">
-        <div class="error-message">メールアドレスとパスワードを正しく入力してください</div>
+        <div class="error-message"><%= t(:invalid_email_password) %></div>
       </div>
       <% end %>
       <div class="field">
@@ -34,7 +34,7 @@
       </div>
 
       <div class="password-reset">
-        <%= link_to "パスワードを忘れた場合", "#" %>
+        <%= link_to t(:reset_password), "#" %>
       </div>
       <%#= render "devise/shared/links" %>
 

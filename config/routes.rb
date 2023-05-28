@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get 'inspiration_guide', to: 'inspirations#index', as: :inspiration_guide
   get '/inspiration_guide/result', to: 'inspirations#result'
   post '/inspiration_guide/result', to: 'inspirations#create', as: :inspiration_guide_post
+  post '/switch_language', to: 'application#switch_language', as: :switch_language
+
   mount ActionCable.server => '/cable'
 end

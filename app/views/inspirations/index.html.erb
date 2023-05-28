@@ -1,29 +1,30 @@
 <div class="result-inspiration">
     <div class="response-container">
-        <div class="response" id="response"></div>
+      <div class="response" id="response"></div>
     </div>
-</div>
-<div class="container-index-inspiration">
+  </div>
+  
+  <div class="container-index-inspiration">
     <div class="form-area">
-        <%= form_with url: inspiration_guide_post_path, method: :post, remote: true do |form| %>
+      <%= form_with url: inspiration_guide_post_path, method: :post, remote: true do |form| %>
         <div class="prompt-area">
-            <div class="form-group">
-                <%= form.text_field :place, placeholder: "場所を入力", class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= form.text_field :place, placeholder: t(:place_input_placeholder), class: "form-control" %>
+          </div>
         </div>
         <div class="prompt">
-            <div class="template">
-                <%= form.submit 'あまり知られていない観光スポットを教えて', class: 'prompt-box' %>
-                <%= form.submit '地元の人たちに人気のレストランを教えて', class: 'prompt-box' %>
-                <%= form.submit '地元の料理や食材を楽しめるレストランを教えて', class: 'prompt-box' %>
-                <%= form.submit 'おすすめのカフェを教えて', class: 'prompt-box' %>
-                <%= form.submit '地元の歴史的建造物を教えて', class: 'prompt-box' %>
-                <%= form.submit '美しい景色を楽しめるスポットを教えて', class: 'prompt-box' %>
-                <%= form.submit 'ローカルマーケットや地元の特産品やお土産を買うことができる場所を教えて', class: 'prompt-box' %>
-                <%= form.hidden_field :prompt_value, id: 'prompt-value' %>
-            </div>
+          <div class="template">
+            <%= form.submit t(:unknown_tourist_spots), class: "prompt-box" %>
+            <%= form.submit t(:popular_restaurants), class: "prompt-box" %>
+            <%= form.submit t(:local_cuisine), class: "prompt-box" %>
+            <%= form.submit t(:recommended_cafes), class: "prompt-box" %>
+            <%= form.submit t(:historical_sites), class: "prompt-box" %>
+            <%= form.submit t(:scenic_spots), class: "prompt-box" %>
+            <%= form.submit t(:local_market), class: "prompt-box" %>
+            <%= form.hidden_field :prompt_value, id: "prompt-value" %>
+          </div>
         </div>
-        <% end %>
+      <% end %>
     </div>
-</div>
-
+  </div>
+  
