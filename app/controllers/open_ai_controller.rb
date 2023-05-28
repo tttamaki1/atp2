@@ -4,7 +4,8 @@ require 'openai'
 require 'async/http'
 
 class OpenAiController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
+
+  include ActionView::Helpers::SanitizeHelper #sanitizeメソッドを使えるようにするため
 
   def index
     @plan = Plan.new

@@ -149,8 +149,17 @@ body.dark-mode {
     color: var(--hover-color);
   }
 
-  body.dark-mode .prompt-form-area {
+  body.dark-mode .prompt-area {
     background-color: var(--background-color-dark-mode);
+  }
+
+  body.dark-mode .prompt-box {
+    background-color: var(--background-color-dark-mode);
+    color: var(--font-color-dark-mode);
+}
+
+  body.dark-mode .prompt-box:hover {
+    box-shadow: 0 0 17px rgba(69, 255, 233, 0.5);
   }
 
   body.dark-mode .password-reset a {

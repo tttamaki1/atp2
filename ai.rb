@@ -1,12 +1,22 @@
+require 'async'
+require 'json'
 require 'openai'
-client = OpenAI::Client.new(access_token: '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')
-client.chat(
-  parameters: {
-    model: 'gpt-3.5-turbo', # Required.
-    messages: [{ role: 'user', content: 'Describe a character called Anna!' }], # Required.
-    temperature: 0.7,
-    stream: proc do |chunk, _bytesize|
-              print chunk.dig('choices', 0, 'delta', 'content')
-            end
-  }
-)
+require 'async/http'
+Async do |task|
+  client = OpenAI::Client.new(access_token: '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')
+  client.chat(
+    parameters: {
+      model: 'gpt-3.5-turbo', # Required.
+      messages: [{ role: 'user', content: "hello" }], # Required.
+      temperature: 1.0,
+      max_tokens: 2048,
+      # format: "html",
+      stream: proc do |chunk, _bytesize|
+                task.async do
+                  text = chunk.dig('choices', 0, 'delta', 'content')
+                  puts text
+              end
+      end
+    }
+  )
+end

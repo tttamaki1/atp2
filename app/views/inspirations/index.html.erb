@@ -1,33 +1,29 @@
-<div class="container-index-inspiration">
-    <div class="prompt-form-area">
-        <div class="form-group">
-            <input type="text" id="place" name="place" placeholder="場所を入力" class="form-control">
-        </div>
-    </div>    
-    <div class="prompt-area">
-        <div class="template">
-            <div class="prompt-text">
-                あまり知られていない観光スポットを教えて
-            </div>
-            <div class="prompt-text">
-                地元の人たちに人気のレストランを教えて
-            </div>
-            <div class="prompt-text">
-                地元の料理や食材を楽しめるレストランを教えて
-            </div>
-            <div class="prompt-text">
-                おすすめのカフェを教えて
-            </div>
-            <div class="prompt-text">
-                地元の歴史的建造物を教えて
-            </div>
-            <div class="prompt-text">
-                美しい景色を楽しめるスポットを教えて
-            </div>
-            <div class="prompt-text">
-                ローカルマーケットや地元の特産品やお土産を買うことができる場所を教えて
-            </div>
-        </div>  
+<div class="result-inspiration">
+    <div class="response-container">
+        <div class="response" id="response"></div>
     </div>
-
 </div>
+<div class="container-index-inspiration">
+    <div class="form-area">
+        <%= form_with url: inspiration_guide_post_path, method: :post, remote: true do |form| %>
+        <div class="prompt-area">
+            <div class="form-group">
+                <%= form.text_field :place, placeholder: "場所を入力", class: "form-control" %>
+            </div>
+        </div>
+        <div class="prompt">
+            <div class="template">
+                <%= form.submit 'あまり知られていない観光スポットを教えて', class: 'prompt-box' %>
+                <%= form.submit '地元の人たちに人気のレストランを教えて', class: 'prompt-box' %>
+                <%= form.submit '地元の料理や食材を楽しめるレストランを教えて', class: 'prompt-box' %>
+                <%= form.submit 'おすすめのカフェを教えて', class: 'prompt-box' %>
+                <%= form.submit '地元の歴史的建造物を教えて', class: 'prompt-box' %>
+                <%= form.submit '美しい景色を楽しめるスポットを教えて', class: 'prompt-box' %>
+                <%= form.submit 'ローカルマーケットや地元の特産品やお土産を買うことができる場所を教えて', class: 'prompt-box' %>
+                <%= form.hidden_field :prompt_value, id: 'prompt-value' %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+

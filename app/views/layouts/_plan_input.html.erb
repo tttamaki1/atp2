@@ -24,7 +24,7 @@
           <span id="budget-slider-value">10,000</span> 円
         </div>
       </div>
-<!--    
+   
       <div class="category-selector custom-category-selector">
         <%= form.label :activity_id, "選択してください" %>
         <div class="select-wrapper hidden">
@@ -37,7 +37,7 @@
             </div>
           <% end %>
         </div>
-      </div> -->
+      </div>
       
         
 
@@ -53,14 +53,14 @@
         <%= form.label :travel_style, 'スタイル' %>
         <%= form.collection_select(:travel_style_id, TravelStyle.all, :id, :name, {}, { class: "select-control", id: "travel_style" }) %>
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
         <%= form.label :accommodation, '宿泊タイプ' %>
         <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>        
-      </div> -->
-      <!-- <div class="form-group">
+      </div> 
+      <div class="form-group">
         <%= form.label :transportation, '移動手段' %>
         <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
-      </div> -->
+      </div> 
       <%= form.submit 'プランを作成', class: 'submit-button hidden' %>
     <% end %>
   </div>

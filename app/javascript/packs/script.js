@@ -63,3 +63,17 @@ function displayBudgetValue(value) {
 
 }
 
+// サーバーからの配信を止める方法が分からない
+// window.addEventListener('beforeunload', () => {
+//   consumer.subscriptions.subscriptions.forEach((subscription) => {
+//     if (subscription.identifier === '{"channel":"OpenAiChannel","tab_session_id":"' + sessionStorage.getItem('tabSessionId') + '"}') {
+//       subscription.unsubscribe();
+//     }
+//     if (subscription.identifier === '{"channel":"SecondChannel","tab_session_id":"' + sessionStorage.getItem('tabSessionId') + '"}') {
+//       subscription.unsubscribe();
+//     }
+//     if (subscription.identifier === '{"channel":"InspirationGuideChannel","tab_session_id":"' + sessionStorage.getItem('tabSessionId') + '"}') {
+//       subscription.unsubscribe();
+//     }
+//   });
+// });

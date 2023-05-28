@@ -13,17 +13,21 @@
 .container-index-inspiration {
     animation: slideInFromLeft 1s ease-in-out;
     margin-top: 100px;
+    z-index: 2;
+    position: relative;
+}
+
+.form-area {
     display: flex;
     align-items: center;
     flex-direction: column;
     position: relative;
-    
 }
 
-.prompt-form-area {
+.prompt-area {
     padding-top: 40px;
-    width: 100%;
     height: 60px;
+    width: 700px;
     display: flex;
     justify-content: center;
     position: fixed;
@@ -59,15 +63,17 @@
 
 }
 
-.prompt-area {
+.prompt {
     margin-top: 120px;
 }
 
 
 
-.prompt-text {
+.prompt-box {
     height: 100px;
     width: 700px;
+    font-size: 16px;
+    background-color: var(--background-color);
     border: 1px solid #2a9d8f;
     border-radius: 8px;
     position: relative; 
@@ -79,11 +85,61 @@
     cursor: pointer;
 }
 
-.prompt-text.active {
+.prompt-box:hover {
+    box-shadow: 0 0 25px rgba(5, 15, 14, 0.5);
+}
+
+.prompt-box.active {
     border-color: #2a9d8f;
     box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
 }
 
 .template {
     padding-bottom: 100px;
+}
+
+.result-inspiration {
+    margin-top: 100px;
+    width: 100vw;
+    height: 100%;
+    position: relative;
+}
+
+.response-container {
+    width: 700px;
+    height: 100%;
+    margin-top: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.response {
+    /* 必要なスタイルを指定してください */
+}
+
+
+@keyframes slideOutToRight {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .slide-fade-out {
+    animation: slideOutToRight 1.0s forwards;
+  }
+
+  .container-result-inspiration {
+    margin: 100px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
