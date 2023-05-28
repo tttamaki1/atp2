@@ -1,20 +1,18 @@
 document.addEventListener("turbolinks:load", () => {
   const toggleDarkMode = () => {
     const darkModeButton = document.getElementById("dark-mode-toggle");
-    const moonIcon = darkModeButton.querySelector(".fa-moon");
-    const sunIcon = darkModeButton.querySelector(".fa-sun");
+    const darkMode = darkModeButton.querySelector(".dark-text");
+    const lightMode = darkModeButton.querySelector(".light-text");
 
     document.body.classList.toggle("dark-mode");
 
     if (document.body.classList.contains("dark-mode")) {
-      darkModeButton.textContent = "ライトモード";
-      // moonIcon.classList.add("hidden");
-      // sunIcon.classList.remove("hidden");
+      darkMode.style.display = "none";
+      lightMode.style.display = "inline-block";
       sessionStorage.setItem("darkMode", "enabled");
     } else {
-      darkModeButton.textContent = "ダークモード";
-      // moonIcon.classList.remove("hidden");
-      // sunIcon.classList.add("hidden");
+      darkMode.style.display = "inline-block";
+      lightMode.style.display = "none";
       sessionStorage.setItem("darkMode", "disabled");
     }
   };
@@ -26,8 +24,14 @@ document.addEventListener("turbolinks:load", () => {
   const darkModeSetting = sessionStorage.getItem("darkMode");
   if (darkModeSetting === "enabled") {
     document.body.classList.add("dark-mode");
-    darkModeButton.textContent = "ライトモード";
+    const darkModeText = document.querySelector(".dark-text");
+    const lightModeText = document.querySelector(".light-text");
+    darkModeText.style.display = "none";
+    lightModeText.style.display = "inline-block";
   } else {
-    darkModeButton.textContent = "ダークモード";
+    const darkModeText = document.querySelector(".dark-text");
+    const lightModeText = document.querySelector(".light-text");
+    darkModeText.style.display = "inline-block";
+    lightModeText.style.display = "none";
   }
 });

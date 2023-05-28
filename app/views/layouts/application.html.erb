@@ -4,79 +4,76 @@
     <title>AI Travel Planner</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+    <%= favicon_link_tag '/earth-icon.png' %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons", media: "all", rel: "stylesheet" %>
     <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.15.4/css/all.css" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'google_maps' %>
     <%= javascript_pack_tag 'dark_mode', 'data-turbolinks-track': 'reload' %>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&libraries=places&v=weekly"
-      defer
-    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&libraries=places&v=weekly" defer></script>
   </head>
 
   <header class="header">
     <div class="header_top">
-        <div class="header__logo">
+      <div class="header__logo">
         <%= link_to "AI Travel Planner", top_path %>
+      </div>
+      <% if show_search_button? %>
+        <div class="header__search">
+          <%= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
+            <div class="search-input-container">
+              <%= form.text_field :keyword, placeholder: t(:search), class: "search-input" %>
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+          <% end %>
         </div>
-        <% if show_search_button? %>
-          <div class="header__search">
-              <%= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
-              <div class="search-input-container">
-                  <%= form.text_field :keyword, placeholder: "  検索", class: "search-input" %>
-                  <i class="fa-solid fa-magnifying-glass search-icon"></i>
-              </div>
-              <% end %>
+      <% end %>
+      <nav class="header-nav">
+        <ul>
+          <div class="language-switcher">
+            <%= form_tag(switch_language_path, method: :post, id: 'language-form') do %>
+              <%= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], ['English', 'en']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select') %>
+            <% end %>
           </div>
-        <% end %>  
-        <nav class="header__nav">
-            <ul>
-                <!-- <li><button id="test_map">Map</button></li>
-                <li><button id="test">Test</button></li>
-                <li><button id="test_2">Test2</button></li> -->
-                <!-- <i class="fa-regular fa-moon hidden"></i>
-                <i class="fa-regular fa-sun hidden"></i> -->
-                <div id="dark-mode-toggle"></div>
-                <% if user_signed_in? %>
-                  <%#= "#{current_user.nickname}" %>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                <% else %>
-                  <li><%= link_to "新規登録", new_user_registration_path %></li>
-                  <li><%= link_to "ログイン", new_user_session_path %></li>
-                <% end %>
-            </ul>
-        </nav>
+          <div id="dark-mode-toggle">
+            <span class="dark-text"><%= t(:dark_mode) %></span>
+            <span class="light-text"><%= t(:light_mode) %></span>
+          </div>
+          <% if user_signed_in? %>
+            <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to t(:signup), new_user_registration_path %></li>
+            <li><%= link_to t(:login), new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
     </div>
     <div class="login-form display">
-        <%= render 'devise/sessions/new' %>
+      <%= render 'devise/sessions/new' %>
     </div>
-
     <div class="signup-form display">
-        <%= render 'devise/registrations/new' %>
+      <%= render 'devise/registrations/new' %>
     </div>
     <div class="header_bottom">
-        <nav class="category-nav">
-            <ul>
-            <li><%= link_to "プラン作成", root_path %></li>
-            <li><%= link_to "インスピレーションガイド", inspiration_guide_path %></li>
-            </ul>
-        </nav>
+      <nav class="category-nav">
+        <ul>
+          <li><%= link_to t(:create_plan), root_path %></li>
+          <li><%= link_to t(:inspiration_guide), inspiration_guide_path %></li>
+        </ul>
+      </nav>
     </div>
-</header>
+  </header>
 
-<body>
-  <div>
-    <%= yield %>
-  </div>
-  <footer class="footer">
-    <div class="footer__copyright">
-      &copy; AI Travel Planner. All rights reserved. Powered by ChatGPT and Google Maps.
+  <body>
+    <div>
+      <%= yield %>
     </div>
-  </footer> 
-</body>
-
-
+    <footer class="footer">
+      <div class="footer__copyright">
+        &copy; AI Travel Planner. Powered by ChatGPT and Google Maps.
+      </div>
+    </footer>
+  </body>
 </html>
