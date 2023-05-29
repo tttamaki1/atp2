@@ -6,7 +6,8 @@ test:
   adapter: async
 
 production:
-  adapter: redis
-  port: 6379
-  url: redis://clustercfg.atp2.0sxhbm.apne1.cache.amazonaws.com:6379
-  log_tags: [ActionCable]
+  adapter: async
+  # adapter: redis
+  # port: 6379
+  # url: redis://clustercfg.atp2.0sxhbm.apne1.cache.amazonaws.com:6379
+  # log_tags: [ActionCable]
