@@ -23,7 +23,7 @@ consumer.subscriptions.create(
     const elementToUpdate = document.getElementById("element-to-update");
     if (elementToUpdate && data != null) {
       if (isFirstTime) {
-        const loadingElements = document.getElementsByClassName("loading");
+        const loadingElements = document.getElementsByClassName("loading-container");
         const loadingElement = loadingElements[0]; // 最初の要素を選択
         loadingElement.classList.add("hidden");
         isFirstTime = false
