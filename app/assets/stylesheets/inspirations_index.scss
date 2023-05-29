@@ -1,17 +1,6 @@
 
-@keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
 .container-index-inspiration {
-    animation: slideInFromLeft 1s ease-in-out;
+    // animation: slideInFromLeft 1s ease-in-out;
     margin-top: 100px;
     z-index: 2;
     position: relative;
@@ -119,23 +108,11 @@
     /* 必要なスタイルを指定してください */
 }
 
-
-@keyframes slideOutToRight {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
-  
   .slide-fade-out {
     animation: slideOutToRight 1.0s forwards;
   }
 
-  .container-result-inspiration {
+.container-result-inspiration {
     margin: 100px 0;
     display: flex;
     align-items: center;
@@ -143,3 +120,25 @@
     position: relative;
     z-index: 1;
 }
+
+// @keyframes slideInFromLeft {
+//   0% {
+//     transform: translateX(-100%);
+//     opacity: 0;
+//   }
+//   100% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes slideOutToRight {
+//   0% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: translateX(100%);
+//     opacity: 0;
+//   }
+// }
