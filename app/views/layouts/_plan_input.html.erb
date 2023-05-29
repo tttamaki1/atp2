@@ -38,11 +38,11 @@
       <%= form.label :travel_style_id, t(:travel_style_id) %>
       <%= form.collection_select(:travel_style_id, TravelStyle.all, :id, :translated_name, {}, { class: "select-control", id: "travel_style" }) %>
     </div>
-    <div class="form-group">
+    <div class="form-group hidden">
       <%= form.label :accommodation_id, t(:accommodation_id) %>
       <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :translated_name, {}, { class: "select-control", id: "accommodation" }) %>
     </div>
-    <div class="form-group">
+    <div class="form-group hidden">
       <%= form.label :transportation_id, t(:transportation_id) %>
       <%= form.collection_select(:transportation_id, Transportation.all, :id, :translated_name, {}, { class: "select-control", id: "transportation" }) %>
     </div>
