@@ -8,7 +8,7 @@
 
       <div class="field">
         <%= f.label :nickname, t(:username) %>
-        <%= f.text_field :nickname, class: 'form-control' %>
+        <%= f.text_field :nickname, class: 'form-control', id: 'username' %>
       </div>
 
       <div class="field">
@@ -18,7 +18,7 @@
             <div class="error-message"><%= message %></div>
           <% end %>
         <% end %>
-        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email", id: 'useremail' %>
       </div>
 
       <div class="field">
@@ -28,7 +28,7 @@
           <div class="error-message"><%= message %></div>
           <% end %>
         <% end %>
-        <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+        <%= f.password_field :password, class: 'form-control', autocomplete: "new-password", id: 'userpassword' %>
       </div>
 
       <div class="field">
