@@ -11,6 +11,7 @@ ja:
   prompt: "選択してください"
   provide_your_travel_choice: "旅のプランを入力"
   create_button: "プランを作成"
+  currency: "円"
 
   search: "検索"
   language: "言語"
