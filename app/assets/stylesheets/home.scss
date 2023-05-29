@@ -33,7 +33,7 @@ body {
   flex-direction: column;  
 }
 
-.container_index {
+.container-index {
   width: 100%;
   display: flex;
   position: absolute;
@@ -41,13 +41,13 @@ body {
   height: 1000px;
 }
 
-.container_auth {
+.container-auth {
   display: flex;
   justify-content: center;
   padding-top: 200px;
 }
 
-.generated_plan {
+.generated-plan {
   width: 1000px;
   flex-shrink: 0;
   padding: 40px;

@@ -41,10 +41,11 @@ en:
   historical_sites: "Tell me about local historical sites"
   scenic_spots: "Tell me about beautiful scenic spots"
   local_market: "Tell me about local markets where I can buy specialty products and souvenirs"
+  create_plan: "Create a plan"
 
   create_travel_plan_title: "Create Your Travel Plan"
   create_travel_plan_description: "Choose your destination and create your travel plan."
   create_customized_plan_title: "Create Your Own Customized Plan"
   create_customized_plan_description: "Select detailed preferences and create your own customized travel plan."
   inspiration_guide_title: "Inspiration Guide"
-  inspiration_guide_description: "Select your destination and templates to receive recommendations for popular spots."
+  inspiration_guide_description: "Select your destination and templates to get recommendations for popular spots."
