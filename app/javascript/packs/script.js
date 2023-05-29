@@ -1,4 +1,5 @@
-$(document).ready(function () {
+
+document.addEventListener("turbolinks:load", function () {
 
   window.scrollTo(0, 0);
 
@@ -8,6 +9,7 @@ $(document).ready(function () {
   const budgetInput = document.getElementById("budget-input");
   const budgetSlider = document.getElementById("budget-slider");
   const budgetSliderValue = document.getElementById("budget-slider-value");  
+
 
   slider.addEventListener("input", function () {
     sliderValue.textContent = slider.value;
@@ -23,6 +25,7 @@ $(document).ready(function () {
 
   function displayValue(value) {
     budgetSliderValue.textContent = value;
+    
   }
 
   budgetCheckbox.addEventListener("change", function () {
@@ -50,8 +53,9 @@ $(document).ready(function () {
 
   });
 
-});
 
+
+});
 
 function displayBudgetValue(value) {
   const sliderValue = document.getElementById("budget-slider-value");
