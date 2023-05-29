@@ -25,20 +25,38 @@ class InspirationsController < ApplicationController
 
         tab_session_id = $tab_session_id #重要
 
-        prompt = "
-        ##指示##
-        ・#{place}の#{prompt_value}
-        ・最低1000文字 最大2048文字で
-        ・改行して
-        
-        ##出力形式##
-        #{place}の#{prompt_value}
-  
-        1.場所名
+        if I18n.locale == :ja
+          prompt =
+          "##指示##
+          ・日本語で
+          ・#{place}の#{prompt_value}
+          ・最低1000文字
+          ・改行して
+          
+          ##出力形式##
+          タイトル  #{place}の#{prompt_value}
+    
+          1.場所名
 
-        説明
-        
-        "
+          説明
+          "
+        elsif  I18n.locale == :en
+          prompt =
+          "##Instructions##
+          ・In English
+          ・#{prompt_value} of #{place}
+          ・Minimum 1000 characters
+          ・Break lines
+          
+          ##Output Format##
+          Title:  #{prompt_value} of #{place}
+    
+          1. Place Name
+
+          Description
+          "     
+        end  
+
         Async do |task|
             client = OpenAI::Client.new(access_token: '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')
             client.chat(

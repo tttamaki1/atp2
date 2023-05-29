@@ -26,38 +26,25 @@
       </div>
     </div>
 
-    <!-- <div class="category-selector custom-category-selector">
-      <%= form.label :activity_id, t(:activity_id) %>
-      <div class="select-wrapper hidden">
-        <%= form.collection_check_boxes :activity_id, Activity.all, :id, :name, {}, {class: 'select-control'} do |b| %>
-          <div class="option-wrapper">
-            <%= b.check_box(class: 'option-check') %>
-            <%= b.label(class: 'option-label') do %>
-              <%= b.text %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div> -->
     <div class="form-group">
       <%= form.label :activity, t(:activity_id) %>
-      <%= form.collection_select(:activity_id, Activity.all, :id, :name, {}, { class: "select-control", id: "activity" }) %>
+      <%= form.collection_select(:activity_id, Activity.all, :id, :translated_name, {}, { class: "select-control", id: "activity" }) %>
     </div>
     <div class="form-group">
       <%= form.label :food_id, t(:food_id) %>
-      <%= form.collection_select(:food_id, Food.all, :id, :name, {}, { class: "select-control", id: "food" }) %>
+      <%= form.collection_select(:food_id, Food.all, :id, :translated_name, {}, { class: "select-control", id: "food" }) %>
     </div>
     <div class="form-group">
       <%= form.label :travel_style_id, t(:travel_style_id) %>
-      <%= form.collection_select(:travel_style_id, TravelStyle.all, :id, :name, {}, { class: "select-control", id: "travel_style" }) %>
+      <%= form.collection_select(:travel_style_id, TravelStyle.all, :id, :translated_name, {}, { class: "select-control", id: "travel_style" }) %>
     </div>
     <div class="form-group">
       <%= form.label :accommodation_id, t(:accommodation_id) %>
-      <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :name, {}, { class: "select-control", id: "accommodation" }) %>
+      <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :translated_name, {}, { class: "select-control", id: "accommodation" }) %>
     </div>
     <div class="form-group">
       <%= form.label :transportation_id, t(:transportation_id) %>
-      <%= form.collection_select(:transportation_id, Transportation.all, :id, :name, {}, { class: "select-control", id: "transportation" }) %>
+      <%= form.collection_select(:transportation_id, Transportation.all, :id, :translated_name, {}, { class: "select-control", id: "transportation" }) %>
     </div>
     <%= form.submit t(:create_button), class: 'submit-button hidden' %>
   <% end %>
