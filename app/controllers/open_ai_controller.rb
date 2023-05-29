@@ -42,10 +42,10 @@ class OpenAiController < ApplicationController
 
     activity_prompt = if plan.activity_id != 1
                         if I18n.locale == :ja
-                          "・#{destination_prompt}の、#{plan.activity.name}のおすすめスポットを#{recommendation}個
+                          "・#{destination_prompt}の、#{plan.activity.translated_name}のおすすめスポットを#{recommendation}個
                           英語名で返してください。形式 1."
                         elsif I18n.locale == :en
-                          "・Please return #{recommendation} recommended spots for #{plan.activity.name}
+                          "・Please return #{recommendation} recommended spots for #{plan.activity.translated_name}
                            at #{destination_prompt}, in English. Format: 1."
                         end
                       else
@@ -54,10 +54,10 @@ class OpenAiController < ApplicationController
 
     food_prompt = if plan.food_id != 1
                     if I18n.locale == :ja
-                      "・#{destination_prompt}のおすすめレストランと#{plan.food.name}のお店を#{recommendation}個
+                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店を#{recommendation}個
                       英語名で返してください。形式 1."
                     elsif I18n.locale == :en
-                      "・Please return #{recommendation} recommended restaurants and #{plan.food.name} shops
+                      "・Please return #{recommendation} recommended restaurants and #{plan.food.translated_name} shops
                        at #{destination_prompt}, in English. Format: 1."
                     end
 
@@ -67,9 +67,9 @@ class OpenAiController < ApplicationController
 
     travel_style_prompt = if plan.travel_style_id != 1
                             if I18n.locale == :ja
-                              "旅のスタイルは#{plan.travel_style.name}です。"
+                              "旅のスタイルは#{plan.travel_style.translated_name}です。"
                             elsif I18n.locale == :en
-                              "The travel style is #{plan.travel_style.name}."
+                              "The travel style is #{plan.travel_style.translated_name}."
                             end
                             
                           else
@@ -78,9 +78,9 @@ class OpenAiController < ApplicationController
 
     transportation_prompt = if plan.transportation_id != 1
                               if I18n.locale == :ja
-                                "交通: #{plan.transportation.name}"
+                                "交通: #{plan.transportation.translated_name}"
                               elsif I18n.locale == :en
-                                "Transportation: #{plan.transportation.name}"
+                                "Transportation: #{plan.transportation.translated_name}"
                               end
                               
                             else
@@ -88,9 +88,9 @@ class OpenAiController < ApplicationController
                             end
     accommodation_prompt = if plan.accommodation_id != 1
                               if I18n.locale == :ja
-                                "宿泊タイプ: #{plan.accommodation.name}"
+                                "宿泊タイプ: #{plan.accommodation.translated_name}"
                               elsif I18n.locale == :en
-                                "Accommodation Type: #{plan.accommodation.name}"
+                                "Accommodation Type: #{plan.accommodation.translated_name}"
                               end
                            else
                               ''
@@ -147,6 +147,7 @@ class OpenAiController < ApplicationController
 
       例)
       テーマ#{destination_prompt}
+
       1日目
 
       10:00 - エッフェル塔
@@ -165,6 +166,7 @@ class OpenAiController < ApplicationController
 
       Example)
       Theme#{destination_prompt}
+      
       Day 1
 
       10:00 - Eiffel Tower

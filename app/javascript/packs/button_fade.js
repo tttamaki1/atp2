@@ -12,8 +12,21 @@ document.addEventListener("turbolinks:load", () => {$(function() {
   
         document.getElementsByClassName("submit-button")[0].addEventListener("click", function() {
 
+          //mapが表示してあったら削除する
+          function removeMap() {
+            // map変数が存在する場合にのみマップを削除する
+            if (map) {
+              map.setMap(null);
+              map = null;
+            }
+          }
+          document.getElementById('your-element-id').addEventListener('click', function() {
+            removeMap();
+          });
+          
+
           //loading.gifを表示する
-          const loadingElements = document.getElementsByClassName("loading_container");
+          const loadingElements = document.getElementsByClassName("loading-container");
           const loadingElement = loadingElements[0]; // 最初の要素を選択
           loadingElement.classList.remove("hidden");
 

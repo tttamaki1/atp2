@@ -7,7 +7,7 @@
   z-index: 100;
 }
 
-.header_top {
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,19 +18,19 @@
   height: var(--headertop-height);
 }
 
-.header__logo {
+.header-logo {
   display: block;
   font-size: 24px; 
   font-weight: bold;
   white-space: nowrap;
 }
 
-.header__logo a {
+.header-logo a {
   color: var(--font-color);
   text-decoration: none;
 }
 
-.header__search, .header-nav {
+.header-search, .header-nav {
   display: flex;
   align-items: right;
 }

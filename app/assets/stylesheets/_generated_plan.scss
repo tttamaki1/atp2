@@ -1,15 +1,14 @@
-.generated_plan_container {
-    padding: 30px;
+.generated-plan-container {
+    padding: 30px 30px 100px 30px;
     width: 50%;
     min-width: 500px;
     border-right: var(--border-style);
     font-size: 16px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column; 
   }
   
-  .loading_container {
+  .loading-container {
     height: 40px;
     width: 100%;
     display: flex;

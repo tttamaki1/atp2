@@ -4,7 +4,7 @@ ja:
   days: "日間"
   budget_option: "予算"   
   activity_id: "アクティビティ"
-  food_id: "食事"
+  food_id: "フード"
   travel_style_id: "スタイル"      
   accommodation_id: "宿泊タイプ"    
   transportation_id: "移動手段"     
