@@ -33,9 +33,9 @@
       <nav class="header-nav">
         <ul>
           <div class="language-switcher">
-            <%= form_tag(switch_language_path, method: :post, id: 'language-form') do %>
-              <%= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], ['English', 'en']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select') %>
-            <% end %>
+            <%#= form_tag(switch_language_path, method: :post, id: 'language-form') do %>
+              <%#= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], ['English', 'en']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select') %>
+            <%# end %>
           </div>
           <div id="dark-mode-toggle">
             <span class="dark-text"><%= t(:dark_mode) %></span>
