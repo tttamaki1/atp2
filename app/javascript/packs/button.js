@@ -20,13 +20,13 @@ document.addEventListener("turbolinks:load", () => {$(function() {
   
       if (inputValue.length > 0) {
           // マップのマーカー配列を削除する
-          console.log("aaaa")
-          if (markers.length > 0) {
-            for (let i = 0; i < markers.length; i++) {
-              markers[i].setMap(null);
-              console.log("bbbbb")
-            }
-          }
+          // console.log("aaaa")
+          // if (markers.length > 0) {
+          //   for (let i = 0; i < markers.length; i++) {
+          //     markers[i].setMap(null);
+          //     console.log("bbbbb")
+          //   }
+          // }
 
         //loading.gifを表示する
         const loadingElements = document.getElementsByClassName("loading-container");
