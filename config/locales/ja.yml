@@ -10,7 +10,7 @@ ja:
   transportation_id: "移動手段"     
   prompt: "選択してください"
   provide_your_travel_choice: "旅のプランを入力"
-  create_button: "プランを作成"
+  create_plan: "プランを作成"
   currency: "円"
 
   search: "検索"
@@ -20,7 +20,7 @@ ja:
   logout: "ログアウト"
   signup: "新規登録"
   login: "ログイン"
-  create_plan: "プラン作成"
+
   inspiration_guide: "インスピレーションガイド"
 
   dark_mode: "ダークモード"

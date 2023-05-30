@@ -22,9 +22,29 @@ ja:
         token: クレジットカード情報
 
 en:
+  destination: "Destination"
+  place_to_visit: "Places to Visit"
+  days: "Days"
+  budget_option: "Budget"
+  activity_id: "Activity"
+  food_id: "Food"
+  travel_style_id: "Travel Style"
+  accommodation_id: "Accommodation Type"
+  transportation_id: "Transportation"
+  prompt: "Please select"
+  provide_your_travel_choice: "Enter your travel choices"
+  create_plan: "Create a plan"
   currency: "USD"
-  invalid_email_password: "Please enter a valid email and password"
+
   search: "search"
+
+  inspiration_guide: "Inspiration Guide"
+
+  dark_mode: "Dark Mode"
+  light_mode: "Light Mode"
+
+  invalid_email_password: "Please enter a valid email and password"
+
   signup: "Sign up"
   login: "Login"
   username: "Username"
@@ -41,7 +61,6 @@ en:
   historical_sites: "Tell me about local historical sites"
   scenic_spots: "Tell me about beautiful scenic spots"
   local_market: "Tell me about local markets where I can buy specialty products and souvenirs"
-  create_plan: "Create a plan"
 
   create_travel_plan_title: "Create Your Travel Plan"
   create_travel_plan_description: "Choose your destination and create your travel plan."
