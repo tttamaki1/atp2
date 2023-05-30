@@ -61,6 +61,12 @@ en:
   historical_sites: "Tell me about local historical sites"
   scenic_spots: "Tell me about beautiful scenic spots"
   local_market: "Tell me about local markets where I can buy specialty products and souvenirs"
+  family_friendly_spots: "Please tell me about some family-friendly spots."
+  night_life: "Please recommend some bars or clubs"
+
+
+  art_galleries: "Please tell me about some art galleries or museums."
+  shopping_districts: "Where can I enjoy shopping?"
 
   create_travel_plan_title: "Create Your Travel Plan"
   create_travel_plan_description: "Choose your destination and create your travel plan."

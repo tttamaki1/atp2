@@ -15,12 +15,18 @@
         <div class="prompt">
           <div class="template">
             <%= form.submit t(:unknown_tourist_spots), class: "prompt-box" %>
+            <%= form.submit t(:scenic_spots), class: "prompt-box" %>
             <%= form.submit t(:popular_restaurants), class: "prompt-box" %>
             <%= form.submit t(:local_cuisine), class: "prompt-box" %>
             <%= form.submit t(:recommended_cafes), class: "prompt-box" %>
-            <%= form.submit t(:historical_sites), class: "prompt-box" %>
-            <%= form.submit t(:scenic_spots), class: "prompt-box" %>
             <%= form.submit t(:local_market), class: "prompt-box" %>
+            <%= form.submit t(:shopping_districts), class: "prompt-box" %>
+            <%= form.submit t(:historical_sites), class: "prompt-box" %>
+            <%= form.submit t(:art_galleries), class: "prompt-box" %>
+            <%= form.submit t(:family_friendly_spots), class: "prompt-box" %>
+            <%= form.submit t(:night_life), class: "prompt-box" %>
+
+            
             <%= form.hidden_field :prompt_value, id: "prompt-value" %>
           </div>
         </div>
