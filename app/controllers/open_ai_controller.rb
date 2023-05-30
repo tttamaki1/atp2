@@ -42,11 +42,15 @@ class OpenAiController < ApplicationController
 
     activity_prompt = if plan.activity_id != 1
                         if I18n.locale == :ja
-                          "・#{destination_prompt}の、#{plan.activity.translated_name}のおすすめスポットを#{recommendation}個
-                          英語名で返してください。形式 1."
+                          "・#{destination_prompt}の、#{plan.activity.translated_name}のおすすめスポットの場所名だけを#{recommendation}個
+                          を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
+                          ##形式## 1.
+                          最後は改行してください"
                         elsif I18n.locale == :en
-                          "・Please return #{recommendation} recommended spots for #{plan.activity.translated_name}
-                           at #{destination_prompt}, in English. Format: 1."
+                          "・Please return the names of #{recommendation} recommended spots for #{plan.activity.translated_name}
+                          at #{destination_prompt}, in English.
+                           ##Format## 1.
+                           Please include a line break at the end."
                         end
                       else
                           ''
@@ -54,11 +58,15 @@ class OpenAiController < ApplicationController
 
     food_prompt = if plan.food_id != 1
                     if I18n.locale == :ja
-                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店を#{recommendation}個
-                      英語名で返してください。形式 1."
+                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店の名前だけを#{recommendation}個
+                      を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
+                      ##形式## 1.
+                      最後は改行してください"
                     elsif I18n.locale == :en
-                      "・Please return #{recommendation} recommended restaurants and #{plan.food.translated_name} shops
-                       at #{destination_prompt}, in English. Format: 1."
+                      "・Please return only the names of #{recommendation} recommended restaurants and #{plan.food.translated_name} shops
+                       at #{destination_prompt}, in English.
+                        ##Format## 1.
+                        Please include a line break at the end."
                     end
 
                   else
@@ -98,8 +106,10 @@ class OpenAiController < ApplicationController
     if I18n.locale == :ja
       prompt = "
       Step by stepで
-      ・#{destination_prompt}のおすすめ観光スポットを#{recommendation}個
-      英語名で返してください。形式 1.
+      ・#{destination_prompt}のおすすめ観光スポットの名前だけを#{recommendation}個
+      を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
+      ##形式## 1.
+      最後は改行してください
       #{activity_prompt}
       #{food_prompt}
       #{travel_style_prompt}
@@ -107,7 +117,9 @@ class OpenAiController < ApplicationController
     elsif I18n.locale == :en
       prompt = "
        Step by step,
-       ・Recommend #{recommendation} must-see spots in #{destination_prompt}. Please provide their English names. Format: 1.
+       ・Recommend #{recommendation} must-see spots in #{destination_prompt}. Please provide only their English names.
+        ##Format## 1.
+        Please include a line break at the end.
        #{activity_prompt}
        #{food_prompt}
        #{travel_style_prompt}

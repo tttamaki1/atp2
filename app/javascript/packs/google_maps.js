@@ -54,7 +54,6 @@ function geocodeRenderMap(latitude, longitude) {
     });
 
 
-
     // マーカーが追加されるたびに位置情報を配列に追加
     markerPositions.push(location);
     // マップの表示領域を設定
