@@ -4,8 +4,6 @@ let map;
 //  マーカーの位置情報を格納する配列
 const markerPositions = [];
 
-let markers = [];
-
 export function marking(keyword) {
   geocodeAddress(keyword)
     .then(function(result) {
@@ -55,8 +53,6 @@ function geocodeRenderMap(latitude, longitude) {
       title: `緯度: ${latitude}, 経度: ${longitude}`,
     });
 
-    // マーカーを配列に追加
-    markers.push(marker);
 
 
     // マーカーが追加されるたびに位置情報を配列に追加
