@@ -117,7 +117,7 @@ class OpenAiController < ApplicationController
 
     output_text = ''
     Async do |task|
-      client = OpenAI::Client.new(access_token: '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')
+      client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
       client.chat(
         parameters: {
           model: 'gpt-3.5-turbo', # Required.
@@ -166,7 +166,7 @@ class OpenAiController < ApplicationController
 
       Example)
       Theme#{destination_prompt}
-      
+
       Day 1
 
       10:00 - Eiffel Tower
@@ -180,7 +180,7 @@ class OpenAiController < ApplicationController
 
 
     Async do |task|
-      client = OpenAI::Client.new(access_token: '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')
+      client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
       client.chat(
         parameters: {
           model: 'gpt-3.5-turbo', # Required.

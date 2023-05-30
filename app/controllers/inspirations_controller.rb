@@ -58,7 +58,7 @@ class InspirationsController < ApplicationController
         end  
 
         Async do |task|
-            client = OpenAI::Client.new(access_token: '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')
+            client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
             client.chat(
               parameters: {
                 model: 'gpt-3.5-turbo', # Required.
