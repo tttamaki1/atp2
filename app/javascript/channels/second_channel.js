@@ -1,21 +1,21 @@
-import consumer from "./consumer"
+import { consumer, tabSessionId } from "./consumer";
 import { marking } from '../packs/google_maps';
 // console.log('tabSessionId')
 // console.log(sessionStorage.getItem('tabSessionId'))
 consumer.subscriptions.create(
   {
     channel: 'SecondChannel',
-    tab_session_id: sessionStorage.getItem('tabSessionId')
+    tab_session_id: tabSessionId
   },
   {
   chunk: '', // ここで this.chunk を初期化
   
   connected() {
-    console.log("Connected to SecondChannel");
+    console.log("Connected to SecondChannel"+ tabSessionId);
   },
 
   disconnected() {
-    console.log("Disconnected from SecondChannel");
+    console.log("Disconnected from SecondChannel"+ tabSessionId);
   },
 
   async received(data) {

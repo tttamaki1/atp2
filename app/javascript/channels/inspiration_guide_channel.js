@@ -1,14 +1,15 @@
-import consumer from "./consumer"
+import { consumer, tabSessionId } from "./consumer";
 
 consumer.subscriptions.create(
-  { channel: 'InspirationGuideChannel', tab_session_id: sessionStorage.getItem('tabSessionId') },
+  { channel: 'InspirationGuideChannel', tab_session_id: tabSessionId },
   {
   connected() {
-    console.log("Connected to InspirationGuideChannel");
+    console.log("Connected to InspirationGuideChannel:"+ tabSessionId);
+
   },
 
   disconnected() {
-    console.log("Disconnected from InspirationGuideChannel");
+    console.log("Disconnected from InspirationGuideChannel:"+ tabSessionId);
   },
 
   received(data) {
