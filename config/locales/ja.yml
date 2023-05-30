@@ -49,6 +49,12 @@ ja:
   historical_sites: "地元の歴史的建造物を教えて"
   scenic_spots: "美しい景色を楽しめるスポットを教えて"
   local_market: "ローカルマーケットや地元の特産品やお土産を買うことができる場所を教えて"
+  family_friendly_spots: "家族連れにおすすめのスポットを教えてください"
+  night_life: "おすすめのバーやクラブを教えてください"
+  art_galleries: "美術館やアートギャラリーを教えてください"
+  shopping_districts: "ショッピングを楽しめるエリアを教えてください"
+
+
 
   create_travel_plan_title: "旅行プランを作成"
   create_travel_plan_description: "目的地を選んでプランを作成しましょう。"
