@@ -22,12 +22,12 @@
       </div>
       <% if show_search_button? %>
         <div class="header-search">
-          <%= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
+          <!-- <%#= form_with(url: open_ai_search_path, local: true, method: :get, class: "search-form") do |form| %>
             <div class="search-input-container">
-              <%= form.text_field :keyword, placeholder: t(:search), class: "search-input" %>
+              <%#= form.text_field :keyword, placeholder: t(:search), class: "search-input" %>
               <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
-          <% end %>
+          <%# end %> -->
         </div>
       <% end %>
       <nav class="header-nav">

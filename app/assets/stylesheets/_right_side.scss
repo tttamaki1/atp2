@@ -9,7 +9,7 @@
 .map-container {
   padding: 20px; /* 余白のサイズを指定 */
   width: 90%;
-  height: 90%;
+  height: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +23,5 @@
   left: 30px;
   height: 100%; /* 地図の高さを指定 */
   width: calc(100% - 40px); /* 幅を親要素から余白を差し引いた値に指定 */
-  z-index: -1;
   border-radius: 10px;
 }

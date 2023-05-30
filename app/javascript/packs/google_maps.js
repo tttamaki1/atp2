@@ -1,6 +1,10 @@
 global.$ = global.jQuery = require('jquery');
 
 let map;
+//  マーカーの位置情報を格納する配列
+const markerPositions = [];
+
+let markers = [];
 
 export function marking(keyword) {
   geocodeAddress(keyword)
@@ -51,20 +55,29 @@ function geocodeRenderMap(latitude, longitude) {
       title: `緯度: ${latitude}, 経度: ${longitude}`,
     });
 
-    //  マーカーの位置情報を格納する配列
-    // const markerPositions = [];
+    // マーカーを配列に追加
+    markers.push(marker);
 
-    // // マーカーが追加されるたびに位置情報を配列に追加
-    // markerPositions.push(location);
 
-    // // マップの表示領域を設定
-    // const bounds = new google.maps.LatLngBounds();
-    // for (const position of markerPositions) {
-    //   bounds.extend(position);
-    // }
-    // map.fitBounds(bounds);
+    // マーカーが追加されるたびに位置情報を配列に追加
+    markerPositions.push(location);
+    // マップの表示領域を設定
+    const bounds = new google.maps.LatLngBounds();
+    for (const position of markerPositions) {
+      bounds.extend(position);
+    }
+    // マーカーが一つだけの場合は中心をセットし、適切なズームレベルを設定
+    if (markerPositions.length === 1) {
+      map.setCenter(markerPositions[0]);
+      map.setZoom(14); // 適切なズームレベルに調整
+    } else {
+      // 複数のマーカーがある場合は全てを表示領域内に収める
+      map.fitBounds(bounds);
+    }
+
 
     marker.addListener("click", function() {
+      // console.log("Marker clicked!");
       // 情報ウィンドウを作成
       const infowindow = new google.maps.InfoWindow();
 
@@ -84,11 +97,11 @@ function geocodeRenderMap(latitude, longitude) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
               // マーカーがマウスオン時に情報ウィンドウを表示
               marker.addListener("mouseover", function() {
-                infowindow.setContent(getInfoWindowContent(place));
+                infowindow.setContent(getInfoWindowContent(place, latitude, longitude));
                 infowindow.open(map, marker);
               });
               
-              marker.addListener("mouseout", function() {
+              marker.addListener("click", function() {
                 infowindow.close();
               });
             } else {
@@ -111,7 +124,7 @@ function getPlaceIdFromLatLng(latitude, longitude) {
     const latLng = new google.maps.LatLng(latitude, longitude);
     const request = {
       location: latLng,
-      radius: 100, // 検索半径の指定 (メートル単位)
+      radius: 500, // 検索半径の指定 (メートル単位)
       type: 'point_of_interest', // 検索する場所のタイプ (任意のタイプに変更可能)
       fields: ['place_id'],
     };
@@ -128,22 +141,18 @@ function getPlaceIdFromLatLng(latitude, longitude) {
   });
 }
 
-function getInfoWindowContent(place) {
+function getInfoWindowContent(place, latitude, longitude) {
   // 情報ウィンドウのコンテンツを組み立てる
   let content = `<h3 style="color: black;">${place.name}</h3>`;
-  if (place.formatted_address) {
-    content += `<p style="color: black;">住所: ${place.formatted_address}</p>`;
-  }
-  // if (place.formatted_phone_number) {
-  //   content += `<p style="color: black;">電話番号: ${place.formatted_phone_number}</p>`;
-  // }
+
   if (place.rating) {
     content += `<p style="color: black;">評価: ${place.rating}</p>`;
   }
-  if (place.opening_hours) {
-    const hours = place.opening_hours.weekday_text.join("<br>");
-    content += `<p style="color: black;">営業時間:<br>${hours}</p>`;
-  }
+
+  // Google Mapsへのリンクを追加
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+  content += `<p><a href="${googleMapsUrl}" target="_blank">View on Google Maps</a></p>`;
+  
   return content;
 }
 
