@@ -1,20 +1,20 @@
-import consumer from "./consumer"
+import { consumer, tabSessionId } from "./consumer";
 
 let isFirstTime = true;
 let lastReceivedAt = null;
 let timeout = null;
 const TIMEOUT_DURATION = 5000; // タイムアウトまでの時間（ミリ秒）
 consumer.subscriptions.create(
-  { channel: 'OpenAiChannel', tab_session_id: sessionStorage.getItem('tabSessionId') },
+  { channel: 'OpenAiChannel', tab_session_id: tabSessionId },
   {
   connected() {
-    console.log("Connected to OpenAiChannel");
+    console.log("Connected to OpenAiChannel"+ tabSessionId);
     lastReceivedAt = Date.now(); // 接続時刻を初期化
     startTimeout(); // タイムアウト処理を開始
   },
 
   disconnected() {
-    console.log("Disconnected from OpenAiChannel");
+    console.log("Disconnected from OpenAiChannel"+ tabSessionId);
     stopTimeout(); // タイムアウト処理を停止
   },
 
@@ -40,9 +40,6 @@ function resetIsFirstTime() {
   isFirstTime = true;
 }
 
-// ここに保存ボタンを表示するコードを書く
-
-
 function startTimeout() {
   stopTimeout(); // タイムアウト処理が開始されていた場合は停止する
   timeout = setTimeout(() => {
@@ -64,18 +61,3 @@ setInterval(() => {
   }
 }, TIMEOUT_DURATION);
 
-document.addEventListener('turbolinks:before-visit', () => {
-  unsubscribeChannels();
-});
-
-window.addEventListener("beforeunload", () => {
-  console.log("Unsubscribing from OpenAiChannel");
-  unsubscribeChannels();
-});
-
-// function unsubscribeChannels() {
-//   if (openAiChannel) {
-//     openAiChannel.unsubscribe();
-//     openAiChannel = null; // 購読インスタンスをクリア
-//   }
-// }

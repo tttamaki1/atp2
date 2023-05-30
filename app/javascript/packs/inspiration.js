@@ -7,6 +7,7 @@ document.addEventListener("turbolinks:load", () => {
             const textbox = document.getElementById('place');
             if (textbox.value !== "") {
                 document.getElementsByClassName('container-index-inspiration')[0].classList.add('slide-fade-out');
+                
             }
         });
     });
