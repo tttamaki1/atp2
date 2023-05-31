@@ -82,7 +82,7 @@ function geocodeRenderMap(latitude, longitude) {
           // Place Detailsサービスのリクエストを作成
           const request = {
             placeId: placeId,
-            fields: ["name", "formatted_address", "formatted_phone_number", "reviews", "rating", "opening_hours", "website", "photos"],
+            fields: ["name", "formatted_address", "photos", "reviews", "rating", "opening_hours", "website", "photos"],
           };
 
           // Place Detailsサービスを実行
@@ -140,8 +140,21 @@ function getInfoWindowContent(place, latitude, longitude) {
   // 情報ウィンドウのコンテンツを組み立てる
   let content = `<h3 style="color: black;">${place.name}</h3>`;
 
+  // 写真情報を取得
+  const photos = place.photos;
+
+  // 写真がある場合は写真を追加
+  if (photos && photos.length > 0) {
+    const photo = photos[0]; // 最初の写真を使用する場合
+    
+    // 写真のURLを取得してコンテンツに追加
+    const photoUrl = photo.getUrl();
+    content += "<img src='" + photoUrl + "' width='250' height='250' />";
+
+  }
+
   if (place.rating) {
-    content += `<p style="color: black;">評価: ${place.rating}</p>`;
+    content += `<p style="color: black;">Review: ${place.rating}</p>`;
   }
 
   // Google Mapsへのリンクを追加
