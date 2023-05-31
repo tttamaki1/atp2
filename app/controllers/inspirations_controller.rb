@@ -31,7 +31,7 @@ class InspirationsController < ApplicationController
           ・日本語で
           ・#{place}の#{prompt_value}
           ・最低1000文字
-          ・改行して
+          ・最後の行は改行して
           
           ##出力形式##
           タイトル  #{place}の#{prompt_value}
@@ -46,7 +46,7 @@ class InspirationsController < ApplicationController
           ・In English
           ・#{prompt_value} of #{place}
           ・Minimum 1000 characters
-          ・Break lines
+          ・Break lines at the end of the output
           
           ##Output Format##
           Title:  #{prompt_value} of #{place}

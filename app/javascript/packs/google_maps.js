@@ -82,7 +82,7 @@ function geocodeRenderMap(latitude, longitude) {
           // Place Detailsサービスのリクエストを作成
           const request = {
             placeId: placeId,
-            fields: ["name", "formatted_address", "photos", "reviews", "rating", "opening_hours", "website", "photos"],
+            fields: ["name", "photos", "reviews", "rating", "website", "photos"],
           };
 
           // Place Detailsサービスを実行

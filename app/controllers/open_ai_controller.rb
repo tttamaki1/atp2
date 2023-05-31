@@ -27,8 +27,15 @@ class OpenAiController < ApplicationController
     destination_prompt = "#{plan.destination}"
     duration_prompt = "#{plan.duration}日間"
 
-    recommendation = plan.duration * 3
-    recommendation = 20 if recommendation >= 20
+    if plan.duration == 1
+      recommendation = 5
+    elsif 2 <= plan.duration <= 4
+      recommendation = plan.duration * 4
+    elsif 5 <= plan.duration <= 7
+      recommendation = plan.duration * 3
+    end
+
+    recommendation_for_food = plan.duration * 3
 
     budget_prompt = if plan.budget_option != 1
                       ''
@@ -58,7 +65,7 @@ class OpenAiController < ApplicationController
 
     food_prompt = if plan.food_id != 1
                     if I18n.locale == :ja
-                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店の名前だけを#{recommendation}個
+                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店の名前だけを#{recommendation_for_food}個
                       を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
                       ##形式## 1.
                       最後は改行してください"
@@ -106,7 +113,7 @@ class OpenAiController < ApplicationController
     if I18n.locale == :ja
       prompt = "
       Step by stepで
-      ・#{destination_prompt}のおすすめ観光スポットの名前だけを#{recommendation}個
+      ・#{destination_prompt}のおすすめ観光スポットの場所名だけを#{recommendation}個
       を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
       ##形式## 1.
       最後は改行してください
@@ -117,7 +124,7 @@ class OpenAiController < ApplicationController
     elsif I18n.locale == :en
       prompt = "
        Step by step,
-       ・Recommend #{recommendation} must-see spots in #{destination_prompt}. Please provide only their English names.
+       ・Recommend #{recommendation} must-see spots in #{destination_prompt}. Please provide only their English names of the places.
         ##Format## 1.
         Please include a line break at the end.
        #{activity_prompt}
@@ -154,13 +161,11 @@ class OpenAiController < ApplicationController
     puts prompt
     if I18n.locale == :ja
       prompt = "#{output_text}
-      の情報から、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
+      の場所名からだけで、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
       時刻と、訪れる場所ですることを詳しく日本語で書いてください。
       Important Instructions:
         プランの内容は、最大のトークン数に収まるように調整してください。
-        20時以降のプランは立てないでください。
       
-
       例)
       テーマ#{destination_prompt}
 
@@ -177,11 +182,10 @@ class OpenAiController < ApplicationController
       "
     elsif I18n.locale == :en
       prompt = "#{output_text}
-      From the information in #{output_text}, please create a travel plan for #{destination_prompt}#{duration_prompt}.
+      Please create a #{destination_prompt}#{duration_prompt} travel plan based solely on the name of the place.
        Please write in detail in English the times and things to do at the places you visit,
        Important Instructions:
         ensuring that the plan fits within the maximum token limit.
-        Please do not include any plans after 8:00 PM.
 
       Example)
       Theme#{destination_prompt}
