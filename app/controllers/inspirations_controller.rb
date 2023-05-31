@@ -51,9 +51,9 @@ class InspirationsController < ApplicationController
           ##Output Format##
           Title:  #{prompt_value} of #{place}
     
-          1. Place Name
+          1. The Name of the Place
 
-          Description
+          The description of the place
           "     
         end  
 
