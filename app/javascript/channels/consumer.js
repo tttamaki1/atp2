@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 let tabSessionId = sessionStorage.getItem('tabSessionId');
 
-window.addEventListener("turbolinks:load", function() {
+window.addEventListener("unload", function() {
   // すべてのサブスクリプションを解除
     consumer.subscriptions.subscriptions.forEach(function(subscription) {
       subscription.unsubscribe();
