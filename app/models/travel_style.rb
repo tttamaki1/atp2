@@ -5,7 +5,10 @@ class TravelStyle < ActiveHash::Base
     { id: 3, name_ja: 'リラックス', name_en: 'Relaxing' },
     { id: 4, name_ja: 'ロマンチック', name_en: 'Romantic' },
     { id: 5, name_ja: 'ファミリー', name_en: 'Family' },
-    { id: 6, name_ja: 'その他', name_en: 'Other' }
+    { id: 6, name_ja: 'アート', name_en: 'Art' },
+    { id: 7, name_ja: 'カルチャー', name_en: 'Culture' },
+    { id: 8, name_ja: 'スポーツ', name_en: 'Sports' },
+    { id: 9, name_ja: 'その他', name_en: 'Other' }
   ]
 
   include ActiveHash::Associations
