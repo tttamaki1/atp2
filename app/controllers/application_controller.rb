@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :set_locale
+    # before_action :basic_auth
+
+  
 
     def switch_language
       I18n.locale = params[:locale]
@@ -8,6 +11,12 @@ class ApplicationController < ActionController::Base
     end
 
    private
+
+    def basic_auth
+      authenticate_or_request_with_http_basic do |username, password|
+        username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+      end
+    end
   
     def set_locale
       session[:locale] = params[:locale] if params[:locale].present?

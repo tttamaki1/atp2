@@ -107,11 +107,27 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  width: 120px;
+  width: 180px;
 }
 
 #dark-mode-toggle:hover {
   color: var(--hover-color);
+}
+
+.dark-text {
+  position: absolute;
+  z-index: 1;
+  /* other styles */
+}
+
+.light-text {
+  position: absolute;
+  z-index: 2;
+  /* other styles */
+}
+
+.icon {
+  padding-right: 5px;
 }
 
 .signup {
@@ -163,6 +179,9 @@
   background-color: var(--background-color);
   &:hover {
     color: var( --hover-color);
+  }
+  &:focus {
+    outline: none;
   }
 }
 
