@@ -4,38 +4,39 @@ let isFirstTime = true;
 let lastReceivedAt = null;
 let timeout = null;
 const TIMEOUT_DURATION = 5000; // タイムアウトまでの時間（ミリ秒）
-consumer.subscriptions.create(
-  { channel: 'OpenAiChannel', tab_session_id: tabSessionId },
-  {
-  connected() {
-    console.log("Connected to OpenAiChannel"+ tabSessionId);
-    lastReceivedAt = Date.now(); // 接続時刻を初期化
-    startTimeout(); // タイムアウト処理を開始
-  },
+document.addEventListener("turbolinks:load", function() {
+  consumer.subscriptions.create(
+    { channel: 'OpenAiChannel', tab_session_id: tabSessionId },
+    {
+    connected() {
+      console.log("Connected to OpenAiChannel:"+ tabSessionId);
+      lastReceivedAt = Date.now(); // 接続時刻を初期化
+      startTimeout(); // タイムアウト処理を開始
+    },
 
-  disconnected() {
-    console.log("Disconnected from OpenAiChannel"+ tabSessionId);
-    stopTimeout(); // タイムアウト処理を停止
-  },
+    disconnected() {
+      console.log("Disconnected from OpenAiChannel:"+ tabSessionId);
+      stopTimeout(); // タイムアウト処理を停止
+    },
 
-  received(data) {
-    // console.log('Received data:', data);
-    const elementToUpdate = document.getElementById("element-to-update");
-    if (elementToUpdate && data != null) {
-      if (isFirstTime) {
-        const loadingElements = document.getElementsByClassName("loading-container");
-        const loadingElement = loadingElements[0]; // 最初の要素を選択
-        loadingElement.classList.add("hidden");
-        isFirstTime = false
+    received(data) {
+      // console.log('Received data:', data);
+      const elementToUpdate = document.getElementById("element-to-update");
+      if (elementToUpdate && data != null) {
+        if (isFirstTime) {
+          const loadingElements = document.getElementsByClassName("loading-container");
+          const loadingElement = loadingElements[0]; // 最初の要素を選択
+          loadingElement.classList.add("hidden");
+          isFirstTime = false
+        }
+        const content = elementToUpdate.innerHTML  + data;
+        elementToUpdate.innerHTML  = content;
+        lastReceivedAt = Date.now(); // 最新の受信時刻を更新 
       }
-      const content = elementToUpdate.innerHTML  + data;
-      elementToUpdate.innerHTML  = content;
-      lastReceivedAt = Date.now(); // 最新の受信時刻を更新 
     }
-  }
 
+  });
 });
-
 function resetIsFirstTime() {
   isFirstTime = true;
 }
