@@ -11,14 +11,13 @@ class Food < ActiveHash::Base
     { id: 9, name_ja: 'ラーメン', name_en: 'Ramen Shop' },
     { id: 10, name_ja: '寿司', name_en: 'Sushi Restaurant' },
     { id: 11, name_ja: 'ビュッフェ', name_en: 'Buffet-style' },
-    { id: 12, name_ja: '軽食', name_en: 'Snacks' },
-    { id: 13, name_ja: 'ベジタリアン', name_en: 'Vegetarian' },
-    { id: 14, name_ja: 'ヴィーガン', name_en: 'Vegan' },
-    { id: 15, name_ja: '名物料理', name_en: 'Local Specialty' },
-    { id: 16, name_ja: '伝統料理', name_en: 'Traditional' },
-    { id: 17, name_ja: '中華料理', name_en: 'Chinese Cuisine' },
-    { id: 18, name_ja: 'ハラル', name_en: 'Halal' },
-    { id: 19, name_ja: 'その他', name_en: 'Other' }
+    { id: 12, name_ja: 'ベジタリアン', name_en: 'Vegetarian' },
+    { id: 13, name_ja: 'ヴィーガン', name_en: 'Vegan' },
+    { id: 14, name_ja: '名物料理', name_en: 'Local Specialty' },
+    { id: 15, name_ja: '伝統料理', name_en: 'Traditional' },
+    { id: 16, name_ja: '中華料理', name_en: 'Chinese Cuisine' },
+    { id: 17, name_ja: 'ハラル', name_en: 'Halal' },
+    { id: 18, name_ja: 'その他', name_en: 'Other' }
   ]
 
   include ActiveHash::Associations
