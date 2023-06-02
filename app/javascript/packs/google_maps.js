@@ -40,6 +40,7 @@ function geocodeRenderMap(latitude, longitude) {
 
   function renderMap(latitude, longitude) {
     if (map == null) {
+      
       // マップが既に表示されていない場合は
       map = new google.maps.Map(document.getElementById("map"), {
         center: location,
