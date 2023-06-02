@@ -31,7 +31,6 @@ class InspirationsController < ApplicationController
           ・日本語で
           ・#{place}の#{prompt_value}
           ・最大のトークン数に収まるように調整してください。
-          ・最後の行は改行して
           
           ##出力形式##
           タイトル  #{place}の#{prompt_value}
@@ -46,7 +45,7 @@ class InspirationsController < ApplicationController
           ・In English
           ・#{prompt_value} of #{place}
           ・within the maximum token limit
-          ・Break lines at the end of the output
+  
           
           ##Output Format##
           Title:  #{prompt_value} of #{place}
