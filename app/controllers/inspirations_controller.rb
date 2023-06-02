@@ -28,9 +28,8 @@ class InspirationsController < ApplicationController
         if I18n.locale == :ja
           prompt =
           "##指示##
-          ・日本語で
           ・#{place}の#{prompt_value}
-          ・最大のトークン数に収まるように調整してください。
+          ・日本語で、最大のトークン数に収まるように調整してください。
           
           ##出力形式##
           タイトル  #{place}の#{prompt_value}
@@ -42,9 +41,8 @@ class InspirationsController < ApplicationController
         elsif  I18n.locale == :en
           prompt =
           "##Instructions##
-          ・In English
           ・#{prompt_value} of #{place}
-          ・within the maximum token limit
+          ・In English, within the maximum token limit
   
           
           ##Output Format##
