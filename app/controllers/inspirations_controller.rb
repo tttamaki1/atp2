@@ -30,7 +30,7 @@ class InspirationsController < ApplicationController
           "##指示##
           ・日本語で
           ・#{place}の#{prompt_value}
-          ・最低1000文字
+          ・最大のトークン数に収まるように調整してください。
           ・最後の行は改行して
           
           ##出力形式##
@@ -45,7 +45,7 @@ class InspirationsController < ApplicationController
           "##Instructions##
           ・In English
           ・#{prompt_value} of #{place}
-          ・Minimum 1000 characters
+          ・within the maximum token limit
           ・Break lines at the end of the output
           
           ##Output Format##

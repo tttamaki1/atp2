@@ -1,3 +1,4 @@
+global.$ = global.jQuery = require('jquery');
 document.addEventListener("turbolinks:load", () => {
     
     const promptElements = document.querySelectorAll('.prompt-box');
@@ -7,7 +8,7 @@ document.addEventListener("turbolinks:load", () => {
             const textbox = document.getElementById('place');
             if (textbox.value !== "") {
                 document.getElementsByClassName('container-index-inspiration')[0].classList.add('slide-fade-out');
-                
+                // $('html, body').animate({ scrollTop: 0 }, 'slow');   
             }
         });
     });
