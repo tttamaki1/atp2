@@ -5,12 +5,12 @@ document.addEventListener("turbolinks:load", function() {
     { channel: 'InspirationGuideChannel', tab_session_id: tabSessionId },
     {
     connected() {
-      console.log("Connected to InspirationGuideChannel:"+ tabSessionId);
+      console.log("Connected to Channel 3 :"+ tabSessionId);
 
     },
 
     disconnected() {
-      console.log("Disconnected from InspirationGuideChannel:"+ tabSessionId);
+      console.log("Disconnected from Channel 3 :"+ tabSessionId);
     },
 
     received(data) {

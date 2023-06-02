@@ -12,11 +12,11 @@ document.addEventListener("turbolinks:load", function() {
     chunk: '', // ここで this.chunk を初期化
     
     connected() {
-      console.log("Connected to SecondChannel:"+ tabSessionId);
+      console.log("Connected to Channel 2 :"+ tabSessionId);
     },
 
     disconnected() {
-      console.log("Disconnected from SecondChannel:"+ tabSessionId);
+      console.log("Disconnected from Channel 2 :"+ tabSessionId);
     },
 
     async received(data) {
