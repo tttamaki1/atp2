@@ -9,13 +9,13 @@ document.addEventListener("turbolinks:load", function() {
     { channel: 'OpenAiChannel', tab_session_id: tabSessionId },
     {
     connected() {
-      console.log("Connected to OpenAiChannel:"+ tabSessionId);
+      console.log("Connected to Channel 1 :"+ tabSessionId);
       lastReceivedAt = Date.now(); // 接続時刻を初期化
       startTimeout(); // タイムアウト処理を開始
     },
 
     disconnected() {
-      console.log("Disconnected from OpenAiChannel:"+ tabSessionId);
+      console.log("Disconnected from Channel 1 :"+ tabSessionId);
       stopTimeout(); // タイムアウト処理を停止
     },
 
