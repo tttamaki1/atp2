@@ -29,9 +29,9 @@ class OpenAiController < ApplicationController
 
     if plan.duration == 1
       recommendation = 5
-    elsif 2 <= plan.duration <= 4
+    elsif (2..4).include?(plan.duration)
       recommendation = plan.duration * 4
-    elsif 5 <= plan.duration <= 7
+    elsif (5..7).include?(plan.duration)
       recommendation = plan.duration * 3
     end
 
