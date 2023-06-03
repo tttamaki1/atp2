@@ -14,7 +14,7 @@ class Activity < ActiveHash::Base
     { id: 12, name_ja: '公園', name_en: 'Park' },
     { id: 13, name_ja: '文化体験', name_en: 'Cultural Experience' },
     { id: 14, name_ja: '歴史', name_en: 'History' },
-    { id: 15, name_ja: '寺院・神社・モスク', name_en: 'Religion' },
+    { id: 15, name_ja: 'お寺・神社・モスク', name_en: 'Temples Shrines Mosques' },
     { id: 16, name_ja: 'その他', name_en: 'Other' }
   ]
 

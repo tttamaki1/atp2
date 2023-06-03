@@ -10,7 +10,7 @@ class Food < ActiveHash::Base
     { id: 8, name_ja: '軽食', name_en: 'Snacks' },
     { id: 9, name_ja: 'ラーメン', name_en: 'Ramen Shop' },
     { id: 10, name_ja: '寿司', name_en: 'Sushi Restaurant' },
-    { id: 11, name_ja: 'ビュッフェ', name_en: 'Buffet-style' },
+    { id: 11, name_ja: 'ビュッフェ', name_en: 'Buffet-style Restaurant' },
     { id: 12, name_ja: 'ベジタリアン', name_en: 'Vegetarian' },
     { id: 13, name_ja: 'ヴィーガン', name_en: 'Vegan' },
     { id: 14, name_ja: '名物料理', name_en: 'Local Specialty' },

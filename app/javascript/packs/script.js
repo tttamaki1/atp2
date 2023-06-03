@@ -35,8 +35,8 @@ document.addEventListener("turbolinks:load", function () {
     budgetSlider.max = 200000;
     
     budgetSlider.addEventListener("input", function() {
-      var value = budgetSlider.value;
-      var step = 0;
+      let value = budgetSlider.value;
+      let step = 0;
       if (value <= 50000) {
         step = 1000;
       } else if (value <= 100000) {
@@ -55,20 +55,3 @@ document.addEventListener("turbolinks:load", function () {
     }
   }
 });
-
-
-
-// サーバーからの配信を止める方法が分からない
-// window.addEventListener('beforeunload', () => {
-//   consumer.subscriptions.subscriptions.forEach((subscription) => {
-//     if (subscription.identifier === '{"channel":"OpenAiChannel","tab_session_id":"' + sessionStorage.getItem('tabSessionId') + '"}') {
-//       subscription.unsubscribe();
-//     }
-//     if (subscription.identifier === '{"channel":"SecondChannel","tab_session_id":"' + sessionStorage.getItem('tabSessionId') + '"}') {
-//       subscription.unsubscribe();
-//     }
-//     if (subscription.identifier === '{"channel":"InspirationGuideChannel","tab_session_id":"' + sessionStorage.getItem('tabSessionId') + '"}') {
-//       subscription.unsubscribe();
-//     }
-//   });
-// });

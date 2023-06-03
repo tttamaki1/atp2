@@ -1,12 +1,13 @@
 
 document.addEventListener("turbolinks:load", () => {$(function() {
-    var $textInput = $('#destination-input');
-    var $submitButton = $('.submit-button');
+    
+    let $textInput = $('#destination-input');
+    let $submitButton = $('.submit-button');
 
     $submitButton.hide(); // 初期状態ではボタンを非表示にする
   
     $textInput.on('input', function() {
-      var inputValue = $textInput.val().trim();
+      let inputValue = $textInput.val().trim();
       if (inputValue.length > 0) {
         $submitButton.fadeIn(); // ボタンをフェードインして表示する
 
@@ -16,10 +17,9 @@ document.addEventListener("turbolinks:load", () => {$(function() {
     });
 
     $submitButton.on("click", function() {
-      var inputValue = $textInput.val().trim();
+      let inputValue = $textInput.val().trim();
   
       if (inputValue.length > 0) {
-        // map変数が存在する場合にのみマップを削除する
 
         //loading.gifを表示する
         const loadingElements = document.getElementsByClassName("loading-container");
@@ -29,7 +29,7 @@ document.addEventListener("turbolinks:load", () => {$(function() {
         console.log("loadingElement")
 
 
-        var destination_input_text = document.getElementById("destination-input").value;
+        let destination_input_text = document.getElementById("destination-input").value;
         // console.log(destination_input_text)
         if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
           setTimeout(function() { initializeMap(destination_input_text); }, 1000);

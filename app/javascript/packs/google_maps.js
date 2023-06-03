@@ -2,8 +2,18 @@ global.$ = global.jQuery = require('jquery');
 
 let map;
 //  マーカーの位置情報を格納する配列
-const markerPositions = [];
+let markerPositions = [];
 
+// $submitButton.on("click", function() {
+//   let inputValue = $textInput.val().trim();
+
+//   if (inputValue.length > 0) {
+//     // map変数が存在する場合にのみマップを削除する
+//     if (!markerPositions || markerPositions.getLength() === 0) {
+//       markerPositions.clear();
+//     }
+//   }
+// });
 export function marking(keyword) {
   geocodeAddress(keyword)
     .then(function(result) {
@@ -23,9 +33,9 @@ function geocodeAddress(keyword) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: keyword }, function(results, status) {
       if (status === "OK") {
-        var location = results[0].geometry.location;
-        var latitude = location.lat();
-        var longitude = location.lng();
+        let location = results[0].geometry.location;
+        let latitude = location.lat();
+        let longitude = location.lng();
         resolve({ latitude: latitude, longitude: longitude });
       } else {
         reject("Geocode 失敗: " + status);
@@ -47,6 +57,7 @@ function geocodeRenderMap(latitude, longitude) {
         zoom: 15,
         mapTypeControl: false
       });
+      
     }
     const marker = new google.maps.Marker({
       position: location,
@@ -55,8 +66,10 @@ function geocodeRenderMap(latitude, longitude) {
     });
 
 
-    // マーカーが追加されるたびに位置情報を配列に追加
+    // // マーカーが追加されるたびに位置情報を配列に追加
+    // 
     markerPositions.push(location);
+    // console.log(markerPositions)
     // マップの表示領域を設定
     const bounds = new google.maps.LatLngBounds();
     for (const position of markerPositions) {

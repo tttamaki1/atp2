@@ -19,10 +19,10 @@ document.addEventListener("turbolinks:load", () => {
     }
 
     // prompt-boxクラスの要素にマウスオーバー時のイベントリスナーを追加
-    var promptBoxes = document.getElementsByClassName('prompt-box');
+    let promptBoxes = document.getElementsByClassName('prompt-box');
     Array.from(promptBoxes).forEach(function(promptBox) {
       promptBox.addEventListener('mouseover', function() {
-        var value = this.getAttribute('value'); // value属性の値を取得
+        let value = this.getAttribute('value'); // value属性の値を取得
         updatePromptValue(value); // prompt_valueの値を更新
       });
     });
