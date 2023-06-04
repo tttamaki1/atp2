@@ -166,7 +166,7 @@ class OpenAiController < ApplicationController
     puts prompt
     if I18n.locale == :ja
       prompt = "#{output_text}
-      の場所名からだけで、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
+      の場所名と#{plan.place_to_visit}からだけで、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
       時刻と、訪れる場所ですることを詳しく日本語で書いてください。
       Important Instructions:
         プランの内容は、最大のトークン数に収まるように調整してください。
@@ -187,7 +187,8 @@ class OpenAiController < ApplicationController
       "
     elsif I18n.locale == :en
       prompt = "#{output_text}
-      Please create a #{destination_prompt}#{duration_prompt} travel plan based solely on the name of the place.
+      Please create a #{destination_prompt}#{duration_prompt} travel plan based solely on the name of the place and
+       #{plan.place_to_visit}.
        Please write in detail in English the times and things to do at the places you visit,
        Important Instructions:
         ensuring that the plan fits within the maximum token limit.
