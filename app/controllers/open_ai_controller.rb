@@ -70,13 +70,15 @@ class OpenAiController < ApplicationController
 
     food_prompt = if plan.food_id != 1
                     if I18n.locale == :ja
-                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店の名前だけを#{recommendation_for_food}個
+                      "・#{destination_prompt}の#{plan.food.translated_name}のお店がもしあればそのお店の名前と
+                      他にもおすすめの食事するお店の名前だけを、合計#{recommendation_for_food}個
                       を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
                       ##形式## 1.
                       最後は改行してください"
                     elsif I18n.locale == :en
-                      "・Please return only the names of #{recommendation} recommended restaurants and #{plan.food.translated_name} shops
-                       at #{destination_prompt}, in English.
+                      "・If there are any restaurants serving #{plan.food.translated_name}
+                       in #{destination_prompt}, please provide the names of those restaurants
+                       and #{recommendation_for_food} other recommended dining establishments in English.
                         ##Format## 1.
                         Please include a line break at the end."
                     end
@@ -125,6 +127,8 @@ class OpenAiController < ApplicationController
       #{activity_prompt}
       #{food_prompt}
       #{travel_style_prompt}
+      #{budget_prompt}
+      
      "
     elsif I18n.locale == :en
       prompt = "
@@ -135,6 +139,7 @@ class OpenAiController < ApplicationController
        #{activity_prompt}
        #{food_prompt}
        #{travel_style_prompt}
+       #{budget_prompt}
       "
     end
 
