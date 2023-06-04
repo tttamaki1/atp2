@@ -9,15 +9,12 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("@fortawesome/fontawesome-free/css/all.css")
-// require("./geocode")
-// require("./render_map")
 require('./google_maps')
 require("./format_text")
 require("./button")
 require("./scroll")
 require("./script")
 require("./inspiration")
-// require("./map")
 
 
   

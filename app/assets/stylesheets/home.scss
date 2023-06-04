@@ -1,3 +1,5 @@
+/* CSSComb: Format Styles */
+
 /* Variables */
 :root {
   --primary-color: #2a9d8f;
@@ -8,7 +10,6 @@
   --secondary-background-color-dark-mode: rgba(34, 34, 36);
   --background-border_style-dark-mode: 1px solid #1e3b1f;
   --font-color-dark-mode: #f4f4f4;;
-  
   --logo-size: 30px;
   --nav-background-color: #f4f4f4;
   --nav-font-color: #333;
@@ -17,15 +18,12 @@
   --hover-color: #2a9d8f;
   --hover-color-dark-mode: #e9c46a; 
 }
-
 /* General styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
 
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -166,7 +164,6 @@ input:-webkit-autofill {
 body.dark-mode input:-webkit-autofill {
   box-shadow: 0 0 0px 999px rgba(87, 81, 81, 0.5) inset;
 }
-
 
 .display {
   display: none;

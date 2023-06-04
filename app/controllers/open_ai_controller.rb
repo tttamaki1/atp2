@@ -25,7 +25,12 @@ class OpenAiController < ApplicationController
     tab_session_id = $tab_session_id
 
     destination_prompt = "#{plan.destination}"
-    duration_prompt = "#{plan.duration}日間"
+    if I18n.locale == :ja
+      duration_prompt = "#{plan.duration}日間"
+    elsif I18n.locale == :en
+      duration_prompt = "#{plan.duration} days"
+    end
+    
 
     if plan.duration == 1
       recommendation = 5
