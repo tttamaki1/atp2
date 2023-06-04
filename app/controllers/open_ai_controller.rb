@@ -25,7 +25,12 @@ class OpenAiController < ApplicationController
     tab_session_id = $tab_session_id
 
     destination_prompt = "#{plan.destination}"
-    duration_prompt = "#{plan.duration}日間"
+    if I18n.locale == :ja
+      duration_prompt = "#{plan.duration}日間"
+    elsif I18n.locale == :en
+      duration_prompt = "#{plan.duration} days"
+    end
+    
 
     if plan.duration == 1
       recommendation = 5
@@ -65,13 +70,15 @@ class OpenAiController < ApplicationController
 
     food_prompt = if plan.food_id != 1
                     if I18n.locale == :ja
-                      "・#{destination_prompt}のおすすめレストランと#{plan.food.translated_name}のお店の名前だけを#{recommendation_for_food}個
+                      "・#{destination_prompt}の#{plan.food.translated_name}のお店がもしあればそのお店の名前と
+                      他にもおすすめの食事するお店の名前だけを、合計#{recommendation_for_food}個
                       を日本語で返してください。(適当な日本語名が無ければ、英語でもいいです)
                       ##形式## 1.
                       最後は改行してください"
                     elsif I18n.locale == :en
-                      "・Please return only the names of #{recommendation} recommended restaurants and #{plan.food.translated_name} shops
-                       at #{destination_prompt}, in English.
+                      "・If there are any restaurants serving #{plan.food.translated_name}
+                       in #{destination_prompt}, please provide the names of those restaurants
+                       and #{recommendation_for_food} other recommended dining establishments in English.
                         ##Format## 1.
                         Please include a line break at the end."
                     end
@@ -120,6 +127,8 @@ class OpenAiController < ApplicationController
       #{activity_prompt}
       #{food_prompt}
       #{travel_style_prompt}
+      #{budget_prompt}
+      
      "
     elsif I18n.locale == :en
       prompt = "
@@ -130,6 +139,7 @@ class OpenAiController < ApplicationController
        #{activity_prompt}
        #{food_prompt}
        #{travel_style_prompt}
+       #{budget_prompt}
       "
     end
 
@@ -161,7 +171,7 @@ class OpenAiController < ApplicationController
     puts prompt
     if I18n.locale == :ja
       prompt = "#{output_text}
-      の場所名からだけで、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
+      の場所名と#{plan.place_to_visit}からだけで、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
       時刻と、訪れる場所ですることを詳しく日本語で書いてください。
       Important Instructions:
         プランの内容は、最大のトークン数に収まるように調整してください。
@@ -182,7 +192,8 @@ class OpenAiController < ApplicationController
       "
     elsif I18n.locale == :en
       prompt = "#{output_text}
-      Please create a #{destination_prompt}#{duration_prompt} travel plan based solely on the name of the place.
+      Please create a #{destination_prompt}#{duration_prompt} travel plan based solely on the name of the place and
+       #{plan.place_to_visit}.
        Please write in detail in English the times and things to do at the places you visit,
        Important Instructions:
         ensuring that the plan fits within the maximum token limit.
