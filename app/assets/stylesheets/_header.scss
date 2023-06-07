@@ -22,6 +22,8 @@
   font-size: 24px; 
   font-weight: bold;
   white-space: nowrap;
+  padding-right: 30px;
+
 }
 
 .header-logo a {
@@ -117,6 +119,7 @@
 .dark-text {
   position: absolute;
   z-index: 1;
+  white-space: nowrap;
 }
 
 .light-text {
