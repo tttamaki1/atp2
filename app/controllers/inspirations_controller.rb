@@ -23,7 +23,7 @@ class InspirationsController < ApplicationController
     
     def result(place, prompt_value)
 
-        tab_session_id = $tab_session_id #重要
+        page_session_id = $page_session_id #重要
 
         if I18n.locale == :ja
           prompt =
@@ -74,7 +74,7 @@ class InspirationsController < ApplicationController
                                   end
                                 end
                                html_text = sanitize("<pre>" + text.gsub(/\n/, '<br>'), tags: %w[br p h1 h2 h3])
-                               ActionCable.server.broadcast("inspiration_guide_channel:#{tab_session_id}", html_text)
+                               ActionCable.server.broadcast("inspiration_guide_channel:#{page_session_id}", html_text)
                             end
                     end
                 end

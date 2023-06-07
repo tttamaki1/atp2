@@ -1,16 +1,16 @@
-import { consumer, tabSessionId } from "./consumer";
+import { consumer, pageSessionId } from "./consumer";
 
 document.addEventListener("turbolinks:load", function() {
   consumer.subscriptions.create(
-    { channel: 'InspirationGuideChannel', tab_session_id: tabSessionId },
+    { channel: 'InspirationGuideChannel', page_session_id: pageSessionId },
     {
     connected() {
-      console.log("Connected to Channel 3 :"+ tabSessionId);
+      console.log("Connected to Channel 3 :"+ pageSessionId);
 
     },
 
     disconnected() {
-      console.log("Disconnected from Channel 3 :"+ tabSessionId);
+      console.log("Disconnected from Channel 3 :"+ pageSessionId);
     },
 
     received(data) {

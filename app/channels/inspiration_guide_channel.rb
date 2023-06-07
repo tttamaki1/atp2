@@ -2,8 +2,8 @@ class InspirationGuideChannel < ApplicationCable::Channel
     @streaming_thread = nil
   
     def subscribed
-      $tab_session_id = params[:tab_session_id]
-      stream_from "inspiration_guide_channel:#{$tab_session_id}"
+      $page_session_id = params[:page_session_id]
+      stream_from "inspiration_guide_channel:#{$page_session_id}"
       
       @streaming_thread = Thread.new do
         # ストリーミング処理

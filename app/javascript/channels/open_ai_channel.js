@@ -1,4 +1,4 @@
-import { consumer, tabSessionId } from "./consumer";
+import { consumer, pageSessionId } from "./consumer";
 
 let isFirstTime = true;
 let lastReceivedAt = null;
@@ -6,16 +6,16 @@ let timeout = null;
 const TIMEOUT_DURATION = 5000; // タイムアウトまでの時間（ミリ秒）
 document.addEventListener("turbolinks:load", function() {
   consumer.subscriptions.create(
-    { channel: 'OpenAiChannel', tab_session_id: tabSessionId },
+    { channel: 'OpenAiChannel', page_session_id: pageSessionId },
     {
     connected() {
-      console.log("Connected to Channel 1 :"+ tabSessionId);
+      console.log("Connected to Channel 1 :"+ pageSessionId);
       lastReceivedAt = Date.now(); // 接続時刻を初期化
       startTimeout(); // タイムアウト処理を開始
     },
 
     disconnected() {
-      console.log("Disconnected from Channel 1 :"+ tabSessionId);
+      console.log("Disconnected from Channel 1 :"+ pageSessionId);
       stopTimeout(); // タイムアウト処理を停止
     },
 

@@ -3,17 +3,8 @@ global.$ = global.jQuery = require('jquery');
 let map;
 //  マーカーの位置情報を格納する配列
 let markerPositions = [];
+window.markers = []; // マーカーのオブジェクトを保存する配列
 
-// $submitButton.on("click", function() {
-//   let inputValue = $textInput.val().trim();
-
-//   if (inputValue.length > 0) {
-//     // map変数が存在する場合にのみマップを削除する
-//     if (!markerPositions || markerPositions.getLength() === 0) {
-//       markerPositions.clear();
-//     }
-//   }
-// });
 export function marking(keyword) {
   geocodeAddress(keyword)
     .then(function(result) {
@@ -45,26 +36,24 @@ function geocodeAddress(keyword) {
 }
 
 function geocodeRenderMap(latitude, longitude) {
-  const geocoder = new google.maps.Geocoder();
   const location = new google.maps.LatLng(latitude, longitude);
 
   function renderMap(latitude, longitude) {
     if (map == null) {
-      
       // マップが既に表示されていない場合は
       map = new google.maps.Map(document.getElementById("map"), {
         center: location,
         zoom: 15,
         mapTypeControl: false
       });
-      
     }
+
     const marker = new google.maps.Marker({
       position: location,
       map: map,
       title: `緯度: ${latitude}, 経度: ${longitude}`,
     });
-
+    window.markers.push(marker);
 
     // // マーカーが追加されるたびに位置情報を配列に追加
     // 
