@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       indexContainer.style.width = `${viewportWidth}px`;
 
-      console.log(`viewportWidth:${viewportWidth} viewportHeight:${viewportHeight}`)
+    //   console.log(`viewportWidth:${viewportWidth} viewportHeight:${viewportHeight}`)
       if (viewportWidth >= 1350) {
         generatedPlanContainer.style.width = `${viewportWidth * 0.4}px`;
         calculatedWidth = viewportWidth - (viewportWidth * 0.4) - 400;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mapContainer.style.width = `${calculatedWidth - 40}px`;
       rightSideContainer.style.width = `${calculatedWidth}px`;
   
-      console.log(rightSideContainer.style.width);
+    //   console.log(rightSideContainer.style.width);
     }
   
     // ブラウザの幅が変わった時に実行
