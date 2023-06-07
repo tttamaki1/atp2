@@ -8,10 +8,10 @@ window.markers = []; // マーカーのオブジェクトを保存する配列
 export function marking(keyword) {
   geocodeAddress(keyword)
     .then(function(result) {
-      var latitude = result.latitude;
-      var longitude = result.longitude;
-      console.log("緯度：" + latitude);
-      console.log("経度：" + longitude);
+      let latitude = result.latitude;
+      let longitude = result.longitude;
+      // console.log("緯度：" + latitude);
+      // console.log("経度：" + longitude);
       geocodeRenderMap(latitude, longitude);
     })
     .catch(function(error) {
@@ -21,7 +21,7 @@ export function marking(keyword) {
 
 function geocodeAddress(keyword) {
   return new Promise(function(resolve, reject) {
-    var geocoder = new google.maps.Geocoder();
+    let geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: keyword }, function(results, status) {
       if (status === "OK") {
         let location = results[0].geometry.location;
@@ -29,7 +29,7 @@ function geocodeAddress(keyword) {
         let longitude = location.lng();
         resolve({ latitude: latitude, longitude: longitude });
       } else {
-        reject("Geocode 失敗: " + status);
+        reject("Geocode Failed: " + status);
       }
     });
   });
@@ -103,7 +103,7 @@ function geocodeRenderMap(latitude, longitude) {
                 infowindow.close();
               });
             } else {
-              console.log("Place Details 失敗: " + status);
+              console.log("Place Details Failed: " + status);
             }
           });
         })

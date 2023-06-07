@@ -1,8 +1,8 @@
 
 document.addEventListener("turbolinks:load", () => {$(function() {
     let destinationInputValue
-    let $textInput = $('#destination-input');
-    let $submitButton = $('.submit-button');
+    const $textInput = $('#destination-input');
+    const $submitButton = $('.submit-button');
   
     $submitButton.hide(); // 初期状態ではボタンを非表示にする
   
@@ -18,25 +18,19 @@ document.addEventListener("turbolinks:load", () => {$(function() {
 
     $submitButton.on("click", function() {
       destinationInputValue = $textInput.val().trim();
-      console.log(destinationInputValue)
       window.destinationInputValue = destinationInputValue;
       if (destinationInputValue.length > 0) {
-              //マーカーを全て削除する
-        console.log(window.markers)
+        //マーカーを全て削除する
         if (window.markers.length > 0) {
           window.markers.forEach((marker) => {
             marker.setMap(null); // マーカーをマップから削除
           });
           window.markers = []; // マーカー配列をクリア
-          console.log(window.markers)
         }
         //loading.gifを表示する
         const loadingElements = document.getElementsByClassName("loading-container");
         const loadingElement = loadingElements[0]; // 最初の要素を選択
         loadingElement.classList.remove("hidden");
-        console.log(loadingElement)
-        console.log("loadingElement")
-
 
         let destination_input_text = document.getElementById("destination-input").value;
         // console.log(destination_input_text)
