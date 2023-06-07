@@ -1,22 +1,22 @@
-import { consumer, tabSessionId } from "./consumer";
+import { consumer, pageSessionId } from "./consumer";
 import { marking } from '../packs/google_maps';
-// console.log('tabSessionId')
-// console.log(sessionStorage.getItem('tabSessionId'))
+// console.log('pageSessionId')
+// console.log(sessionStorage.getItem('pageSessionId'))
 document.addEventListener("turbolinks:load", function() {
   consumer.subscriptions.create(
     {
       channel: 'SecondChannel',
-      tab_session_id: tabSessionId
+      page_session_id: pageSessionId
     },
     {
     chunk: '', // ここで this.chunk を初期化
     
     connected() {
-      console.log("Connected to Channel 2 :"+ tabSessionId);
+      console.log("Connected to Channel 2 :"+ pageSessionId);
     },
 
     disconnected() {
-      console.log("Disconnected from Channel 2 :"+ tabSessionId);
+      console.log("Disconnected from Channel 2 :"+ pageSessionId);
     },
 
     async received(data) {
@@ -27,8 +27,8 @@ document.addEventListener("turbolinks:load", function() {
             let keyword = this.chunk;
             keyword = keyword.replace(/^\d+\.\s*/, '');
             keyword = keyword.replace('&amp;', '&');
+            keyword = `${keyword}, ${window.destinationInputValue}`;
             console.log(keyword);
-
             marking(keyword) //キーワードの取り出しをopen_ai_channelへ移行する
 
             this.chunk = "";       

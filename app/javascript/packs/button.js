@@ -1,4 +1,4 @@
-
+let destinationInputValue
 document.addEventListener("turbolinks:load", () => {$(function() {
     
     let $textInput = $('#destination-input');
@@ -7,8 +7,8 @@ document.addEventListener("turbolinks:load", () => {$(function() {
     $submitButton.hide(); // 初期状態ではボタンを非表示にする
   
     $textInput.on('input', function() {
-      let inputValue = $textInput.val().trim();
-      if (inputValue.length > 0) {
+      let destinationInputValue = $textInput.val().trim();
+      if (destinationInputValue.length > 0) {
         $submitButton.fadeIn(); // ボタンをフェードインして表示する
 
       } else {
@@ -17,10 +17,10 @@ document.addEventListener("turbolinks:load", () => {$(function() {
     });
 
     $submitButton.on("click", function() {
-      let inputValue = $textInput.val().trim();
-  
-      if (inputValue.length > 0) {
-
+      destinationInputValue = $textInput.val().trim();
+      console.log(destinationInputValue)
+      window.destinationInputValue = destinationInputValue;
+      if (destinationInputValue.length > 0) {
         //loading.gifを表示する
         const loadingElements = document.getElementsByClassName("loading-container");
         const loadingElement = loadingElements[0]; // 最初の要素を選択

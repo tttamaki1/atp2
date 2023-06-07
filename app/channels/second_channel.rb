@@ -1,8 +1,8 @@
 class SecondChannel < ApplicationCable::Channel
-  $tab_session_id = nil
+  $page_session_id = nil
   def subscribed
-    $tab_session_id = params[:tab_session_id]
-    stream_from "second_channel:#{$tab_session_id}"
+    $page_session_id = params[:page_session_id]
+    stream_from "second_channel:#{$page_session_id}"
   end
 
   def unsubscribed

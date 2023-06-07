@@ -2,7 +2,7 @@ import { createConsumer } from "@rails/actioncable";
 import { v4 as uuidv4 } from 'uuid';
 
 let consumer; // consumer変数をグローバルスコープで定義
-let tabSessionId; // tabSessionId変数をグローバルスコープで定義
+let pageSessionId; // pageSessionId変数をグローバルスコープで定義
 
 document.addEventListener("turbolinks:load", function() {
 
@@ -10,23 +10,23 @@ document.addEventListener("turbolinks:load", function() {
   if (consumer && consumer.subscriptions) {
     consumer.subscriptions.subscriptions.forEach(function(subscription) {
       subscription.unsubscribe();
-      // tabSessionIdを削除
-      sessionStorage.removeItem('tabSessionId');
+      // pageSessionIdを削除
+      sessionStorage.removeItem('pageSessionId');
     });
   }
   
-  tabSessionId = sessionStorage.getItem('tabSessionId');
+  pageSessionId = sessionStorage.getItem('pageSessionId');
 
 
-  tabSessionId = uuidv4();
-  sessionStorage.setItem('tabSessionId', tabSessionId);
+  pageSessionId = uuidv4();
+  sessionStorage.setItem('pageSessionId', pageSessionId);
 
 
-  consumer = createConsumer(`/cable?tab_session_id=${tabSessionId}`); // consumerを初期化
+  consumer = createConsumer(`/cable?page_session_id=${pageSessionId}`); // consumerを初期化
 });
 
 window.addEventListener("turbolinks:before-visit", function() {
 
 });
 
-export { consumer, tabSessionId };
+export { consumer, pageSessionId };
