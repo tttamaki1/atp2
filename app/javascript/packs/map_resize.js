@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         calculatedWidth = viewportWidth - (viewportWidth * 0.4) - 400;
         
       } else {
-        generatedPlanContainer.style.width = '500px';
-        calculatedWidth = viewportWidth - 500 - 400;
+        calculatedWidth = viewportWidth - generatedPlanContainer.style.width - 400;
       }
 
       calculatedHeight = viewportHeight - 220; // 62 + 50 + 50 + 40 + 18 = 220
