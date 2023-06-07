@@ -15,6 +15,7 @@ require("./button")
 require("./scroll")
 require("./script")
 require("./inspiration")
+require("./map_resize")
 
 
   

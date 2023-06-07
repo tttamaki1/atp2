@@ -15,6 +15,7 @@
   --nav-font-color: #333;
   --border-style: 1px solid #66dbc6;
   --headertop-height: 62px;
+  --headerbottom-height: 50px;
   --hover-color: #2a9d8f;
   --hover-color-dark-mode: #e9c46a; 
 }
@@ -42,7 +43,6 @@ body {
   position: absolute;
   top: 100px;
   min-height: 1000px;
-  min-width: 1680px;
   overflow: auto;
 }
 
