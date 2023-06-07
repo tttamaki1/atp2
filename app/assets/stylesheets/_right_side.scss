@@ -7,7 +7,7 @@
 
 .map-container {
   padding: 20px;
-  width: 90%;
+  width: calc(90% - 40px);
   height: 675px;
   display: flex;
   justify-content: center;
