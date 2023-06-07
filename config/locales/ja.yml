@@ -57,9 +57,9 @@ ja:
 
 
   create_travel_plan_title: "旅行プランを作成"
-  create_travel_plan_description: "目的地を選んでプランを作成しましょう。"
-  create_customized_plan_title: "自分だけのオリジナルプランを作成"
-  create_customized_plan_description: "詳細な希望を選択して、自分だけのオリジナルプランを作成できます。"
+  create_travel_plan_description: "目的地を選んでプランを作成しましょう"
+  googlemap: "GoogleMapで場所を確認"
+  googlemap_description: "おすすめスポットの場所をGoogleMapの地図上で見ることができます"
   inspiration_guide_title: "インスピレーションガイド"
-  inspiration_guide_description: "目的地とテンプレートを選択して、おすすめスポットの提案をします。"
+  inspiration_guide_description: "目的地とテンプレートを選択して、おすすめスポットの提案をします"
 

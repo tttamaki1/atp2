@@ -70,7 +70,7 @@ en:
 
   create_travel_plan_title: "Create Your Travel Plan"
   create_travel_plan_description: "Choose your destination and create your travel plan."
-  create_customized_plan_title: "Create Your Own Customized Plan"
-  create_customized_plan_description: "Select detailed preferences and create your own customized travel plan."
+  googlemap: "Check Locations on Google Map"
+  googlemap_description: "You can view the locations of recommended spots on Google Map"
   inspiration_guide_title: "Inspiration Guide"
   inspiration_guide_description: "Select your destination and templates to get recommendations for popular spots."
