@@ -5,6 +5,8 @@ let map;
 let markerPositions = [];
 window.markers = []; // マーカーのオブジェクトを保存する配列
 
+
+
 export function marking(keyword) {
   geocodeAddress(keyword)
     .then(function(result) {
@@ -44,7 +46,7 @@ function geocodeRenderMap(latitude, longitude, keyword) {
       map = new google.maps.Map(document.getElementById("map"), {
         center: location,
         zoom: 15,
-        mapTypeControl: false
+        mapTypeControl: false,
       });
     }
 
@@ -85,6 +87,7 @@ function geocodeRenderMap(latitude, longitude, keyword) {
             const request = {
               placeId: placeId,
               fields: ["name", "photos", "reviews", "rating", "website", "photos"],
+              language: window.selectedLanguage,
             };
     
             const service = new google.maps.places.PlacesService(map);
@@ -142,6 +145,17 @@ function getPlaceId(keyword) {
 
 
 function getInfoWindowContent(place, latitude, longitude) {
+
+  let link;
+  let review;
+  if (window.selectedLanguage == "ja") {
+    link = "GoogleMapで見る";
+    review = "レビュー:";
+  } else if (window.selectedLanguage == "en") {
+    link = "View on Google Maps";
+    review = "Review:";
+  }
+
   // 情報ウィンドウのコンテンツを組み立てる
   let content = `<h3 style="color: black;">${place.name}</h3>`;
 
@@ -159,12 +173,13 @@ function getInfoWindowContent(place, latitude, longitude) {
   }
 
   if (place.rating) {
-    content += `<p style="color: black;">Review: ${place.rating}</p>`;
+    content += `<p style="color: black;">${review} ${place.rating}</p>`;
   }
 
   // Google Mapsへのリンクを追加
+
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
-  content += `<p><a href="${googleMapsUrl}" target="_blank">View on Google Maps</a></p>`;
+  content += `<p><a href="${googleMapsUrl}" target="_blank">${link}</a></p>`;
   
   return content;
 }
