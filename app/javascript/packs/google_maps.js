@@ -74,42 +74,44 @@ function geocodeRenderMap(latitude, longitude) {
     }
 
 
+    marker.infoFetched = false; // マーカーにinfoFetchedフラグを追加
+    marker.infowindow = new google.maps.InfoWindow(); // インフォウィンドウもマーカーに関連付け
+    
     marker.addListener("click", function() {
-      // console.log("Marker clicked!");
-      // 情報ウィンドウを作成
-      const infowindow = new google.maps.InfoWindow();
-
-      // Place IDを取得する関数を呼び出す
-      getPlaceIdFromLatLng(latitude, longitude)
-        .then(function(placeId) {
-          // Place Detailsサービスのリクエストを作成
-          const request = {
-            placeId: placeId,
-            fields: ["name", "photos", "reviews", "rating", "website", "photos"],
-          };
-
-          // Place Detailsサービスを実行
-          console.log(request);
-          const service = new google.maps.places.PlacesService(map);
-          service.getDetails(request, function(place, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-              // マーカーがマウスオン時に情報ウィンドウを表示 
-              infowindow.setContent(getInfoWindowContent(place, latitude, longitude));
-              infowindow.open(map, marker);
-             
-              marker.addListener("click", function() {
-                infowindow.close();
-              });
-            } else {
-              console.log("Place Details Failed: " + status);
-            }
+      if (!this.infoFetched) { // まだ詳細情報が取得されていない場合
+        getPlaceIdFromLatLng(latitude, longitude)
+          .then(function(placeId) {
+            const request = {
+              placeId: placeId,
+              fields: ["name", "photos", "reviews", "rating", "website", "photos"],
+            };
+    
+            const service = new google.maps.places.PlacesService(map);
+            service.getDetails(request, function(place, status) {
+              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                // 詳細情報が取得できたらinfoFetchedフラグをtrueに設定
+                marker.infoFetched = true;
+    
+                marker.infowindow.setContent(getInfoWindowContent(place, latitude, longitude));
+                marker.infowindow.open(map, marker);
+    
+                marker.addListener("click", function() {
+                  infowindow.close();
+                });
+              } else {
+                console.log("Place Details Failed: " + status);
+              }
+            });
+          })
+          .catch(function(error) {
+            console.log(error);
           });
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      } else { // すでに詳細情報が取得されている場合
+        // インフォウィンドウを再表示
+        this.infowindow.open(map, this);
+      }
     });
+    
   }
 
   renderMap(latitude, longitude);
