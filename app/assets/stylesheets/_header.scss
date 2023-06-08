@@ -85,23 +85,54 @@
 .header-nav li {
   display: flex;
   align-items: center;
-  margin: 0 20px;
+  justify-content: center;
+  text-align: center;
+  width: 110px;
+  margin: 0 auto;
+  padding: 0 5px;
   height: var(--headerbottom-height);
   white-space: nowrap;
-}
-
-.header-nav a:hover {
-  color: var(--hover-color);
 }
 
 .header-nav a {
   color: var(--font-color);
   text-decoration: none;
+  width: 100%;
+  &:hover {
+    color: var(--hover-color);
+  }
+}
+
+.language-switcher {
+  margin: auto 10px auto 0 ;
+}
+
+.language-select {
+  width: 95px;
+  border: none;
+  font-size: 16px;
+  background-color: var(--background-color);
+  margin-right: 16px;
+  &:hover {
+    color: var( --hover-color);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+body.dark-mode .language-select {
+  border: none;
+  font-size: 16px;
+  background-color: var(--background-color-dark-mode);
+  color: white;
+  &:hover {
+    color: var( --hover-color-dark-mode);
+  }
 }
 
 #dark-mode-toggle {
   margin: 0 auto;
-  padding: 3px;
   color: black;
   font-size: 16px;
   border: none;
@@ -109,7 +140,7 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  width: 180px;
+  width: 140px;
 }
 
 #dark-mode-toggle:hover {
@@ -125,6 +156,7 @@
 .light-text {
   position: absolute;
   z-index: 2;
+  width: 120px;
 }
 
 .icon {
@@ -168,30 +200,5 @@
   color: var(--hover-color);
 }
 
-.language-switcher {
-  margin: auto 12px auto 0 ;
-}
 
-.language-select {
-  border: none;
-  font-size: 16px;
-  padding: 0 4px;
-  background-color: var(--background-color);
-  &:hover {
-    color: var( --hover-color);
-  }
-  &:focus {
-    outline: none;
-  }
-}
-
-body.dark-mode .language-select {
-  border: none;
-  font-size: 16px;
-  background-color: var(--background-color-dark-mode);
-  color: white;
-  &:hover {
-    color: var( --hover-color-dark-mode);
-  }
-}
 
