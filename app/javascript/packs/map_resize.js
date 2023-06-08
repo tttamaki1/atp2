@@ -1,5 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
 
+  if (document.querySelector('.generated-plan-container')) {
       const generatedPlanContainer = document.querySelector('.generated-plan-container');
       const rightSideContainer = document.querySelector('.right-side-container'); 
       const mapContainer = document.querySelector('.map-container'); 
@@ -35,6 +36,6 @@ document.addEventListener('turbolinks:load', function() {
     
       // 初期表示時に一度実行
       adjustWidth();
- 
+    }  
   });
   
