@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
 
-  if (document.querySelector('.generated-plan-container')) {
+   if (document.querySelector('.generated-plan-container')) {
       const generatedPlanContainer = document.querySelector('.generated-plan-container');
       const rightSideContainer = document.querySelector('.right-side-container'); 
       const mapContainer = document.querySelector('.map-container'); 
@@ -20,6 +20,9 @@ document.addEventListener('turbolinks:load', function() {
           
         } else {
           calculatedWidth = viewportWidth - generatedPlanContainer.style.width - 400;
+          if (generatedPlanContainer == null) {
+            generatedPlanContainer.style.width = '400px';
+          }
         }
 
         calculatedHeight = viewportHeight - 220; // 62 + 50 + 50 + 40 + 18 = 220
@@ -36,6 +39,6 @@ document.addEventListener('turbolinks:load', function() {
     
       // 初期表示時に一度実行
       adjustWidth();
-    }  
+     }  
   });
   
