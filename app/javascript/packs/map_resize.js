@@ -1,11 +1,10 @@
 document.addEventListener('turbolinks:load', function() {
 
-  if (document.body.classList.contains('.container-index')) {
       const generatedPlanContainer = document.querySelector('.generated-plan-container');
       const rightSideContainer = document.querySelector('.right-side-container'); 
       const mapContainer = document.querySelector('.map-container'); 
       const indexContainer = document.querySelector('.container-index'); 
-      
+
       function adjustWidth() {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
@@ -13,7 +12,7 @@ document.addEventListener('turbolinks:load', function() {
 
         indexContainer.style.width = `${viewportWidth}px`;
 
-      //   console.log(`viewportWidth:${viewportWidth} viewportHeight:${viewportHeight}`)
+        console.log(`viewportWidth:${viewportWidth} viewportHeight:${viewportHeight}`)
         if (viewportWidth >= 1350) {
           generatedPlanContainer.style.width = `${viewportWidth * 0.4}px`;
           calculatedWidth = viewportWidth - (viewportWidth * 0.4) - 400;
@@ -28,7 +27,7 @@ document.addEventListener('turbolinks:load', function() {
         mapContainer.style.width = `${calculatedWidth - 40}px`;
         rightSideContainer.style.width = `${calculatedWidth}px`;
     
-      //   console.log(rightSideContainer.style.width);
+       console.log(rightSideContainer.style.width);
       }
     
       // ブラウザの幅が変わった時に実行
@@ -36,6 +35,6 @@ document.addEventListener('turbolinks:load', function() {
     
       // 初期表示時に一度実行
       adjustWidth();
-    }  
+ 
   });
   
