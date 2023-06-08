@@ -45,7 +45,7 @@ function geocodeRenderMap(latitude, longitude, keyword) {
       // マップが既に表示されていない場合は
       map = new google.maps.Map(document.getElementById("map"), {
         center: location,
-        zoom: 15,
+        zoom: 14,
         mapTypeControl: false,
       });
     }
@@ -183,4 +183,5 @@ function getInfoWindowContent(place, latitude, longitude) {
   
   return content;
 }
+
 
