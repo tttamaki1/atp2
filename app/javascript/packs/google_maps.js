@@ -93,12 +93,11 @@ function geocodeRenderMap(latitude, longitude) {
           const service = new google.maps.places.PlacesService(map);
           service.getDetails(request, function(place, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-              // マーカーがマウスオン時に情報ウィンドウを表示
-              marker.addListener("mouseover", function() {
-                infowindow.setContent(getInfoWindowContent(place, latitude, longitude));
-                infowindow.open(map, marker);
-              });
-              
+
+              // マーカーがマウスオン時に情報ウィンドウを表示 
+              infowindow.setContent(getInfoWindowContent(place, latitude, longitude));
+              infowindow.open(map, marker);
+             
               marker.addListener("click", function() {
                 infowindow.close();
               });
