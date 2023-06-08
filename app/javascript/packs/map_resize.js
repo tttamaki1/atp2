@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
     const generatedPlanContainer = document.querySelector('.generated-plan-container');
     const rightSideContainer = document.querySelector('.right-side-container'); 
     const mapContainer = document.querySelector('.map-container'); 
