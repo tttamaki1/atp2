@@ -33,9 +33,15 @@
       <nav class="header-nav">
         <ul>
           <div class="language-switcher">
-            <%= form_tag(switch_language_path, method: :post, id: 'language-form') do %>
-              <%= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], ['English', 'en']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select') %>
-            <% end %>
+            <li>
+              <%= form_tag(switch_language_path, method: :post, id: 'language-form') do %>
+                <div class="language-select-container">
+                  <i class="fas fa-globe icon"></i>
+                  <%= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], [t(:english), 'en']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select') %>
+                </div>
+              <% end %>
+            </li>
+            
           </div>
           <div id="dark-mode-toggle">
             <span class="dark-text"><i class="far fa-moon icon"></i><%= t(:dark_mode) %></span>
