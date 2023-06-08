@@ -12,7 +12,7 @@ export function marking(keyword) {
       let longitude = result.longitude;
       // console.log("緯度：" + latitude);
       // console.log("経度：" + longitude);
-      geocodeRenderMap(latitude, longitude);
+      geocodeRenderMap(latitude, longitude, keyword);
     })
     .catch(function(error) {
       console.log(error);
@@ -35,10 +35,10 @@ function geocodeAddress(keyword) {
   });
 }
 
-function geocodeRenderMap(latitude, longitude) {
+function geocodeRenderMap(latitude, longitude, keyword) {
   const location = new google.maps.LatLng(latitude, longitude);
 
-  function renderMap(latitude, longitude) {
+  function renderMap(latitude, longitude, keyword) {
     if (map == null) {
       // マップが既に表示されていない場合は
       map = new google.maps.Map(document.getElementById("map"), {
@@ -52,6 +52,7 @@ function geocodeRenderMap(latitude, longitude) {
       position: location,
       map: map,
       title: `緯度: ${latitude}, 経度: ${longitude}`,
+      keyword: keyword,
     });
     window.markers.push(marker);
 
@@ -79,7 +80,7 @@ function geocodeRenderMap(latitude, longitude) {
     
     marker.addListener("click", function() {
       if (!this.infoFetched) { // まだ詳細情報が取得されていない場合
-        getPlaceIdFromLatLng(latitude, longitude)
+        getPlaceId(keyword)
           .then(function(placeId) {
             const request = {
               placeId: placeId,
@@ -114,31 +115,31 @@ function geocodeRenderMap(latitude, longitude) {
     
   }
 
-  renderMap(latitude, longitude);
+  renderMap(latitude, longitude, keyword);
 
 }
 
-function getPlaceIdFromLatLng(latitude, longitude) {
+function getPlaceId(keyword) {
   return new Promise(function(resolve, reject) {
-    const latLng = new google.maps.LatLng(latitude, longitude);
-    const request = {
-      location: latLng,
-      radius: 500, // 検索半径の指定 (メートル単位)
-      type: 'point_of_interest', // 検索する場所のタイプ (任意のタイプに変更可能)
+    console.log(keyword)
+    const service = new google.maps.places.PlacesService(map);
+    let req = {
+      query: keyword,
       fields: ['place_id'],
     };
-
-    const service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
-        const placeId = results[0].place_id;
-        resolve(placeId);
-      } else {
-        reject("Place Search 失敗: " + status);
-      }
+    
+    service.findPlaceFromQuery(req, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK && results[0]) {
+          console.log(results[0].place_id);
+          resolve(results[0].place_id); 
+        } else {
+          reject("Could not find the place ID: " + status);
+        }
     });
   });
 }
+
+
 
 function getInfoWindowContent(place, latitude, longitude) {
   // 情報ウィンドウのコンテンツを組み立てる
