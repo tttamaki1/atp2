@@ -9,6 +9,40 @@ body.dark-mode {
     background-color: var(--background-color-dark-mode);
     color: var(--font-color-dark-mode);
   }
+
+  body.dark-mode .container-about {
+    background-image: url('hongkong_night.jpg');
+  }
+
+  body.dark-mode .upper-left {
+    p {
+      color: white;
+    }
+  
+    h3 {
+      color: white;    
+    }
+  }
+  
+  body.dark-mode .middle-right {
+    p {
+      color: white;
+    }
+  
+    h3 {
+      color: white;    
+    }  
+  }
+  
+  body.dark-mode .bottom-left {
+    p {
+      color: white;
+    }
+  
+    h3 {
+      color: white;    
+    }  
+  }
   
   body.dark-mode .plan-input {
     background-color: var(--input-background-color-dark-mode);
