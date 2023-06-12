@@ -54,6 +54,8 @@ en:
   password_length: "  6 characters minimum"
   password_confirmation: "Password Confirmation"
   password_confirmation_error: "Please enter the password confirmation correctly"
+  reset_password: "Reset Password"
+
   place_input_placeholder: "Enter a place.."
   unknown_tourist_spots: "Tell me about lesser-known tourist spots"
   popular_restaurants: "Tell me about popular restaurants among locals"
