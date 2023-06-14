@@ -58,7 +58,7 @@ class InspirationsController < ApplicationController
             client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
             client.chat(
               parameters: {
-                model: 'gpt-3.5-turbo', # Required.
+                model: 'gpt-3.5-turbo-0613', # Required.
                 messages: [{ role: 'user', content: prompt }], # Required.
                 temperature: 0.1,
                 max_tokens: 2048,

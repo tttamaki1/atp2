@@ -149,7 +149,7 @@ class OpenAiController < ApplicationController
       client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
       client.chat(
         parameters: {
-          model: 'gpt-3.5-turbo', # Required.
+          model: 'gpt-3.5-turbo-0613', # Required.
           messages: [{ role: 'user', content: prompt }], # Required.
           temperature: 0.1,
           max_tokens: 2048,
@@ -217,10 +217,10 @@ class OpenAiController < ApplicationController
       client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
       client.chat(
         parameters: {
-          model: 'gpt-3.5-turbo', # Required.
+          model: 'gpt-3.5-turbo-16k', # Required.
           messages: [{ role: 'user', content: prompt }], # Required.
           temperature: 1.0,
-          max_tokens: 2048,
+          max_tokens: 8192,
           # format: "html",
           stream: proc do |chunk, _bytesize|
                     task.async do
