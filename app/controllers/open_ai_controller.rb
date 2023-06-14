@@ -173,8 +173,6 @@ class OpenAiController < ApplicationController
       prompt = "#{output_text}
       の場所名と#{plan.place_to_visit}からだけで、#{destination_prompt}#{duration_prompt}旅行プランを立ててください。
       時刻と、訪れる場所ですることを詳しく日本語で書いてください。
-      Important Instructions:
-        プランの内容は、最大のトークン数に収まるように調整してください。
       
       例)
       テーマ#{destination_prompt}
@@ -195,8 +193,6 @@ class OpenAiController < ApplicationController
       Please create a #{destination_prompt}#{duration_prompt} travel plan based solely on the name of the place and
        #{plan.place_to_visit}.
        Please write in detail in English the times and things to do at the places you visit,
-       Important Instructions:
-        ensuring that the plan fits within the maximum token limit.
 
       Example)
       Theme#{destination_prompt}
