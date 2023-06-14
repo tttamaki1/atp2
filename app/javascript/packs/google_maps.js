@@ -154,7 +154,10 @@ function getInfoWindowContent(place, latitude, longitude) {
   } else if (window.selectedLanguage == "en") {
     link = "View on Google Maps";
     review = "Review:";
-  }
+  } else if (window.selectedLanguage == "zh-CN") {
+    link = "在谷歌地图上查看";
+    review = "评论：";
+    }
 
   // 情報ウィンドウのコンテンツを組み立てる
   let content = `<h3 style="color: black;">${place.name}</h3>`;
