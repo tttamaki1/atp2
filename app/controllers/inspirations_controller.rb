@@ -52,7 +52,22 @@ class InspirationsController < ApplicationController
 
           The description of the place
           "     
-        end  
+        elsif I18n.locale == :'zh-CN'
+          prompt =
+          "##说明##
+          ・#{place}的#{prompt_value}
+          ・使用中文，不超过最大令牌限制
+        
+        
+          ##输出格式##
+          标题：#{place}的#{prompt_value}
+        
+          1. 地点的名称
+        
+          地点的描述
+          "
+        end
+        
 
         Async do |task|
             client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:OPENAI_API_KEY))
@@ -61,7 +76,7 @@ class InspirationsController < ApplicationController
                 model: 'gpt-3.5-turbo-0613', # Required.
                 messages: [{ role: 'user', content: prompt }], # Required.
                 temperature: 0.1,
-                max_tokens: 2048,
+                max_tokens: 3000,
                 # format: "html",
                 stream: proc do |chunk, _bytesize|
                           task.async do

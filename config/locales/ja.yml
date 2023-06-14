@@ -1,4 +1,27 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ユーザー名
+        email: メールアドレス
+        password: パスワード
+      errors:
+        messages:
+          blank: "を入力してください"
+          invalid: "を正しく入力してください"
+          taken: "は既に使用されています"
+
+  models:
+
+      order_form:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市町村
+        street_address: 番地
+        phone_number: 電話番号
+        token: クレジットカード情報
+
+ja:
   destination: "目的地"
   place_to_visit: "行きたい場所"   
   days: "日間"

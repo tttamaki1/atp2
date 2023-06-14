@@ -49,6 +49,8 @@ class OpenAiController < ApplicationController
                         "予算: #{plan.budget} 円"
                       elsif I18n.locale == :en
                         "budget: #{plan.budget} US Doller"
+                      elsif I18n.locale == :'zh-CN'
+                        "budget: #{plan.budget} 元"
                       end
                     end
 
@@ -63,7 +65,12 @@ class OpenAiController < ApplicationController
                           at #{destination_prompt}, in English.
                            ##Format## 1.
                            Please include a line break at the end."
-                        end
+                          elsif I18n.locale == :'zh-CN'
+                            "・请返回在#{destination_prompt}的#{plan.activity.translated_name}推荐的#{recommendation}个景点的中文名称。
+                            ##格式## 1.
+                            请在末尾包含一个换行符。"
+                          end
+                          
                       else
                           ''
                       end
@@ -81,7 +88,13 @@ class OpenAiController < ApplicationController
                        and #{recommendation_for_food} other recommended dining establishments in English.
                         ##Format## 1.
                         Please include a line break at the end."
+                    elsif I18n.locale == :'zh-CN'
+                      "・如果在#{destination_prompt}有任何提供#{plan.food.translated_name}的餐馆，
+                        请提供这些餐馆的名称和其他#{recommendation_for_food}个推荐的餐饮场所的中文名称。
+                        ##格式## 1.
+                        请在结尾处包括一个换行符。"
                     end
+                      
 
                   else
                       ''
@@ -92,7 +105,10 @@ class OpenAiController < ApplicationController
                               "旅のスタイルは#{plan.travel_style.translated_name}です。"
                             elsif I18n.locale == :en
                               "The travel style is #{plan.travel_style.translated_name}."
+                            elsif I18n.locale == :'zh-CN'
+                              "旅行风格是#{plan.travel_style.translated_name}。"
                             end
+                            
                             
                           else
                             ''
@@ -103,7 +119,10 @@ class OpenAiController < ApplicationController
                                 "交通: #{plan.transportation.translated_name}"
                               elsif I18n.locale == :en
                                 "Transportation: #{plan.transportation.translated_name}"
+                              elsif I18n.locale == :'zh-CN'
+                                "交通方式：#{plan.transportation.translated_name}"
                               end
+                              
                               
                             else
                               ''
@@ -113,7 +132,10 @@ class OpenAiController < ApplicationController
                                 "宿泊タイプ: #{plan.accommodation.translated_name}"
                               elsif I18n.locale == :en
                                 "Accommodation Type: #{plan.accommodation.translated_name}"
+                              elsif I18n.locale == :'zh-CN'
+                                "住宿类型：#{plan.accommodation.translated_name}"
                               end
+                              
                            else
                               ''
                            end
@@ -136,6 +158,17 @@ class OpenAiController < ApplicationController
        ・Recommend #{recommendation} must-see spots in #{destination_prompt}. Please provide only their English names of the places.
         ##Format## 1.
         Please include a line break at the end.
+       #{activity_prompt}
+       #{food_prompt}
+       #{travel_style_prompt}
+       #{budget_prompt}
+      "
+    elsif I18n.locale == :'zh-CN'
+      prompt = "
+       逐步说明，
+       ・在#{destination_prompt}推荐#{recommendation}个必看景点。请只提供这些地方的名称。
+        ##格式## 1.
+        请在末尾包含一个换行符。
        #{activity_prompt}
        #{food_prompt}
        #{travel_style_prompt}
@@ -206,7 +239,25 @@ class OpenAiController < ApplicationController
       12:00 - Shopping at souvenir shops around the Eiffel Tower
 
       There are lots of souvenir shops around the iconic tower. Let's look for local souvenirs."
+    elsif I18n.locale == :'zh-CN'
+      prompt = "#{output_text}
+      请根据地点名称和#{plan.place_to_visit}创建一份仅基于中文的#{destination_prompt}#{duration_prompt}旅行计划。
+      请详细描述您在每个地点参观的时间和活动。
+    
+      示例)
+      #{destination_prompt}主题
+    
+      第一天
+    
+      10:00 - 巴黎铁塔
+    
+      巴黎的标志性建筑，高达324米。您可以俯瞰巴黎市区并欣赏美丽的风景。
+    
+      12:00 - 在巴黎铁塔周围的纪念品商店购物
+    
+      在这个标志性塔周围有许多纪念品商店。让我们寻找当地的纪念品。"
     end
+    
 
 
     Async do |task|
@@ -230,6 +281,9 @@ class OpenAiController < ApplicationController
                           elsif text.include?("Day #{i}")
                             html_text.gsub!(/Day\s{i}*/,
                                             "<h3>Day #{i}</h3>")
+                          elsif text.include?("第#{i}天")
+                            html_text.gsub!(/第#{i}天\s*/,
+                                            "<h3>第#{i}天</h3>")
                           end
                         end
                         html_text = sanitize("<pre>" + text.gsub(/\n/, '<br>'), tags: %w[br p h1 h2 h3])
