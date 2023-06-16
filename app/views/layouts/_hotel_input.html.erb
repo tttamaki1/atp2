@@ -25,7 +25,7 @@
         <%= form.label :accommodation_id, t(:accommodation_id) %>
         <%= form.collection_select(:accommodation_id, Accommodation.all, :id, :translated_name, {}, { class: "select-control", id: "accommodation" }) %>
       </div>
-      <%= form.submit t(:get_recommendation_for_hotel_btn), class: 'submit-button hidden' %>
+      <%= form.submit t(:get_recommendation_for_hotel_btn), class: 'hotel-input-btn hidden' %>
     <% end %>
   </div>
   

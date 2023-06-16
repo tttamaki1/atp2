@@ -23,21 +23,14 @@ body.dark-mode .flatpickr-calendar {
 
 // スライダー
 .budget-input {
-    margin-top: 8px;
+    margin-left: 6px;
+    margin-top: 24px;
 }
 
 #budget-slider {
     margin-right: 8px;
     height: 10px;
-    width: 330px;
-    border: var(--border-style);
-    border-radius: 5px;
-}
-
-#budget-slider {
-    margin-right: 8px;
-    height: 10px;
-    width: 330px;
+    width: 320px;
     border: var(--border-style);
     border-radius: 5px;
 }
@@ -87,4 +80,12 @@ body.dark-mode .flatpickr-calendar {
 
 #budget-slider .noUi-handle::after {
     display: none;
+}
+
+body.dark-mode #budget-slider .noUi-connect {
+    background:  var(--primary-color);
+}
+
+body.dark-mode #budget-slider .noUi-handle {
+    background-color: var(--primary-color);
 }

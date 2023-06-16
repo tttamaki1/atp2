@@ -84,6 +84,25 @@
         background-color: #1f776d;
       }
     }
+
+    .hotel-input-btn {
+      width: 200px;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #2a9d8f;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: block; 
+  
+      &:hover {
+        background-color: #1f776d;
+      }
+    }
+
   }
 
 #hover-template-1,
