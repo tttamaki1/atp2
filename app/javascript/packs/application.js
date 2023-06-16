@@ -16,11 +16,12 @@ require("./scroll")
 require("./script")
 require("./inspiration")
 require("./map_resize")
-
+require("./datepicker")
+require("./slider")
 
   
 
-
+//= require flatpickr
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets

@@ -22,7 +22,7 @@ ja:
         token: クレジットカード情報
 
 ja:
-  destination: "目的地"
+  destination: "目的地を入力"
   place_to_visit: "行きたい場所"   
   days: "日間"
   budget_option: "予算"   
@@ -39,10 +39,16 @@ ja:
   search: "検索"
   language: "言語"
   japanese: "日本語"
+  english: "English"
   chinese: "中文"
   logout: "ログアウト"
   signup: "新規登録"
   login: "ログイン"
+
+  get_recommendation_for_hotel: "ホテル"
+  get_recommendation_for_hotel_btn: "検索する"
+  provide_your_hotel_preferences: "ホテル"
+  calender: "日付を選択"
 
   inspiration_guide: "インスピレーションガイド"
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hotels/hotel'
   devise_for :users
 
   root to: 'open_ai#index'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get '/inspiration_guide/result', to: 'inspirations#result'
   post '/inspiration_guide/result', to: 'inspirations#create', as: :inspiration_guide_post
   post '/switch_language', to: 'application#switch_language', as: :switch_language
+  get 'get_recommendation_for_hotel', to: 'hotels#hotel', as: :hotel
 
   mount ActionCable.server => '/cable'
 end

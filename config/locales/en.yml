@@ -1,8 +1,8 @@
 
 
 en:
-  destination: "Destination"
-  place_to_visit: "Places to Visit"
+  destination: "Enter a destination"
+  place_to_visit: "Enter places to visit"
   days: "Days"
   budget_option: "Budget"
   activity_id: "Activity"
@@ -17,9 +17,16 @@ en:
 
   search: "search"
 
+  get_recommendation_for_hotel: "Hotels"
+  get_recommendation_for_hotel_btn: "Search"
+  provide_your_hotel_preferences: "Hotels"
+  calender: "Select dates"
+
   inspiration_guide: "Inspiration Guide"
 
+  japanese: "日本語"
   english: "English"
+  chinese: "中文"
   dark_mode: "Dark Mode"
   light_mode: "Light Mode"
 

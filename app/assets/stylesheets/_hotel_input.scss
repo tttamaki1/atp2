@@ -1,0 +1,21 @@
+@import 'flatpickr/dist/flatpickr.min';
+
+.flatpickr-calendar {
+   border: var(--border-style) ;
+}
+
+.flatpickr-day.selected-range {
+   background-color: var(--primary-color); /* 選択範囲の背景色を変更 */
+   color: #ffffff; /* 選択範囲内の日付テキストの色を変更 */
+}
+
+body.dark-mode .flatpickr-calendar {
+   background-color: var(--secondary-background-color-dark-mode);
+   color: white;
+   border: var(--border-style) ;
+
+ }
+
+ body.dark-mode  .flatpickr-day {
+    color: white;
+ }
