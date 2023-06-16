@@ -11,10 +11,13 @@
 
       <div class="form-group">
         <%#= form.check_box :budget_option, { checked: true }, class: 'budget-option', id: 'budget-option' %>
-        <span class="cursor-pointer"><%= t(:budget_option) %></span>
-        <div id="budget-input">
-          <%= form.range_field :budget, id: "budget-slider" %>
-          <span id="budget-slider-value">10,000</span> <%= t(:currency) %>
+        <div class="budget-input">
+            <div id="budget-slider"></div>
+            <div class="slider-value-container">
+                <div class="price_per_night"><%= t(:price) %></div>
+                <div><span id="budget-slider-value">10,000</span></div>
+                <div class="currency"><%= t(:currency) %></div>
+            </div>
         </div>
       </div>
   

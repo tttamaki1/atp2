@@ -98,13 +98,6 @@ pointer-events: auto;
 opacity: 1;
 }
 
-.budget-input {
-background-color: #ddd;
-pointer-events: none;
-opacity: 0.5;
-display: none;
-}
-
 .slider-wrapper {
   display: flex;
   align-items: center;
@@ -120,24 +113,6 @@ display: none;
   width: 1em; /* 2桁分の幅を確保 */
   text-align: right;
   margin: 25px;
-  font-size: 20px;
-}
-
-#budget-input {
-
-  padding-top: 10px;
-}
-
-#budget-slider {
-  margin-right: 8px;
-  width: 180px;
-}
-
-#budget-slider-value {
-  display: inline-block;
-  width: 3em;
-  text-align: right;
-  margin: 10px;
   font-size: 20px;
 }
 

@@ -1,6 +1,7 @@
 import flatpickr from "flatpickr";
 import { Japanese } from "flatpickr/dist/l10n/ja.js";
 import { ChineseSimplified } from "flatpickr/dist/l10n/zh.js";
+import { English } from "flatpickr/dist/l10n/default.js";
 
 document.addEventListener("turbolinks:load", function(){
 
@@ -9,6 +10,8 @@ document.addEventListener("turbolinks:load", function(){
         locale = Japanese
     } else if (window.selectedLanguage == "zh-CN"){
         locale = ChineseSimplified
+    } else if (window.selectedLanguage == "en"){
+        locale = English    
     } else {
         ;
     };
