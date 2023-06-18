@@ -1,4 +1,7 @@
 document.addEventListener("turbolinks:load", () => {
+  let linkElement = document.createElement("link");
+  linkElement.rel = "stylesheet";
+  linkElement.type = "text/css";
   const toggleDarkMode = () => {
     const darkModeButton = document.getElementById("dark-mode-toggle");
     const darkMode = darkModeButton.querySelector(".dark-text");
@@ -10,10 +13,16 @@ document.addEventListener("turbolinks:load", () => {
       darkMode.style.display = "none";
       lightMode.style.display = "inline-block";
       sessionStorage.setItem("darkMode", "enabled");
+
+      linkElement.href = "https://npmcdn.com/flatpickr/dist/themes/dark.css";
+      document.head.appendChild(linkElement);
     } else {
       darkMode.style.display = "inline-block";
       lightMode.style.display = "none";
       sessionStorage.setItem("darkMode", "disabled");
+
+      linkElement.href = "https://npmcdn.com/flatpickr/dist/themes/material_green.css";
+      document.head.appendChild(linkElement);
     }
   };
 
@@ -28,10 +37,19 @@ document.addEventListener("turbolinks:load", () => {
     const lightModeText = document.querySelector(".light-text");
     darkModeText.style.display = "none";
     lightModeText.style.display = "inline-block";
+
+    linkElement.href = "https://npmcdn.com/flatpickr/dist/themes/dark.css";
+    document.head.appendChild(linkElement);
+  
+
   } else {
     const darkModeText = document.querySelector(".dark-text");
     const lightModeText = document.querySelector(".light-text");
     darkModeText.style.display = "inline-block";
     lightModeText.style.display = "none";
+
+    linkElement.href = "https://npmcdn.com/flatpickr/dist/themes/material_green.css";
+    document.head.appendChild(linkElement);
   }
+
 });

@@ -10,14 +10,14 @@
    color: #ffffff; /* 選択範囲内の日付テキストの色を変更 */
 }
 
-body.dark-mode .flatpickr-calendar {
+.flatpickr-calendar {
    background-color: var(--secondary-background-color-dark-mode);
    color: white;
    border: var(--border-style) ;
 
  }
 
- body.dark-mode  .flatpickr-day {
+.flatpickr-day {
     color: white;
  }
 
