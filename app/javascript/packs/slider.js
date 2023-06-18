@@ -1,5 +1,4 @@
 import noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';
 
 document.addEventListener("turbolinks:load", function() {
 
