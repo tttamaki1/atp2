@@ -10,10 +10,11 @@
     <div class="form-group">
       <div class="slider-wrapper">
         <%#= form.label :duration, t(:duration) %>
-        <%= form.range_field :duration, id: "day-slider", min: 1, max: 7, value: 1 %>
+        <div id="day-slider" data-min="1" data-max="7" data-value="1"></div>
         <span id="day-slider-value">1</span> 
         <%= t(:days) %>
       </div>
+      
     </div>
 
     <div class="form-group">

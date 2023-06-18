@@ -124,7 +124,10 @@ opacity: 1;
 
 #day-slider {
   margin-right: 8px;
+  height: 10px;
   width: 180px;
+  border: var(--border-style);
+  border-radius: 5px;
 }
 
 #day-slider-value {
@@ -133,6 +136,35 @@ opacity: 1;
   text-align: right;
   margin: 25px;
   font-size: 20px;
+}
+
+#day-slider .noUi-connect {
+  background:  var(--primary-color);
+}
+
+#day-slider .noUi-handle {
+  height: 20px;
+  width: 20px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+  background-color: var(--primary-color);
+}
+
+#day-slider .noUi-handle::before {
+  display: none;
+}
+
+#day-slider .noUi-handle::after {
+  display: none;
+}
+
+body.dark-mode #day-slider .noUi-connect {
+  background:  var(--primary-color);
+}
+
+body.dark-mode #day-slider .noUi-handle {
+  background-color: var(--primary-color);
 }
 
 .font-light {

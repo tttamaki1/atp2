@@ -11,14 +11,5 @@ document.addEventListener("turbolinks:load", function () {
   navigator.language = window.selectedLanguage;
 
   window.scrollTo(0, 0);
-  
-  if (document.querySelector(".generated-plan-container")) {
-    const slider = document.getElementById("day-slider");
-    const sliderValue = document.getElementById("day-slider-value");
-
-    slider.addEventListener("input", function () {
-      sliderValue.textContent = slider.value;
-    });
-  }
 
 });

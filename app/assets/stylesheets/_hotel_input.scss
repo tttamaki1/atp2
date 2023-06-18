@@ -35,32 +35,6 @@ body.dark-mode .flatpickr-calendar {
     border-radius: 5px;
 }
 
-.slider-value-container {
-    margin: 16px;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.price_per_night {
-    display: flex;
-    align-items: center;  
-}
-
-.currency {
-    display: flex;
-    align-items: center;
-}
-
-  
-#budget-slider-value {
-    display: inline-block;
-    width: 160px;
-    text-align: right;
-    margin: 10px;
-    font-size: 20px;
-    white-space: nowrap;
-}
-
 #budget-slider .noUi-connect {
     background:  var(--primary-color);
 }
@@ -88,4 +62,30 @@ body.dark-mode #budget-slider .noUi-connect {
 
 body.dark-mode #budget-slider .noUi-handle {
     background-color: var(--primary-color);
+}
+
+.slider-value-container {
+    margin: 16px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.price_per_night {
+    display: flex;
+    align-items: center;  
+}
+
+.currency {
+    display: flex;
+    align-items: center;
+}
+
+  
+#budget-slider-value {
+    display: inline-block;
+    width: 160px;
+    text-align: right;
+    margin: 10px;
+    font-size: 20px;
+    white-space: nowrap;
 }
