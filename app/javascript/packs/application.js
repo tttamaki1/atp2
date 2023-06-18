@@ -22,7 +22,6 @@ require("./slider")
   
 
 //= require flatpickr
-//= require nouislider/dist/nouislider.css
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
