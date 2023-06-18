@@ -51,12 +51,10 @@ document.addEventListener("turbolinks:load", function() {
   }
 
   if (document.querySelector(".generated-plan-container")) {
-    console.log("AA")
     const daySlider = document.getElementById("day-slider");
     const sliderValue = document.getElementById("day-slider-value");
-
     if (daySlider) {
-        console.log("BB")
+
         noUiSlider.create(daySlider, {
             start: [1], // 初期範囲
             range: {
@@ -67,7 +65,6 @@ document.addEventListener("turbolinks:load", function() {
         });
 
         daySlider.noUiSlider.on('update', function(values, handle) {
-            console.log("CC")
             const rangeValues = daySlider.noUiSlider.get(); // 選択範囲の値を取得
             sliderValue.textContent = parseInt(rangeValues, 10);
         });
