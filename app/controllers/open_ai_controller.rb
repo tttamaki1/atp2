@@ -12,6 +12,7 @@ class OpenAiController < ApplicationController
   end
 
   def create
+    
     @plan = Plan.new(plan_params)
     if @plan.save
       open_api_request(@plan)
@@ -21,7 +22,7 @@ class OpenAiController < ApplicationController
   end
 
   def open_api_request(plan)
-
+    binding.pry
     page_session_id = $page_session_id
 
     destination_prompt = "#{plan.destination}"
