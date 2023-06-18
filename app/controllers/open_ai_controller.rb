@@ -12,7 +12,7 @@ class OpenAiController < ApplicationController
   end
 
   def create
-    
+
     @plan = Plan.new(plan_params)
     if @plan.save
       open_api_request(@plan)
@@ -22,7 +22,7 @@ class OpenAiController < ApplicationController
   end
 
   def open_api_request(plan)
-    binding.pry
+
     page_session_id = $page_session_id
 
     destination_prompt = "#{plan.destination}"
@@ -43,17 +43,17 @@ class OpenAiController < ApplicationController
 
     recommendation_for_food = plan.duration * 3
 
-    budget_prompt = if plan.budget_option != 1
-                      ''
-                    else
-                      if I18n.locale == :ja
-                        "予算: #{plan.budget} 円"
-                      elsif I18n.locale == :en
-                        "budget: #{plan.budget} US Doller"
-                      elsif I18n.locale == :'zh-CN'
-                        "budget: #{plan.budget} 元"
-                      end
-                    end
+    # budget_prompt = if plan.budget_option != 1
+    #                   ''
+    #                 else
+    #                   if I18n.locale == :ja
+    #                     "予算: #{plan.budget} 円"
+    #                   elsif I18n.locale == :en
+    #                     "budget: #{plan.budget} US Doller"
+    #                   elsif I18n.locale == :'zh-CN'
+    #                     "budget: #{plan.budget} 元"
+    #                   end
+    #                 end
 
     activity_prompt = if plan.activity_id != 1
                         if I18n.locale == :ja
@@ -150,7 +150,6 @@ class OpenAiController < ApplicationController
       #{activity_prompt}
       #{food_prompt}
       #{travel_style_prompt}
-      #{budget_prompt}
       
      "
     elsif I18n.locale == :en
@@ -162,7 +161,6 @@ class OpenAiController < ApplicationController
        #{activity_prompt}
        #{food_prompt}
        #{travel_style_prompt}
-       #{budget_prompt}
       "
     elsif I18n.locale == :'zh-CN'
       prompt = "
@@ -173,7 +171,6 @@ class OpenAiController < ApplicationController
        #{activity_prompt}
        #{food_prompt}
        #{travel_style_prompt}
-       #{budget_prompt}
       "
     end
 
@@ -304,7 +301,7 @@ class OpenAiController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:destination, :duration, :budget_option, :budget, :activity_id, :transportation_id,
+    params.require(:plan).permit(:destination, :duration, :activity_id, :transportation_id,
                                  :accommodation_id, :food_id, :travel_style_id, :place_to_visit)
   end
 end

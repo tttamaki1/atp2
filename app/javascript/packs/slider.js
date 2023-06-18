@@ -52,7 +52,8 @@ document.addEventListener("turbolinks:load", function() {
 
   if (document.querySelector(".generated-plan-container")) {
     const daySlider = document.getElementById("day-slider");
-    const sliderValue = document.getElementById("day-slider-value");
+    const sliderValue = document.getElementById("day-slider-display");
+    const daySliderValue = document.getElementById("day-slider-value");
     if (daySlider) {
 
         noUiSlider.create(daySlider, {
@@ -67,6 +68,9 @@ document.addEventListener("turbolinks:load", function() {
         daySlider.noUiSlider.on('update', function(values, handle) {
             const rangeValues = daySlider.noUiSlider.get(); // 選択範囲の値を取得
             sliderValue.textContent = parseInt(rangeValues, 10);
+
+            // day-sliderの値を取得してhiddenフィールドに設定する
+            daySliderValue.value = values[handle];
         });
     }
   }
