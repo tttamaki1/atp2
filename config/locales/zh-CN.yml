@@ -15,8 +15,17 @@ zh-CN:
 
   search: "搜索"
 
-  inspiration_guide: "灵感指南"
+  get_recommendation_for_hotel: "酒店"
+  get_recommendation_for_hotel_btn: "搜索"
+  provide_your_hotel_preferences: "酒店"
+  calender: "选择日期"
+  price: "价格"
 
+  inspiration_guide: "灵感指南"
+  
+
+  japanese: "日本語"
+  english: "English"
   chinese: "中文"
   dark_mode: "暗黑模式"
   light_mode: "明亮模式"

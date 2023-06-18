@@ -3,6 +3,7 @@ document.addEventListener("turbolinks:load", () => {$(function() {
     let destinationInputValue
     const $textInput = $('#destination-input');
     const $submitButton = $('.submit-button');
+    const $hotelInputButton = $('.hotel-input-btn');
   
     $submitButton.hide(); // 初期状態ではボタンを非表示にする
   
@@ -13,6 +14,18 @@ document.addEventListener("turbolinks:load", () => {$(function() {
 
       } else {
         $submitButton.fadeOut(); // ボタンをフェードアウトして非表示にする
+      }
+    });
+
+    $hotelInputButton.hide(); // 初期状態ではボタンを非表示にする
+  
+    $textInput.on('input', function() {
+      let destinationInputValue = $textInput.val().trim();
+      if (destinationInputValue.length > 0) {
+        $hotelInputButton.fadeIn(); // ボタンをフェードインして表示する
+
+      } else {
+        $hotelInputButton.fadeOut(); // ボタンをフェードアウトして非表示にする
       }
     });
 

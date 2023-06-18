@@ -9,7 +9,7 @@
   }
 }
 
-.plan-input {
+.input {
     animation: slideInFromTop 0.8s ease-out;
     flex-shrink: 0;
     width: 400px;
@@ -84,6 +84,25 @@
         background-color: #1f776d;
       }
     }
+
+    .hotel-input-btn {
+      width: 200px;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #2a9d8f;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: block; 
+  
+      &:hover {
+        background-color: #1f776d;
+      }
+    }
+
   }
 
 #hover-template-1,
@@ -98,13 +117,6 @@ pointer-events: auto;
 opacity: 1;
 }
 
-.budget-input {
-background-color: #ddd;
-pointer-events: none;
-opacity: 0.5;
-display: none;
-}
-
 .slider-wrapper {
   display: flex;
   align-items: center;
@@ -112,7 +124,10 @@ display: none;
 
 #day-slider {
   margin-right: 8px;
+  height: 10px;
   width: 180px;
+  border: var(--border-style);
+  border-radius: 5px;
 }
 
 #day-slider-value {
@@ -123,22 +138,33 @@ display: none;
   font-size: 20px;
 }
 
-#budget-input {
+#day-slider .noUi-connect {
+  background:  var(--primary-color);
+}
+
+#day-slider .noUi-handle {
+  height: 20px;
+  width: 20px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+  background-color: var(--primary-color);
+}
+
+#day-slider .noUi-handle::before {
   display: none;
-  padding-top: 10px;
 }
 
-#budget-slider {
-  margin-right: 8px;
-  width: 180px;
+#day-slider .noUi-handle::after {
+  display: none;
 }
 
-#budget-slider-value {
-  display: inline-block;
-  width: 3em;
-  text-align: right;
-  margin: 10px;
-  font-size: 20px;
+body.dark-mode #day-slider .noUi-connect {
+  background:  var(--primary-color);
+}
+
+body.dark-mode #day-slider .noUi-handle {
+  background-color: var(--primary-color);
 }
 
 .font-light {

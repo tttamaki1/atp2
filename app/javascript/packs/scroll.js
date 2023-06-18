@@ -10,4 +10,4 @@ window.addEventListener('scroll', function() {
   var scrollPosition = window.scrollY;
   var element = document.querySelector('.map-container');
   element.style.transform = 'translateY(' + scrollPosition + 'px)';
-});  
+});

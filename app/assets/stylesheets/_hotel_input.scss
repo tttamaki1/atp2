@@ -1,0 +1,91 @@
+@import 'flatpickr/dist/flatpickr.min';
+
+//カレンダー
+.flatpickr-calendar {
+   border: var(--border-style) ;
+}
+
+.flatpickr-day.selected-range {
+   background-color: var(--primary-color); /* 選択範囲の背景色を変更 */
+   color: #ffffff; /* 選択範囲内の日付テキストの色を変更 */
+}
+
+body.dark-mode .flatpickr-calendar {
+   background-color: var(--secondary-background-color-dark-mode);
+   color: white;
+   border: var(--border-style) ;
+
+ }
+
+ body.dark-mode  .flatpickr-day {
+    color: white;
+ }
+
+// スライダー
+.budget-input {
+    margin-left: 6px;
+    margin-top: 24px;
+}
+
+#budget-slider {
+    margin-right: 8px;
+    height: 10px;
+    width: 320px;
+    border: var(--border-style);
+    border-radius: 5px;
+}
+
+#budget-slider .noUi-connect {
+    background:  var(--primary-color);
+}
+
+#budget-slider .noUi-handle {
+    height: 20px;
+    width: 20px;
+    top: -5px;
+    right: -9px; /* half the width */
+    border-radius: 9px;
+    background-color: var(--primary-color);
+}
+
+#budget-slider .noUi-handle::before {
+    display: none;
+}
+
+#budget-slider .noUi-handle::after {
+    display: none;
+}
+
+body.dark-mode #budget-slider .noUi-connect {
+    background:  var(--primary-color);
+}
+
+body.dark-mode #budget-slider .noUi-handle {
+    background-color: var(--primary-color);
+}
+
+.slider-value-container {
+    margin: 16px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.price_per_night {
+    display: flex;
+    align-items: center;  
+}
+
+.currency {
+    display: flex;
+    align-items: center;
+}
+
+  
+#budget-slider-value {
+    display: inline-block;
+    width: 160px;
+    text-align: right;
+    margin: 10px;
+    font-size: 20px;
+    white-space: nowrap;
+}

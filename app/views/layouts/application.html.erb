@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons", media: "all", rel: "stylesheet" %>
     <script src="https://kit.fontawesome.com/776a34808a.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'google_maps' %>
     <%= javascript_pack_tag 'dark_mode', 'data-turbolinks-track': 'reload' %>
@@ -67,6 +68,7 @@
       <nav class="category-nav">
         <ul>
           <li><%= link_to t(:create_plan), root_path %></li>
+          <li><%= link_to t(:get_recommendation_for_hotel), hotel_path %></li>
           <li><%= link_to t(:inspiration_guide), inspiration_guide_path %></li>
         </ul>
       </nav>

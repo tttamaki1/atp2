@@ -44,7 +44,7 @@ body.dark-mode {
     }  
   }
   
-  body.dark-mode .plan-input {
+  body.dark-mode .input {
     background-color: var(--input-background-color-dark-mode);
     border: 1px solid var(--background-border_style-dark-mode);
   }
@@ -86,11 +86,6 @@ body.dark-mode {
   
   body.dark-mode .submit-button:hover {
     background-color: #a79151;
-  }
-  
-  
-  body.dark-mode .budget-input {
-    background-color: rgba(221, 221, 221, 0.7);
   }
   
   //dark-mode header

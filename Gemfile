@@ -44,6 +44,9 @@ gem 'devise'
 
 gem 'rails-i18n'
 
+gem 'flatpickr'
+
+
 # gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
