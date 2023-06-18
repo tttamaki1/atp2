@@ -20,7 +20,7 @@ document.addEventListener("turbolinks:load", function(){
 
     flatpickr(".datepicker", {
         locale: locale,
-        mode: "multiple",
+        mode: "range",
         minDate: "today",
         conjunction: " - ",
         onValueUpdate: function(selectedDates, dateStr, instance) {
