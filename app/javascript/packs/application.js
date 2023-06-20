@@ -18,6 +18,7 @@ require("./inspiration")
 require("./map_resize")
 require("./datepicker")
 require("./slider")
+require("./delete_icon")
 
   
 

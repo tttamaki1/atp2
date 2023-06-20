@@ -25,13 +25,21 @@
     opacity: 1;
 
     .form-group {
-        margin-bottom: 10px;
+        height: 46px;
         position: relative;
      }
+
+     .form-group i {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
+    }
      
      .form-control {
          width: 400px;
-         padding: 8px 12px;
+         padding: 8px 20px 8px 8px;
          font-size: 16px;
          border: 2px solid #ccc;
          border-radius: 20px;

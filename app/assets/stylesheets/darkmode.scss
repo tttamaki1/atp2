@@ -192,3 +192,7 @@ body.dark-mode {
     text-decoration: none;
     color: white;
   }
+
+  body.dark-mode .prompt-area .form-group i {
+    color: var(--primary-color);
+  }
