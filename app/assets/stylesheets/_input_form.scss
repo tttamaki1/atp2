@@ -27,16 +27,25 @@
   
     .form-group {
       margin-bottom: 10px;
+      position: relative;
     }
-  
+    
     .form-control {
       width: 100%;
-      padding: 8px 12px;
+      padding: 8px 20px 8px 8px; /* padding right increased to make room for icon */
       font-size: 16px;
       border: 2px solid #ccc;
       border-radius: 20px;
       outline: none;
       transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .form-group i {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-color);
     }
 
     .form-control:focus {
