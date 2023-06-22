@@ -1,4 +1,20 @@
+@keyframes slideOutToDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 500px) {
+
+  .slide-fade-out-to-down {
+    animation-name: slideOutToDown;
+    animation-duration: 1s;
+  }
 
   .container-index {
     width: 100vw;
@@ -9,6 +25,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 0;
   }
 
   .right-side-container {
@@ -34,28 +51,22 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
+  }
 
-      .form-control {
-  
-      }
+  .form-group {
 
-      .form-group {
+  }
 
+  .select-control {
 
-          .label {
+  }
 
-          }
-      }
+  .submit-button {
 
-      .select-control {
+  }
 
-      }
-
-      .submit-button {
-
-      }
-
-  } 
+  }
 
   input::placeholder {
 
@@ -63,7 +74,7 @@
 
   #day-slider {
 
-}
+  }
 
   .slider-wrapper {
 
@@ -96,4 +107,4 @@
 
 
   
-  }
+}

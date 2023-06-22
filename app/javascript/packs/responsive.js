@@ -1,5 +1,20 @@
-if (window.matchMedia("(max-width: 600px)").matches) {
-    // ビューポートが600ピクセル以下の場合に実行するコード
-  } else {
-    // ビューポートが600ピクセルより大きい場合に実行するコード
-  }
+document.addEventListener("turbolinks:load", () => {$(function() {
+    if (window.matchMedia("(max-width: 600px)").matches) {
+        const element = document.getElementById('submit-button');
+        const inputElement = document.getElementsByClassName('input')[0];
+
+        element.addEventListener('click', () => {
+            const textbox = document.getElementById('destination-input');
+            if (textbox.value !== "") {
+                inputElement.classList.add('slide-fade-out-to-down');
+            }
+
+            inputElement.addEventListener('animationend', () => {
+                inputElement.style.display = 'none';
+            });
+        });
+
+
+    }
+});
+});
