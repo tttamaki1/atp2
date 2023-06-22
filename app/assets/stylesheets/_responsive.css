@@ -1,0 +1,69 @@
+@media screen and (min-width: 600px) {
+
+    .header-logo a {
+        font-size: 40px;
+    }
+
+    .category-nav a {
+        font-size: 36px;
+    }
+
+    .input {
+        width: 100%;
+
+        .form-control {
+           height: 64px; 
+        }
+
+        .form-group {
+           margin-top: 48px;
+           height: 72px; 
+           font-size: 36px;
+
+           .label {
+             font-size: 36px;
+           }
+        }
+
+        .select-control {
+           height: 64px; 
+        }
+    } 
+
+    input::placeholder {
+        font-size: 36px;
+    }
+
+    select {
+        font-size: 36px;
+    }
+    
+    .input h2 {
+       font-size: 36px;
+    }
+
+    .cursor-pointer {
+        margin-top: 48px;
+    }
+
+
+
+    .generated-plan-container {
+        width: 100%;
+        height: 100%;
+      }
+      
+
+    .right-side-container {
+      display: block;
+    }
+  
+    .map-container {
+      display: block;
+    }
+  
+    #map {
+      display: block;
+    }
+  
+  }
