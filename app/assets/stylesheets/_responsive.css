@@ -1,113 +1,99 @@
-@media screen and (max-width: 10px) {
+@media screen and (max-width: 500px) {
 
-    .container-index {
-      width: 100vw;
-    }
+  .container-index {
+    width: 100vw;
+    position: relative;
+  }
+
+  .generated-plan-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .right-side-container {
+    display: block;
+  }
+
+  .map-container {
+    display: block;
+  }
+
+  #map {
+    display: block;
+  }
     
-    .header-logo a {
-        font-size: 40px;
-    }
+  .header-logo a {
+  }
 
-    .category-nav a {
-        font-size: 40px;
-    }
+  .category-nav a {
 
-    .input {
-        width: 100%;
-        height: 100vh;
+  }
 
-        .form-control {
-           height: 128px; 
-           font-size: 64px;
-        }
+  .input {
+    position: absolute;
+    top: 0;
+    left: 0;
 
-        .form-group {
-           margin-top: 40px;
-           height: 190px; 
-           font-size: 56px;
+      .form-control {
+  
+      }
 
-           .label {
-             font-size: 64px;
-           }
-        }
+      .form-group {
 
-        .select-control {
-           height: 128px;
-           font-size: 64px;
-        }
 
-        .submit-button {
-          margin-top: 120px;
-          width: 500px;
-          margin: 64px auto;
-          padding: 10px 20px;
-          font-size: 64px;
-          border-radius: 32px;
-        }
+          .label {
 
-    } 
+          }
+      }
 
-    input::placeholder {
-        font-size: 56px;
-    }
+      .select-control {
 
-    #day-slider {
-      margin-left: 40px;
-      width: 500px;  /* スライダーの幅を400pxに設定 */
-      height: 20px;  /* スライダーの高さを20pxに設定 */
+      }
+
+      .submit-button {
+
+      }
+
+  } 
+
+  input::placeholder {
+
+  }
+
+  #day-slider {
+
+}
+
+  .slider-wrapper {
+
+  }
+
+  #day-slider-display {
+
+  }
+
+  .days-text {
+
+  }
+
+  #day-slider .noUi-handle {
+
+  }
+
+  select {
+
   }
   
-   .slider-wrapper {
-      margin-left: 32px;
-   }
+  .input h2 {
 
-    #day-slider-display {
-      font-size: 56px;
-    }
+  }
 
-    .days-text {
-      font-size: 56px;
-    }
+  .cursor-pointer {
 
-    #day-slider .noUi-handle {
-      height: 64px;
-      width: 64px;
-      top: -22px;
-      right: -32px; /* half the width */
-      border-radius: 32px;
-      background-color: var(--primary-color);
-    }
-
-    select {
-        font-size: 56px;
-    }
-    
-    .input h2 {
-       font-size: 56px;
-    }
-
-    .cursor-pointer {
-        margin-top: 40px;
-    }
+  }
 
 
 
-    .generated-plan-container {
-        width: 100%;
-        height: 100%;
-      }
-      
-
-    .right-side-container {
-      display: block;
-    }
-  
-    .map-container {
-      display: block;
-    }
-  
-    #map {
-      display: block;
-    }
   
   }
