@@ -1,49 +1,93 @@
 @media screen and (min-width: 600px) {
 
+    .container-index {
+      width: 100vw;
+    }
+    
     .header-logo a {
         font-size: 40px;
     }
 
     .category-nav a {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     .input {
         width: 100%;
+        height: 100vh;
 
         .form-control {
-           height: 64px; 
+           height: 128px; 
+           font-size: 64px;
         }
 
         .form-group {
-           margin-top: 48px;
-           height: 72px; 
-           font-size: 36px;
+           margin-top: 40px;
+           height: 190px; 
+           font-size: 56px;
 
            .label {
-             font-size: 36px;
+             font-size: 64px;
            }
         }
 
         .select-control {
-           height: 64px; 
+           height: 128px;
+           font-size: 64px;
         }
+
+        .submit-button {
+          margin-top: 120px;
+          width: 500px;
+          margin: 64px auto;
+          padding: 10px 20px;
+          font-size: 64px;
+          border-radius: 32px;
+        }
+
     } 
 
     input::placeholder {
-        font-size: 36px;
+        font-size: 56px;
+    }
+
+    #day-slider {
+      margin-left: 40px;
+      width: 500px;  /* スライダーの幅を400pxに設定 */
+      height: 20px;  /* スライダーの高さを20pxに設定 */
+  }
+  
+   .slider-wrapper {
+      margin-left: 32px;
+   }
+
+    #day-slider-display {
+      font-size: 56px;
+    }
+
+    .days-text {
+      font-size: 56px;
+    }
+
+    #day-slider .noUi-handle {
+      height: 64px;
+      width: 64px;
+      top: -22px;
+      right: -32px; /* half the width */
+      border-radius: 32px;
+      background-color: var(--primary-color);
     }
 
     select {
-        font-size: 36px;
+        font-size: 56px;
     }
     
     .input h2 {
-       font-size: 36px;
+       font-size: 56px;
     }
 
     .cursor-pointer {
-        margin-top: 48px;
+        margin-top: 40px;
     }
 
 
