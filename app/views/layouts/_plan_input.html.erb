@@ -39,6 +39,6 @@
       <%= form.label :transportation_id, t(:transportation_id) %>
       <%= form.collection_select(:transportation_id, Transportation.all, :id, :translated_name, {}, { class: "select-control", id: "transportation" }) %>
     </div>
-    <%= form.submit t(:create_plan), class: 'submit-button hidden' %>
+    <%= form.submit t(:create_plan), class: 'submit-button hidden', id:"submit-button" %>
   <% end %>
 </div>
