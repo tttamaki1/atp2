@@ -20,15 +20,15 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :activity, t(:activity_id) %>
+      <%= form.label :activity, t(:activity_id), class: "label"%>
       <%= form.collection_select(:activity_id, Activity.all, :id, :translated_name, {}, { class: "select-control", id: "activity" }) %>
     </div>
     <div class="form-group">
-      <%= form.label :food_id, t(:food_id) %>
+      <%= form.label :food_id, t(:food_id), class: "label" %>
       <%= form.collection_select(:food_id, Food.all, :id, :translated_name, {}, { class: "select-control", id: "food" }) %>
     </div>
     <div class="form-group">
-      <%= form.label :travel_style_id, t(:travel_style_id) %>
+      <%= form.label :travel_style_id, t(:travel_style_id), class: "label" %>
       <%= form.collection_select(:travel_style_id, TravelStyle.all, :id, :translated_name, {}, { class: "select-control", id: "travel_style" }) %>
     </div>
     <div class="form-group hidden">
