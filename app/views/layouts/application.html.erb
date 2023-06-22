@@ -50,7 +50,7 @@
           <div id="dark-mode-toggle">
             <span class="dark-text"><i class="far fa-moon icon"></i><%= t(:dark_mode) %></span>
             <span class="light-text"><i class="fas fa-sun icon"></i><%= t(:light_mode) %></span>
-        </div>
+          </div>
         
           <% if user_signed_in? %>
             <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>

@@ -1,15 +1,28 @@
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
+
+    .header-top {
+      height: 80px;
+    }
 
     .container-index {
       width: 100vw;
+    }
+
+    .header-nav {
+      display: none;
     }
     
     .header-logo a {
         font-size: 40px;
     }
 
+    .category-nav {
+      display: block;
+    }
+
     .category-nav a {
-        font-size: 40px;
+      height: 80px;
+      font-size: 40px;
     }
 
     .input {
