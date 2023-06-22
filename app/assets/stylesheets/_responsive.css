@@ -9,12 +9,12 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+.slide-fade-out-to-down {
+  animation-name: slideOutToDown;
+  animation-duration: 1s;
+}
 
-  .slide-fade-out-to-down {
-    animation-name: slideOutToDown;
-    animation-duration: 1s;
-  }
+@media screen and (max-width: 500px) {
 
   .container-index {
     width: 100vw;
