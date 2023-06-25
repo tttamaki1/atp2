@@ -9,7 +9,7 @@
       <%= form_with url: inspiration_guide_post_path, method: :post, remote: true do |form| %>
         <div class="prompt-area">
           <div class="form-group">
-            <%= form.text_field :place, placeholder: t(:place_input_placeholder), class: "form-control" %>
+            <%= form.text_field :place, placeholder: t(:place_input_placeholder), class: "form-control inspiration" %>
             <i class="fas fa-times delete_icon"></i>
           </div>
         </div>

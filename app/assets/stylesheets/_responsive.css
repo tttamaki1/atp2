@@ -14,7 +14,7 @@
   animation-duration: 1s;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 
   .container-index {
     width: 100vw;
@@ -43,8 +43,8 @@
   .header-logo a {
   }
 
-  .category-nav a {
-
+  .header-nav {
+    display: none;
   }
 
   .input {
@@ -103,6 +103,32 @@
   }
 
 
+  .prompt-area {
+    width: 90%!important;
+  }
 
-  
+  .prompt-box {
+    width: 100%!important;
+    white-space: pre-wrap!important;
+  }
+
+  .form {
+    width: 100%!important;
+  }
+
+  .prompt-area {
+
+     .form-group {
+        width: 80%;
+     }
+  }
+
+  .category-nav a {
+    font-size: 13px;
+  }
+
+  .inspiration {
+    width: 100%!important;
+  }
+
 }
