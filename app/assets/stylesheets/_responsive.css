@@ -104,12 +104,13 @@
 
 
   .prompt-area {
-    width: 90%!important;
+    width: 100%!important;
   }
 
   .prompt-box {
-    width: 100%!important;
+    width: 90%!important;
     white-space: pre-wrap!important;
+    margin: 0 auto;
   }
 
   .form {
@@ -117,9 +118,8 @@
   }
 
   .prompt-area {
-
      .form-group {
-        width: 80%;
+        width: 75%!important;
      }
   }
 
