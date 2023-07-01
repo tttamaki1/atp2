@@ -58,4 +58,8 @@ document.addEventListener("turbolinks:load", () => {
     document.head.appendChild(linkElement);
   }
 
+  if (window.matchMedia("(max-width: 600px)").matches) {
+    selectedLanguage.style.fontSize = "12px"
+  }
+
 });
