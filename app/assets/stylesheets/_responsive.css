@@ -119,7 +119,7 @@
   .prompt-box {
     width: 90%!important;
     white-space: pre-wrap!important;
-    margin: 0 auto;
+    padding: 12px!important;
   }
 
   .form {
