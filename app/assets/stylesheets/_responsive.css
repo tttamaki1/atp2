@@ -55,7 +55,17 @@
     width: 86%!important;
     border-radius: 10px!important;
   }
-    
+
+  .header-top {
+    padding: 0px 20px;
+  }
+  
+  .header-logo {
+
+    padding-right: 10px;
+  
+  }
+
   .header-logo a {
   }
 
