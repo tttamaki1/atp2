@@ -60,7 +60,28 @@
   }
 
   .header-nav {
+  }
+
+  .user {
     display: none;
+  }
+
+  .mode-text {
+    font-size: 4px;
+  }
+
+  #dark-mode-toggle {
+    width: 80px;
+  }
+
+  .language-select-container {
+    font-size: 6px;
+  }
+
+  .language-select {
+    font-size: 6px;
+    width: 60px;
+    margin-right: 0px;
   }
 
   .input {

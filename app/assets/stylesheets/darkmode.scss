@@ -107,6 +107,10 @@ body.dark-mode {
   body.dark-mode .header-nav a:hover {
     color: var(--hover-color-dark-mode);
   }
+
+  body.dark-mode .light-text {
+    width: 95px;
+  }
   
   body.dark-mode .category-nav {
     background-color: var(--secondary-background-color-dark-mode);

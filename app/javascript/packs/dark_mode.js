@@ -7,12 +7,18 @@ document.addEventListener("turbolinks:load", () => {
     const darkMode = darkModeButton.querySelector(".dark-text");
     const lightMode = darkModeButton.querySelector(".light-text");
 
+    const selectedLanguage = document.getElementById("language-select");
+
     document.body.classList.toggle("dark-mode");
 
     if (document.body.classList.contains("dark-mode")) {
       darkMode.style.display = "none";
       lightMode.style.display = "inline-block";
       sessionStorage.setItem("darkMode", "enabled");
+
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        selectedLanguage.style.fontSize = "6px"
+      }
 
       linkElement.href = "https://npmcdn.com/flatpickr/dist/themes/dark.css";
       document.head.appendChild(linkElement);

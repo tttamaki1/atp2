@@ -42,22 +42,22 @@
               <%= form_tag(switch_language_path, method: :post, id: 'language-form') do %>
                 <div class="language-select-container">
                   <i class="fas fa-globe icon"></i>
-                  <%= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], [t(:english), 'en'], [t(:chinese), 'zh-CN']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select') %>
+                  <%= select_tag(:locale, options_for_select([[t(:japanese), 'ja'], [t(:english), 'en'], [t(:chinese), 'zh-CN']], I18n.locale), onchange: "document.getElementById('language-form').submit();", class: 'language-select', id: 'language-select') %>
                 </div>
               <% end %>
             </li>
             
           </div>
           <div id="dark-mode-toggle">
-            <span class="dark-text"><i class="far fa-moon icon"></i><%= t(:dark_mode) %></span>
-            <span class="light-text"><i class="fas fa-sun icon"></i><%= t(:light_mode) %></span>
+            <span class="dark-text"><i class="far fa-moon icon"></i><span class="mode-text"><%= t(:dark_mode) %></span></span>
+            <span class="light-text"><i class="fas fa-sun icon"></i><span class="mode-text"><%= t(:light_mode) %></span></span>
           </div>
         
           <% if user_signed_in? %>
-            <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to t(:logout), destroy_user_session_path, method: :delete, class: "user" %></li>
           <% else %>
-            <li><%= link_to t(:signup), new_user_registration_path %></li>
-            <li><%= link_to t(:login), new_user_session_path %></li>
+            <li><%= link_to t(:signup), new_user_registration_path, class: "user" %></li>
+            <li><%= link_to t(:login), new_user_session_path, class: "user" %></li>
           <% end %>
         </ul>
       </nav>
