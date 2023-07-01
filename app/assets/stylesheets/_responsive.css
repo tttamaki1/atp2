@@ -89,7 +89,7 @@
   }
 
   .language-select {
-    font-size: 12px;
+    font-size: 12px!important;
     width: 60px;
     margin-right: 0px;
   }
