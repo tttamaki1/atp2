@@ -17,7 +17,7 @@ document.addEventListener("turbolinks:load", () => {
       sessionStorage.setItem("darkMode", "enabled");
 
       if (window.matchMedia("(max-width: 600px)").matches) {
-        selectedLanguage.style.fontSize = "6px"
+        selectedLanguage.style.fontSize = "12px"
       }
 
       linkElement.href = "https://npmcdn.com/flatpickr/dist/themes/dark.css";
